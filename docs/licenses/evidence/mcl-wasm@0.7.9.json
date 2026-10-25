@@ -1,0 +1,43 @@
+{
+  "name": "mcl-wasm",
+  "version": "0.7.9",
+  "registry": "https://registry.npmjs.org/mcl-wasm/0.7.9",
+  "published": {
+    "gitHead": "f4f02d3bf7a59ed7c0170fde43127584bbc920e4",
+    "repository": {
+      "url": "git+https://github.com/herumi/mcl-wasm.git",
+      "type": "git"
+    },
+    "license": "BSD-3-Clause",
+    "dist": {
+      "shasum": "c1588ce90042a8700c3b60e40efb339fc07ab87f",
+      "tarball": "https://registry.npmjs.org/mcl-wasm/-/mcl-wasm-0.7.9.tgz",
+      "fileCount": 16,
+      "integrity": "sha512-iJIUcQWA88IJB/5L15GnJVnSQJmf/YaxxV6zRavv83HILHaJQb6y0iFyDMdDO0gN8X37tdxmAOrH/P8B6RB8sQ==",
+      "signatures": [
+        {
+          "sig": "MEUCIQCJTA7mTkGP24t9GuSR+KVdyAU14VRdcN0XDQ2tjKjG4gIgE7+V7sB2mcCcGyvS+e27IABv15c+r+Df94p/fO7s1uM=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "unpackedSize": 1135241,
+      "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhMdUTCRA9TVsSAnZWagAAktQQAJjCQY6CU2k2UUcV9zZh\nzdaMlXylntc9mMGwnwdaO89oddBy7AGehHPDnUHn0pXwSgspeWp+JVqmG5Jy\n0FaCVzE6vOP5Jv2BuXkUQqvaT+Xq8ru3IxoN1KBTCKsa89JMA+k2DrsAPpG2\nfA/uQ0OQ3EQGf9zKIWvKuNUuRnb7atEMqhgXYPJmqx0L7Aj1bnOnei2sjxiA\nfok1QUkB49PeQud1vBeJ8DrrB0WFscwZVy3N+9+6/CDfK0F6twZ5oTnCWRqB\nAMUp0hmSfj7vW7aVlQSCnTOUCQYCdzzCuLVDycP7kl5V4hWAXNsfAsNHbIym\nMM/h9HRem2ib4ymd20oCTNZV3iudO6oMBaYlCnpGQmLzNCE/cWN8WlST4DdX\ndwBXV1BcgEfsEiB/0Eh9fHm/g0TfTJoxzYq0a5MXcDqxT0LUS7fytf0piiWz\n+EN8BUYXK+MFTV3f/48IuFSIS9H73FU+v1xYwluWGU4tdOn2MDQH7lKeTnN+\nEreIX9hbwJmP7zZtC34ZtwNOkaiRfxhLnjHG0NeP8PxnVW4CPt/ENy/7eZZe\ng/GP1mDFMnRNn5KQsJXzBbC5u7DXmVn4l0MJLnBgVk8u8BtN5Q0EwUIED2Y4\nVoQSF09EIdtQzdsBQXBHCwCEBLz0WeQQRnKqK0zS9x3tQijBUmyYlZorlxd1\nra5u\r\n=Iz7l\r\n-----END PGP SIGNATURE-----\r\n"
+    }
+  },
+  "repository": "herumi/mcl-wasm",
+  "commit": "f4f02d3bf7a59ed7c0170fde43127584bbc920e4",
+  "files": [
+    {
+      "path": "package.json",
+      "gitBlob": "0d653e2e30995cf99cbf1ca5a68d1636d1177d41",
+      "content": "{\n  \"name\": \"mcl-wasm\",\n  \"version\": \"0.7.9\",\n  \"description\": \"mcl ; A portable and fast pairing-based cryptography library for Node.js by WebAssembly\",\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"lint\": \"standard src/mcl.js test/test.js\",\n    \"test\": \"node test/test.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/herumi/mcl-wasm.git\"\n  },\n  \"keywords\": [\n    \"elliptic curve\",\n    \"WebAssembly\",\n    \"pairing\"\n  ],\n  \"files\": [\n    \"src/Makefile\",\n    \"src/index.js\",\n    \"src/mcl.js\",\n    \"src/mcl_c.js\",\n    \"src/index.d.ts\",\n    \"browser/demo.html\",\n    \"browser/demo.js\",\n    \"browser/mcl.js\",\n    \"browser/package-lock.json\",\n    \"browser/package.json\",\n    \"browser/readme.md\",\n    \"browser/src/index-browser.js\",\n    \"browser/webpack.config.js\",\n    \"test/test.js\",\n    \"test/eth-test.js\"\n  ],\n  \"author\": \"herumi <herumi@nifty.com> (https://github.com/herumi/)\",\n  \"license\": \"BSD-3-Clause\",\n  \"bugs\": {\n    \"url\": \"https://github.com/herumi/mcl-wasm/issues\"\n  },\n  \"engines\": {\n    \"node\": \">=8.9.0\"\n  },\n  \"homepage\": \"https://github.com/herumi/mcl-wasm#readme\",\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@types/node\": \"^15.12.4\",\n    \"assert\": \"^2.0.0\",\n    \"perf_hooks\": \"^0.0.1\",\n    \"typescript\": \"^4.3.4\"\n  }\n}\n",
+      "url": "https://github.com/herumi/mcl-wasm/blob/f4f02d3bf7a59ed7c0170fde43127584bbc920e4/package.json"
+    },
+    {
+      "path": "readme.md",
+      "gitBlob": "847606187dbbe42f55506f8376ed690bff3c725a",
+      "content": "[![Build Status](https://github.com/herumi/mcl-wasm/actions/workflows/main.yml/badge.svg)](https://github.com/herumi/mcl-wasm/actions/workflows/main.yml)\r\n\r\n# A portable and fast pairing-based cryptography library for Node.js by WebAssembly\r\n\r\n# Abstract\r\n\r\nsee [mcl](https://github.com/herumi/mcl)\r\n\r\n## News\r\n- 2021/Jun/22 add index.d.ts\r\n- 2021/Mar/02 improve performance\r\n- 2020/Nov/10 setup function has changed.\r\n- add `mulVec(xVec, yVec)` where xVec is an array of G1 or G2 and yVec is an array of Fr, which returns `sum of xVec[i] yVec[i]`.\r\n- G1.setHashOf is compatible with [hash-to-curve-09 BLS12381G1_XMD:SHA-256_SSWU_RO_](https://www.ietf.org/id/draft-irtf-cfrg-hash-to-curve-09.html#name-bls12381g1_xmdsha-256_sswu_)\r\n- support only BN254, ZKSNARK, BLS12-381 to remove mcl_c512.js\r\n- add mcl.precomputedMillerLoop2 and mcl.precomputedMillerLoop2mixed\r\n\r\n## How to use\r\nThe version `v0.6.0` breaks backward compatibility of the entry point.\r\n\r\n- Node.js : `const mcl = require('mcl-wasm')`\r\n- React : `const mcl = require('mcl-wasm/browser')`\r\n- HTML : `<script src=\"https://herumi.github.io/mcl-wasm/browser/mcl.js\"></script>`\r\n\r\n## for Node.js\r\n```\r\nnode test/test.js\r\n```\r\n\r\n## browser demo\r\n[ID-based encryption](https://herumi.github.io/mcl-wasm/browser/demo.html)\r\n\r\n# usages\r\n\r\n## init\r\n\r\n```\r\n// Ethereum 2.0 spec mode\r\nmcl.init(mcl.BLS12_381)\r\n  .then(() => {\r\n    mcl.setETHserialization(true) // Ethereum serialization\r\n    mcl.setMapToMode(mcl.IRTF) // for G2.setHashOf(msg)\r\n    ...\r\n  })\r\n```\r\n\r\n## string conversion\r\n\r\n```\r\na = new mcl.Fr()\r\na.setStr('255') // set 255\r\na.setStr('0xff') // set 0xff = 255\r\na.setStr('ff', 16) // set ff as hex-string\r\n\r\na.getStr() // '255'\r\na.getStr(16) // 'ff'\r\n```\r\n\r\n## serialization\r\n\r\n```\r\n// byte array serialization\r\nb.deserialize(a.serialize()) // b.isEqualTo(a)\r\n// hex string of serialization()\r\nb.deserializeHexStr(a.serializeToHexStr())\r\n```\r\n\r\n```\r\n// serialization like Ethereum 2.0 only for BLS12-381\r\nmcl.setETHserialization(true)\r\n```\r\n\r\n## deserialization\r\n```\r\n/*\r\n  it is big cost to to verify the order\r\n  call once after init() if you want to disable it\r\n  cf. sub group problem\r\n*/\r\nmcl.verifyOrderG1(false)\r\nmcl.verifyOrderG2(false)\r\n```\r\n\r\nsee [test.js](https://github.com/herumi/mcl-wasm/blob/master/test/test.js)\r\n\r\n# License\r\n\r\nmodified new BSD License\r\nhttp://opensource.org/licenses/BSD-3-Clause\r\n\r\n# History\r\n\r\n2019/Jan/31 add Fp.mapToG1\r\n\r\n# Author\r\n\r\nMITSUNARI Shigeo(herumi@nifty.com)\r\n\r\n# Sponsors welcome\r\n[GitHub Sponsor](https://github.com/sponsors/herumi)\r\n",
+      "url": "https://github.com/herumi/mcl-wasm/blob/f4f02d3bf7a59ed7c0170fde43127584bbc920e4/readme.md"
+    }
+  ]
+}

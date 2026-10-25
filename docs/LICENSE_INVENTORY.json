@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T06:21:51.057Z",
+  "generated": "2026-10-25T11:47:53.915Z",
   "scope": "Installed production npm dependency graph. Does not include every OS/image package or replace legal review.",
   "components": [
     {
@@ -76,9 +76,25 @@
       "name": "@ethereumjs/trie",
       "version": "5.1.0",
       "license": "MPL-2.0",
-      "texts": [],
+      "texts": [
+        "licenses/upstream/Mozilla-MPL-2.0.txt"
+      ],
       "installedText": false,
-      "sources": []
+      "sources": [
+        {
+          "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+          "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+          "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+          "sourceKind": "canonical-versioned-license",
+          "evidence": [
+            {
+              "path": "licenses/evidence/_ethereumjs_trie@5.1.0.json",
+              "sha256": "dbd00b3630dd6419fc3e969c179fffa72a1548d1e7a3fc9a1767f2928158f1e7"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "@ethereumjs/tx",
@@ -164,9 +180,25 @@
       "name": "@ethereumjs/blockchain",
       "version": "6.3.0",
       "license": "MPL-2.0",
-      "texts": [],
+      "texts": [
+        "licenses/upstream/Mozilla-MPL-2.0.txt"
+      ],
       "installedText": false,
-      "sources": []
+      "sources": [
+        {
+          "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+          "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+          "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+          "sourceKind": "canonical-versioned-license",
+          "evidence": [
+            {
+              "path": "licenses/evidence/_ethereumjs_blockchain@6.3.0.json",
+              "sha256": "eef49c211a89ac71cf2a1b522b679158690e1c3d0139084085ccbbe8cd87d5ee"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "@ethereumjs/common",
@@ -182,9 +214,25 @@
       "name": "@ethereumjs/trie",
       "version": "5.1.0",
       "license": "MPL-2.0",
-      "texts": [],
+      "texts": [
+        "licenses/upstream/Mozilla-MPL-2.0.txt"
+      ],
       "installedText": false,
-      "sources": []
+      "sources": [
+        {
+          "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+          "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+          "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+          "sourceKind": "canonical-versioned-license",
+          "evidence": [
+            {
+              "path": "licenses/evidence/_ethereumjs_trie@5.1.0.json",
+              "sha256": "dbd00b3630dd6419fc3e969c179fffa72a1548d1e7a3fc9a1767f2928158f1e7"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "@ethereumjs/tx",
@@ -498,9 +546,25 @@
       "name": "@ethereumjs/trie",
       "version": "5.0.4",
       "license": "MPL-2.0",
-      "texts": [],
+      "texts": [
+        "licenses/upstream/Mozilla-MPL-2.0.txt"
+      ],
       "installedText": false,
-      "sources": []
+      "sources": [
+        {
+          "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+          "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+          "commit": "295e5a3caa69c226e8f8edfad4ea72a843bc0b4f",
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+          "sourceKind": "canonical-versioned-license",
+          "evidence": [
+            {
+              "path": "licenses/evidence/_ethereumjs_trie@5.0.4.json",
+              "sha256": "48af7a9d7dbc9e8163e2bbf75b7ab9a305eb7eff21b7e82532e27265e025a842"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "@noble/hashes",
@@ -890,6 +954,7 @@
       "installedText": false,
       "sources": [
         {
+          "path": "licenses/upstream/_ethersproject_logger@5.8.0-LICENSE.md",
           "url": "https://github.com/ethers-io/ethers.js/blob/fa5f647bb2cde63dd0b9664c42cbfbdc1515e800/LICENSE.md",
           "commit": "fa5f647bb2cde63dd0b9664c42cbfbdc1515e800",
           "sha256": "38f156ca482f33e6ec062da7c682da058c65c2932782fd4ea47aaecd01138704"
@@ -1456,6 +1521,7 @@
       "installedText": false,
       "sources": [
         {
+          "path": "licenses/upstream/_openzeppelin_contracts@5.4.0-LICENSE",
           "url": "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/c64a1edb67b6e3f4a15cca8909c9482ad33a02b0/LICENSE",
           "commit": "c64a1edb67b6e3f4a15cca8909c9482ad33a02b0",
           "sha256": "13cd784a6c31361f0e0c6aa3b410a1cb9a079868b7314c13e3eb8a75351746b9"
@@ -1930,9 +1996,25 @@
       "name": "bs58",
       "version": "4.0.1",
       "license": "MIT",
-      "texts": [],
+      "texts": [
+        "licenses/upstream/bs58@4.0.1-LICENSE"
+      ],
       "installedText": false,
-      "sources": []
+      "sources": [
+        {
+          "path": "licenses/upstream/bs58@4.0.1-LICENSE",
+          "url": "https://github.com/cryptocoinjs/bs58/blob/ec21ace130d0c08cc317448952b679ec1b93f17d/LICENSE",
+          "commit": "ec21ace130d0c08cc317448952b679ec1b93f17d",
+          "sha256": "57efbd615689807b8341d557af0038fae58da7e2831f29f52d02902f657deb25",
+          "sourceKind": "identical-published-source",
+          "evidence": [
+            {
+              "path": "licenses/evidence/bs58@4.0.1.json",
+              "sha256": "415605ffa51773a15e5ae4414847439767d2544c5a4c87e0678ab789b70cf941"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "bs58check",
@@ -2462,9 +2544,25 @@
       "name": "ethereumjs-util",
       "version": "4.5.1",
       "license": "MPL-2.0",
-      "texts": [],
+      "texts": [
+        "licenses/upstream/Mozilla-MPL-2.0.txt"
+      ],
       "installedText": false,
-      "sources": []
+      "sources": [
+        {
+          "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+          "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+          "commit": "860beb74e2c5444bbc0de0607f189e8d53d0a2f6",
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+          "sourceKind": "canonical-versioned-license",
+          "evidence": [
+            {
+              "path": "licenses/evidence/ethereumjs-util@4.5.1.json",
+              "sha256": "0f15d61b58f15edd911c5afa62e08149c44561d56f14bee31462749614460c84"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "ethereumjs-abi",
@@ -4113,16 +4211,10 @@
     }
   ],
   "missingText": [
-    "@ethereumjs/trie@5.1.0",
-    "@ethereumjs/blockchain@6.3.0",
-    "@ethereumjs/trie@5.1.0",
     "mcl-wasm@0.7.9",
-    "@ethereumjs/trie@5.0.4",
     "mcl-wasm@0.7.9",
     "abstract-logging@2.0.1",
-    "bs58@4.0.1",
     "eth-sig-util@2.5.3",
-    "ethereumjs-util@4.5.1",
     "mcl-wasm@0.9.0",
     "semaphore@1.1.0",
     "tmp-promise@3.0.2"

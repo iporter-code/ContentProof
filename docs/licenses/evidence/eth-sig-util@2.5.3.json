@@ -1,0 +1,43 @@
+{
+  "name": "eth-sig-util",
+  "version": "2.5.3",
+  "registry": "https://registry.npmjs.org/eth-sig-util/2.5.3",
+  "published": {
+    "gitHead": "c03817eafd2a6b9a768b84089d227c3bee750303",
+    "repository": {
+      "url": "git+ssh://git@github.com/MetaMask/eth-sig-util.git",
+      "type": "git"
+    },
+    "license": "ISC",
+    "dist": {
+      "shasum": "6938308b38226e0b3085435474900b03036abcbe",
+      "tarball": "https://registry.npmjs.org/eth-sig-util/-/eth-sig-util-2.5.3.tgz",
+      "fileCount": 5,
+      "integrity": "sha512-KpXbCKmmBUNUTGh9MRKmNkIPietfhzBqqYqysDavLseIiMUGl95k6UcPEkALAZlj41e9E6yioYXc1PC333RKqw==",
+      "signatures": [
+        {
+          "sig": "MEYCIQDlGl+W2liIzi7L5AV3ADTF4T0JRvBlpkE6l9vZiGTDlgIhANbnAnLEiZBLKm9kVjSvBehJ1li9EW1MvkS+V1j0/ajX",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "unpackedSize": 37545,
+      "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeby2pCRA9TVsSAnZWagAAEcwP/02Y4sYQe0KfmjmmRDuN\nV4BKLJ2rjMpiwMXRdc5KzRCySnKTadpdP1f2X4s5xmmYAv3piFf2zoQOjibe\nc1wvcNCTNnkKdplL5MRY6xXxq8SOewfWtWwZG9QIW5j5rx8g1XVj/LZHVm9U\nXV+jVs+OWDWWLi02rS62Wc5ePXRTsKofVCx+uZ6dAI3osFQChZ1tBkYaF+EX\nFTjTIg1MqtGkpRa2zV5X9blS0/x0vWRn50cFK0pF6Cw8mPShcxyWn2T3T/qQ\ngJ7eK3Wm4jIOj59rwusqyXvc4vtBF38yhmVl6tbScvnCnVg4eYICsKLjoXME\nN6fI+zIFlRK8R0vXYmJPomlgmeFrHjEdIUQR4Y3oKqpLRj6Z/+303TIUqhwP\nlimK84mTlm7cvEHQ74A0Nda3cKXKClT/buMTxqWUuSq9pvlnV5MfbLER6ntz\nolgRy3hHp2HU2Q7AMEi/0treazd+ZHZXRtj+Wsbv5lHuMM2oXZ6w8vB2BBlu\nmfoaklNtpyOJkHxxVP8X/KhdeNmcVvoJEP7pzxb3DhFpekJLivAgnvdoOeQb\nfbTbUdq4WbikuxJFSQ5UFr9KHZgDRFAo9MZK3PlEM654l4Fvabb0KDRzWqgG\nLDVr+iptRWhtNjYytY9DEuSeNXl20o+fP6qXQiR58p6fS30hjlLDDDdOZXWr\no0fL\r\n=vRoo\r\n-----END PGP SIGNATURE-----\r\n"
+    }
+  },
+  "repository": "MetaMask/eth-sig-util",
+  "commit": "c03817eafd2a6b9a768b84089d227c3bee750303",
+  "files": [
+    {
+      "path": "README.md",
+      "gitBlob": "89e8963eb41f0dfdb470170c4352ccb832a1ecb0",
+      "content": "# Eth-Sig-Util [![CircleCI](https://circleci.com/gh/MetaMask/eth-sig-util.svg?style=svg)](https://circleci.com/gh/MetaMask/eth-sig-util)\n\nA small collection of ethereum signing functions.\n\nYou can find usage examples [here](https://github.com/flyswatter/js-eth-personal-sign-examples)\n\n[Available on NPM](https://www.npmjs.com/package/eth-sig-util)\n\n## Supported Signing Methods\n\nCurrently there is only one supported signing protocol. More will be added as standardized.\n\n- Personal Sign (`personal_sign`) [geth thread](https://github.com/ethereum/go-ethereum/pull/2940)\n\n\n## Installation\n\n```\nnpm install eth-sig-util --save\n```\n\n## Methods\n\n### concatSig(v, r, s)\n\nAll three arguments should be provided as buffers.\n\nReturns a continuous, hex-prefixed hex value for the signature, suitable for inclusion in a JSON transaction's data field.\n\n### normalize(address)\n\nTakes an address of either upper or lower case, with or without a hex prefix, and returns an all-lowercase, hex-prefixed address, suitable for submitting to an ethereum provider.\n\n### personalSign (privateKeyBuffer, msgParams)\n\nmsgParams should have a `data` key that is hex-encoded data to sign.\n\nReturns the prefixed signature expected for calls to `eth.personalSign`.\n\n### recoverPersonalSignature (msgParams)\n\nmsgParams should have a `data` key that is hex-encoded data unsigned, and a `sig` key that is hex-encoded and already signed.\n\nReturns a hex-encoded sender address.\n\n### signTypedData (privateKeyBuffer, msgParams)\n\nSigns typed data as per [an early draft of EIP 712](https://github.com/ethereum/EIPs/pull/712/commits/21abe254fe0452d8583d5b132b1d7be87c0439ca).\n\nData should be under `data` key of `msgParams`. The method returns prefixed signature.\n\n### signTypedData_v3 (privateKeyBuffer, msgParams)\n\nSigns typed data as per the published version of [EIP 712](https://github.com/ethereum/EIPs/pull/712).\n\nData should be under `data` key of `msgParams`. The method returns prefixed signature.\n\n### signTypedData_v4 (privateKeyBuffer, msgParams)\n\nSigns typed data as per an extension of the published version of [EIP 712](https://github.com/MetaMask/eth-sig-util/pull/54).\n\nThis extension adds support for arrays and recursive data types.\n\nData should be under `data` key of `msgParams`. The method returns prefixed signature.\n\n### recoverTypedSignature ({data, sig})\n\nReturn address of a signer that did `signTypedData`.\n\nExpects the same data that were used for signing. `sig` is a prefixed signature.\n\n### typedSignatureHash (typedData)\n\nReturn hex-encoded hash of typed data params according to [EIP712](https://github.com/ethereum/EIPs/pull/712) schema.\n\n### extractPublicKey (msgParams)\n\nmsgParams should have a `data` key that is hex-encoded data unsigned, and a `sig` key that is hex-encoded and already signed.\n\nReturns a hex-encoded public key.\n\n",
+      "url": "https://github.com/MetaMask/eth-sig-util/blob/c03817eafd2a6b9a768b84089d227c3bee750303/README.md"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "fa4985a988c61f03ccc860e66ea3a67d35755e99",
+      "content": "{\n  \"name\": \"eth-sig-util\",\n  \"version\": \"2.5.3\",\n  \"description\": \"A few useful functions for signing ethereum data\",\n  \"main\": \"index.js\",\n  \"files\": [\n    \"index.js\",\n    \"index.d.ts\",\n    \"utils/\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc --project .\",\n    \"lint\": \"eslint . --ext .ts,.js\",\n    \"test\": \"npm run build && node test/index.js\",\n    \"prepublishOnly\": \"npm run build\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+ssh://git@github.com/MetaMask/eth-sig-util.git\"\n  },\n  \"keywords\": [\n    \"ethereum\",\n    \"signature\"\n  ],\n  \"author\": \"Dan Finlay\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/MetaMask/eth-sig-util/issues\"\n  },\n  \"homepage\": \"https://github.com/MetaMask/eth-sig-util#readme\",\n  \"dependencies\": {\n    \"buffer\": \"^5.2.1\",\n    \"elliptic\": \"^6.4.0\",\n    \"ethereumjs-abi\": \"0.6.5\",\n    \"ethereumjs-util\": \"^5.1.1\",\n    \"tweetnacl\": \"^1.0.0\",\n    \"tweetnacl-util\": \"^0.15.0\"\n  },\n  \"devDependencies\": {\n    \"@metamask/eslint-config\": \"^2.0.0\",\n    \"@types/node\": \"^10.17.13\",\n    \"@typescript-eslint/eslint-plugin\": \"^2.20.0\",\n    \"@typescript-eslint/parser\": \"^2.20.0\",\n    \"eslint\": \"^6.8.0\",\n    \"eslint-plugin-import\": \"^2.20.1\",\n    \"tape\": \"^4.9.1\",\n    \"typescript\": \"3.7.4\"\n  }\n}\n",
+      "url": "https://github.com/MetaMask/eth-sig-util/blob/c03817eafd2a6b9a768b84089d227c3bee750303/package.json"
+    }
+  ]
+}

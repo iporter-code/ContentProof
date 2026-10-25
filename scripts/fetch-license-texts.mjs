@@ -3,9 +3,10 @@ import { createHash } from "node:crypto";
 const inventory = JSON.parse(
   readFileSync("docs/LICENSE_INVENTORY.json", "utf8"),
 );
-const results = existsSync("docs/LICENSE_SOURCES.json")
-    ? JSON.parse(readFileSync("docs/LICENSE_SOURCES.json", "utf8")).sources
-    : [],
+const previous = existsSync("docs/LICENSE_SOURCES.json")
+    ? JSON.parse(readFileSync("docs/LICENSE_SOURCES.json", "utf8"))
+    : { sources: [], unresolved: [] },
+  results = previous.sources,
   unresolved = [];
 mkdirSync("docs/licenses/upstream", { recursive: true });
 const cache = new Map();
@@ -139,7 +140,7 @@ for (const component of missing.values()) {
       .filter(
         (x) =>
           x.type === "blob" &&
-          /^(LICENSE|LICENCE|COPYING)(?:[.-].*)?$/i.test(x.path),
+          /^(LICENSE|LICENCE|COPYING|COPYRIGHT)(?:[.-].*)?$/i.test(x.path),
       )
       .map((item) => ({ ...item, path: location.prefix + item.path })),
   );
@@ -152,7 +153,15 @@ for (const component of missing.values()) {
     if (!blob) continue;
     const content = JSON.parse(blob);
     if (content.encoding !== "base64") continue;
-    const text = Buffer.from(content.content, "base64").toString("utf8");
+    const bytes = Buffer.from(content.content, "base64");
+    if (
+      createHash("sha1")
+        .update(`blob ${bytes.length}\0`)
+        .update(bytes)
+        .digest("hex") !== item.sha
+    )
+      throw Error("LICENSE_GIT_BLOB_MISMATCH");
+    const text = bytes.toString("utf8");
     if (
       text.length < 100 ||
       !/(?:permission|redistribution|license|licence)/i.test(text)
@@ -192,11 +201,19 @@ writeFileSync(
   "docs/LICENSE_SOURCES.json",
   JSON.stringify(
     {
+      ...previous,
       generated: new Date().toISOString(),
       scope:
         "Text collection only, not a legal compliance opinion. Original upstream texts are preserved without alteration.",
       sources: results,
-      unresolved,
+      unresolved: unresolved.map((item) => {
+        const prior = previous.unresolved.find(
+          (p) => p.name === item.name && p.version === item.version,
+        );
+        return prior?.evidence
+          ? { ...prior, automaticCollectionReason: item.reason }
+          : item;
+      }),
     },
     null,
     2,

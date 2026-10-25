@@ -1,0 +1,43 @@
+{
+  "name": "ethereumjs-util",
+  "version": "4.5.1",
+  "registry": "https://registry.npmjs.org/ethereumjs-util/4.5.1",
+  "published": {
+    "gitHead": "860beb74e2c5444bbc0de0607f189e8d53d0a2f6",
+    "repository": {
+      "url": "git+https://github.com/ethereumjs/ethereumjs-util.git",
+      "type": "git"
+    },
+    "license": "MPL-2.0",
+    "dist": {
+      "shasum": "f4bf9b3b515a484e3cc8781d61d9d980f7c83bd0",
+      "tarball": "https://registry.npmjs.org/ethereumjs-util/-/ethereumjs-util-4.5.1.tgz",
+      "fileCount": 6,
+      "integrity": "sha512-WrckOZ7uBnei4+AKimpuF1B3Fv25OmoRgmYCpGsP7u8PFxXAmAgiJSYT2kRWnt6fVIlKaQlZvuwXp7PIrmn3/w==",
+      "signatures": [
+        {
+          "sig": "MEYCIQChGKH96/qp0bbGxFkfr1Qkh9P4g/wUA2vC3vX6NZ4liwIhAJtMs56QAiLRdbuCPcQwAkMF49qJYHQXTs3ULDzC8JUp",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "unpackedSize": 41803,
+      "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfEBqECRA9TVsSAnZWagAAUEIP/0w5NiYJzvb4M9jn1MFx\nhjAp+EQml5b5YIPOYE/P6HrkhLZDkMJWyBsrv1gcM9YlmzWWqeuJ4dklY9wB\n4TOs1EkCrzu2qP3AeW0UfhGvNneyZflKDEYDgR5LXky8lU2HL1w7kyhJR6AP\nmMJtS/7RUCZJNsJIHXqJ5tbILtlWh0PWFW8J1hKm9tHyYflbP2Y+1Pu+n9I0\nVuxd+tGEoBzO1/ihB3Ie7+SmV8ksN+mz9kbfTufgzjXJHdI8rTfTI4GQCP0V\nRruYac9IHKGfSqU9lxA2+K7Ygs7OSnJ+Hy9TnpKM3ub2tzcI2YkM026IT0MN\nJHdPJIhA0k/vyiSY+ROd7sjiyjQPObPQ/Q0mUrOH1Ez8iJubAIgTfLS4+8rw\n07w0SNgfv8TruHs2iOFJZ0s7DTKV/fkxPd7IOd2Z6hoH6Nfch/9m/qAjtW+o\nbayNkscMH1FRkBoCDbDILtnzric6EEwb9oOxYxa+M+Ve2qT8BJRrV5WCXM9w\nA+wRu7zYf3WMLj+AhxcLfjTurIX8ebznh74S6e7st902TGKN/YQHL65hkNrh\nd3t/ckTGrG0Ey0S6znPgI/Cr4n1w5izTZQmtb6+tnzX7P7akI8KQ2UZuG3ge\nth+XaBZEfzuXHpSrgliphrUK9qRMhEqBdJafMCIvvo9CYfXyFt7Xb7hiYlrL\nhCq3\r\n=KQNA\r\n-----END PGP SIGNATURE-----\r\n"
+    }
+  },
+  "repository": "ethereumjs/ethereumjs-util",
+  "commit": "860beb74e2c5444bbc0de0607f189e8d53d0a2f6",
+  "files": [
+    {
+      "path": "README.md",
+      "gitBlob": "ab7780a6ce96a8d7d6feb97bf7e5d37d87ede24d",
+      "content": "# SYNOPSIS\n[![NPM Package](https://img.shields.io/npm/v/ethereumjs-util.svg?style=flat-square)](https://www.npmjs.org/package/ethereumjs-util)\n[![Build Status](https://img.shields.io/travis/ethereumjs/ethereumjs-util.svg?branch=master&style=flat-square)](https://travis-ci.org/ethereumjs/ethereumjs-util)\n[![Coverage Status](https://img.shields.io/coveralls/ethereumjs/ethereumjs-util.svg?style=flat-square)](https://coveralls.io/r/ethereumjs/ethereumjs-util)\n[![Gitter](https://img.shields.io/gitter/room/ethereum/ethereumjs-lib.svg?style=flat-square)](https://gitter.im/ethereum/ethereumjs-lib) or #ethereumjs on freenode  \n\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  \n\n\n\nA collection of utility functions for ethereum. It can be used in node.js or can be in the browser with browserify.\n\n# API\n[./docs/](./docs/index.md)\n\n# LICENSE\nMPL-2.0\n",
+      "url": "https://github.com/ethereumjs/ethereumjs-util/blob/860beb74e2c5444bbc0de0607f189e8d53d0a2f6/README.md"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "758528ae2a119634ca5b2898cd29b0a6efc89258",
+      "content": "{\n  \"name\": \"ethereumjs-util\",\n  \"version\": \"4.5.1\",\n  \"description\": \"a collection of utility functions for Ethereum\",\n  \"main\": \"dist/index.js\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"coverage\": \"istanbul cover _mocha\",\n    \"coveralls\": \"npm run coverage && coveralls <coverage/lcov.info\",\n    \"lint\": \"standard\",\n    \"prepublish\": \"npm run lint && npm run build:dist && npm run test\",\n    \"test\": \"npm run test:node && npm run test:browser\",\n    \"test:browser\": \"karma start karma.conf.js\",\n    \"test:node\": \"istanbul test mocha -- --reporter spec\",\n    \"build:dist\": \"babel index.js secp256k1-adapter.js secp256k1-lib/* --source-root ./ -d ./dist\",\n    \"build:docs\": \"documentation --github  -f md ./index.js > ./docs/index.md\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/ethereumjs/ethereumjs-util.git\"\n  },\n  \"keywords\": [\n    \"ethereum\",\n    \"utilties\"\n  ],\n  \"author\": \"mjbecze <mjbecze@gmail.com>\",\n  \"contributors\": [\n    \"Alex Beregszaszi <alex@rtfs.hu>\"\n  ],\n  \"license\": \"MPL-2.0\",\n  \"bugs\": {\n    \"url\": \"https://github.com/ethereumjs/ethereumjs-util/issues\"\n  },\n  \"homepage\": \"https://github.com/ethereumjs/ethereumjs-util\",\n  \"dependencies\": {\n    \"bn.js\": \"^4.8.0\",\n    \"create-hash\": \"^1.1.2\",\n    \"rlp\": \"^2.0.0\",\n    \"ethereum-cryptography\": \"^0.1.3\",\n    \"elliptic\": \"^6.5.2\"\n  },\n  \"devDependencies\": {\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"browserify\": \"^13.0.0\",\n    \"coveralls\": \"^2.11.4\",\n    \"documentation\": \"^3.0.4\",\n    \"istanbul\": \"^0.4.1\",\n    \"karma\": \"^0.13.15\",\n    \"karma-browserify\": \"^5.0.0\",\n    \"karma-chrome-launcher\": \"^0.2.2\",\n    \"karma-detect-browsers\": \"^2.0.2\",\n    \"karma-env-preprocessor\": \"^0.1.1\",\n    \"karma-firefox-launcher\": \"^0.1.7\",\n    \"karma-mocha\": \"^0.2.1\",\n    \"mocha\": \"^2.3.4\",\n    \"standard\": \"^5.4.1\"\n  },\n  \"standard\": {\n    \"globals\": [\n      \"describe\",\n      \"it\"\n    ],\n    \"ignore\": [\n      \"dist/**\"\n    ]\n  }\n}\n",
+      "url": "https://github.com/ethereumjs/ethereumjs-util/blob/860beb74e2c5444bbc0de0607f189e8d53d0a2f6/package.json"
+    }
+  ]
+}

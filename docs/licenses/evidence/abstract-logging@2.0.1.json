@@ -1,0 +1,43 @@
+{
+  "name": "abstract-logging",
+  "version": "2.0.1",
+  "registry": "https://registry.npmjs.org/abstract-logging/2.0.1",
+  "published": {
+    "gitHead": "80dfaef91ee87008f4ed2b6e78921d383bccd406",
+    "repository": {
+      "url": "git+https://github.com/jsumners/abstract-logging.git",
+      "type": "git"
+    },
+    "license": "MIT",
+    "dist": {
+      "shasum": "6b0c371df212db7129b57d2e7fcf282b8bf1c839",
+      "tarball": "https://registry.npmjs.org/abstract-logging/-/abstract-logging-2.0.1.tgz",
+      "fileCount": 4,
+      "integrity": "sha512-2BjRTZxTPvheOvGbBslFSYOUkr+SjPtOnrLP33f+VIWLzezQpZcqVg7ja3L4dBXmzzgwT+a029jRx5PCi3JuiA==",
+      "signatures": [
+        {
+          "sig": "MEUCIQCOfnE2HhGMYy9BdBaDatHTYLHxLsdAYPpgznd2X1dsoQIgNcwKKI72EZXb2w2z/w1pG5ZZzzvZKGICImG5wdgkbQM=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "unpackedSize": 2300,
+      "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfiuB0CRA9TVsSAnZWagAAVRYQAJs+B+vbTB7zbhgmvgR5\nY1F1/qHMGUmzvBo2qm9p971ElzGi7bfUx5gAOVNyjDPpi0+YgTIRtNMSq/d7\nD7ZtrnSxWN3DhHavrEahO66Ceo4AxmcdapmkWnZt3LGrqhbsxv1DlGZm4ISA\nhgPGvUDZ6D904na7gXFT/QXkQFeJZOzRW5p9sAX0GpYe0kM/ontwVYGwOXLp\nbXQ/FeWPkn3ewKRUD+bOyaRxqVOKEZQWMp2PoBMJIYYtiPml8901Iw2U9/Pb\nQBDHyh0ifbaPyZll+5rm/ztkD2+qN0YTRePBailhf3tpNJ7/kCLiioTHIvR1\nGHDaxIw7UBa1mOjCtyNvBWzHx5zCVWDcTeuHEIabzkHk4jOMrCuuLoMRSp3d\n3fxdBXVXE87hMbEnhszi0s/hsD60o7V9XhzjirnOymJ6/+tVSQl3pvR9LVoW\nG5L5rdTh9GL6UihW0rVZCZMSjN/Dze3c0fbO7IuOJnQC+HOx6Iq4DKkGKUSx\n7NG9dK+CxdgDWkltZ0J3+I1OzQAyl5vy9do93MqHGN58RQrTAHqYx2BOaIMF\n8L9udBQMwZaPUbPCE76TbHrkz/RVOYfV862CDDJw/mhFvFJvzp9S83A1DYlw\nTgRWbs7J9BwtxzaoJH1aePp+QvMjunzfElWf+S/96MOn1/TGR9lxhgZ3lgzY\n/LoX\r\n=4zG3\r\n-----END PGP SIGNATURE-----\r\n"
+    }
+  },
+  "repository": "jsumners/abstract-logging",
+  "commit": "80dfaef91ee87008f4ed2b6e78921d383bccd406",
+  "files": [
+    {
+      "path": "Readme.md",
+      "gitBlob": "3204c862eaced5d01eeef8f955939d24771f0f8d",
+      "content": "# abstract-logging\n\nThis module provides an interface for modules to include so that they can\nsupport logging via an external logger that conforms to the standard Log4j\ninterface. One such logger is [Pino](https://npm.im/pino). This module\nis intended for modules that are meant to be used by other modules.\n\nExample:\n\n```js\n'use strict'\n\nfunction AwesomeLibrary (options) {\n  this.log = (options.logger) ? options.logger : require('abstract-logging')\n}\n\nAwesomeLibrary.prototype.coolMethod = function () {\n  this.log.trace('AwesomeLibrary.coolMethod was invoked')\n  return {}\n}\n\nmodule.exports = AwesomeLibrary\n```\n\n## Interface\n\nAvailable methods:\n\n+ `fatal`\n+ `error`\n+ `warn`\n+ `info`\n+ `debug`\n+ `trace`\n\nAll methods are no operation functions.\n\nSome loggers, like [Pino](https://getpino.io/), implement a `child()` method. This method can be easily added to an `abstract-logging` instance when stubbing out such loggers:\n\n```js\nconst logger = require('abstract-logging')\nlogger.child = () => logger\n```\n\n## License\n\n[MIT License](http://jsumners.mit-license.org/)\n",
+      "url": "https://github.com/jsumners/abstract-logging/blob/80dfaef91ee87008f4ed2b6e78921d383bccd406/Readme.md"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "94f931cad3c4bf0cfa1ae4b938fdb0d1e3db52e9",
+      "content": "{\n  \"name\": \"abstract-logging\",\n  \"version\": \"2.0.1\",\n  \"description\": \"A noop logger that conforms to the Log4j interface for modules to stub out internal logging\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"test\": \"node test.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/jsumners/abstract-logging.git\"\n  },\n  \"keywords\": [\n    \"log\",\n    \"logging\",\n    \"logger\",\n    \"pino\"\n  ],\n  \"author\": \"James Sumners <james.sumners@gmail.com>\",\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/jsumners/abstract-logging/issues\"\n  },\n  \"homepage\": \"https://github.com/jsumners/abstract-logging#readme\"\n}\n",
+      "url": "https://github.com/jsumners/abstract-logging/blob/80dfaef91ee87008f4ed2b6e78921d383bccd406/package.json"
+    }
+  ]
+}

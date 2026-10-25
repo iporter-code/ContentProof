@@ -1,6 +1,6 @@
 # 第三方组件与素材
 
-2026-10-25最新图：408个已安装生产组件，13个安装项（11个独立名称/版本）尚缺收集到的完整原文；其余引用与原文摘要已核对。官方模块 @ganache/core 0.10.2 替换原Ganache打包入口，OpenZeppelin 5.4.0，Hardhat已从安装依赖移除。精确版本以package-lock.json、SBOM和LICENSE_INVENTORY为准。
+2026-10-25许可补证：408个已安装生产组件，原13个安装项的缺口已关闭6个，仍有7个安装项（6个独立名称/版本）未关闭。已核实MPL固定版本官方正文与准确包声明、bs58同源码官方完整MIT通知；候选不计入完成。[逐项记录](docs/LICENSE_COMPLETION_2026-10-25.md)。官方模块 @ganache/core 0.10.2 替换原Ganache打包入口，OpenZeppelin 5.4.0，Hardhat已从安装依赖移除。精确版本以package-lock.json、SBOM和LICENSE_INVENTORY为准。
 
 主要组件：React/React DOM、React Router、React Flow、Fastify及插件、Vite、TypeScript、Vitest、fast-check、viem、@ganache/core、OpenZeppelin Contracts、solc、sharp/libvips、canonicalize、fflate、yauzl和tsx。已收集生产npm清单、原文及可核实来源；Linux镜像原文与原生版本另见docs/IMAGE_INVENTORY.json。此文不代替各项目原许可证，也不代表全部分发义务已完成法律审查。
 

@@ -77,9 +77,12 @@ for (const component of bom.components ?? []) {
       throw Error("LICENSE_SOURCE_HASH_MISMATCH");
     texts.push(entry.path);
     sources.push({
+      path: entry.path,
       url: entry.url,
       commit: entry.commit,
       sha256: entry.sha256,
+      ...(entry.sourceKind ? { sourceKind: entry.sourceKind } : {}),
+      ...(entry.evidence ? { evidence: entry.evidence } : {}),
     });
   }
   rows.push({

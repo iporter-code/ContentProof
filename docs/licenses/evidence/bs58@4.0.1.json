@@ -1,0 +1,58 @@
+{
+  "name": "bs58",
+  "version": "4.0.1",
+  "registry": "https://registry.npmjs.org/bs58/4.0.1",
+  "published": {
+    "gitHead": "ba80a23f74efc055577d7040ef32e1ae765d6702",
+    "repository": {
+      "url": "git+https://github.com/cryptocoinjs/bs58.git",
+      "type": "git"
+    },
+    "license": "MIT",
+    "dist": {
+      "shasum": "be161e76c354f6f788ae4071f63f34e8c4f0a42a",
+      "tarball": "https://registry.npmjs.org/bs58/-/bs58-4.0.1.tgz",
+      "integrity": "sha512-Ok3Wdf5vOIlBrgCvTq96gBkJw+JUEzdBgyaza5HLtPm7yTHkjRy8+JzNyHF7BHa0bNWOQIp3m5YF0nnFcOIKLw==",
+      "signatures": [
+        {
+          "sig": "MEUCIQDSXSIMi4oFudQsCsOqi/kZS1yNZaPaCSUrVec/93xJfQIgcg+NM7NHsFEEAoqs802z8EnMOZ1hc5LKU7QVZcLp4Jo=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ]
+    }
+  },
+  "repository": "cryptocoinjs/bs58",
+  "commit": "ba80a23f74efc055577d7040ef32e1ae765d6702",
+  "files": [
+    {
+      "path": "README.md",
+      "gitBlob": "2d5e62448586524dbd14c002cf5b9d40b03734e3",
+      "content": "bs58\n====\n\n[![build status](https://travis-ci.org/cryptocoinjs/bs58.svg)](https://travis-ci.org/cryptocoinjs/bs58)\n\nJavaScript component to compute base 58 encoding. This encoding is typically used for crypto currencies such as Bitcoin.\n\n**Note:** If you're looking for **base 58 check** encoding, see: [https://github.com/bitcoinjs/bs58check](https://github.com/bitcoinjs/bs58check), which depends upon this library.\n\n\nInstall\n-------\n\n    npm i --save bs58\n\n\nAPI\n---\n\n### encode(input)\n\n`input` must be a [Buffer](https://nodejs.org/api/buffer.html) or an `Array`. It returns a `string`.\n\n**example**:\n\n```js\nconst bs58 = require('bs58')\n\nconst bytes = Buffer.from('003c176e659bea0f29a3e9bf7880c112b1b31b4dc826268187', 'hex')\nconst address = bs58.encode(bytes)\nconsole.log(address)\n// => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS\n```\n\n\n### decode(input)\n\n`input` must be a base 58 encoded string. Returns a [Buffer](https://nodejs.org/api/buffer.html).\n\n**example**:\n\n```js\nconst bs58 = require('bs58')\n\nconst address = '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS'\nconst bytes = bs58.decode(address)\nconsole.log(out.toString('hex'))\n// => 003c176e659bea0f29a3e9bf7880c112b1b31b4dc826268187\n```\n\nHack / Test\n-----------\n\nUses JavaScript standard style. Read more:\n\n[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)\n\n\nCredits\n-------\n- [Mike Hearn](https://github.com/mikehearn) for original Java implementation\n- [Stefan Thomas](https://github.com/justmoon) for porting to JavaScript\n- [Stephan Pair](https://github.com/gasteve) for buffer improvements\n- [Daniel Cousens](https://github.com/dcousens) for cleanup and merging improvements from bitcoinjs-lib\n- [Jared Deckard](https://github.com/deckar01) for killing `bigi` as a dependency\n\n\nLicense\n-------\n\nMIT\n",
+      "url": "https://github.com/cryptocoinjs/bs58/blob/ba80a23f74efc055577d7040ef32e1ae765d6702/README.md"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "da0ca3cde2491d9bc91b6a0ea9e02bc7f58a13a1",
+      "content": "{\n  \"name\": \"bs58\",\n  \"version\": \"4.0.1\",\n  \"description\": \"Base 58 encoding / decoding\",\n  \"keywords\": [\n    \"base58\",\n    \"bitcoin\",\n    \"crypto\",\n    \"crytography\",\n    \"decode\",\n    \"decoding\",\n    \"encode\",\n    \"encoding\",\n    \"litecoin\"\n  ],\n  \"license\": \"MIT\",\n  \"devDependencies\": {\n    \"standard\": \"*\",\n    \"tape\": \"^4.6.3\"\n  },\n  \"repository\": {\n    \"url\": \"https://github.com/cryptocoinjs/bs58\",\n    \"type\": \"git\"\n  },\n  \"files\": [\n    \"./index.js\"\n  ],\n  \"main\": \"./index.js\",\n  \"scripts\": {\n    \"standard\": \"standard\",\n    \"test\": \"npm run standard && npm run unit\",\n    \"unit\": \"tape test/index.js\"\n  },\n  \"dependencies\": {\n    \"base-x\": \"^3.0.2\"\n  }\n}\n",
+      "url": "https://github.com/cryptocoinjs/bs58/blob/ba80a23f74efc055577d7040ef32e1ae765d6702/package.json"
+    }
+  ],
+  "licenseAddition": {
+    "repository": "cryptocoinjs/bs58",
+    "commit": "ec21ace130d0c08cc317448952b679ec1b93f17d",
+    "licenseBlob": "4d5f7a1c1c2d50376fc31177a05b5cf78487c2f6",
+    "matchingFiles": [
+      {
+        "path": "index.js",
+        "publishedBlob": "c6ae37531c35865125b107d6513dfda6ea3d0166",
+        "licensedBlob": "c6ae37531c35865125b107d6513dfda6ea3d0166"
+      },
+      {
+        "path": "package.json",
+        "publishedBlob": "da0ca3cde2491d9bc91b6a0ea9e02bc7f58a13a1",
+        "licensedBlob": "da0ca3cde2491d9bc91b6a0ea9e02bc7f58a13a1"
+      }
+    ],
+    "note": "The only shipped runtime file is index.js, as declared by the unchanged package.json. Both have identical Git blobs at published gitHead and the official LICENSE addition; original 2018 notice is retained."
+  }
+}

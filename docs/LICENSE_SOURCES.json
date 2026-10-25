@@ -1,6 +1,6 @@
 {
-  "generated": "2026-10-25T06:18:21.147Z",
-  "scope": "Text collection only, not a legal compliance opinion. Original upstream texts are preserved without alteration.",
+  "generated": "2026-10-25T11:46:53.905Z",
+  "scope": "Complete-text collection and applicability evidence for installed production npm components; candidates are never counted as resolved. Canonical MPL-2.0 text is separately identified. Not a legal compliance opinion.",
   "sources": [
     {
       "name": "@openzeppelin/contracts",
@@ -41,85 +41,225 @@
       "registry": "https://registry.npmjs.org/%40ethersproject%2Flogger/5.8.0",
       "sha256": "38f156ca482f33e6ec062da7c682da058c65c2932782fd4ea47aaecd01138704",
       "source": "Exact published gitHead; OpenZeppelin version tag resolved to immutable commit"
-    }
-  ],
-  "unresolved": [
+    },
     {
       "name": "@ethereumjs/trie",
       "version": "5.1.0",
-      "repository": "ethereumjs/ethereumjs-monorepo",
+      "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
       "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "registry": "https://registry.npmjs.org/%40ethereumjs%2Ftrie/5.1.0",
+      "sourceKind": "canonical-versioned-license",
+      "source": "Exact published package.json and README declare MPL-2.0; unchanged full version 2.0 text from Mozilla, the license steward. This is a canonical license document, not a package-owned LICENSE file.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/_ethereumjs_trie@5.1.0.json",
+          "sha256": "dbd00b3630dd6419fc3e969c179fffa72a1548d1e7a3fc9a1767f2928158f1e7"
+        }
+      ]
     },
     {
       "name": "@ethereumjs/blockchain",
       "version": "6.3.0",
-      "repository": "ethereumjs/ethereumjs-monorepo",
+      "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
       "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "registry": "https://registry.npmjs.org/%40ethereumjs%2Fblockchain/6.3.0",
+      "sourceKind": "canonical-versioned-license",
+      "source": "Exact published package.json and README declare MPL-2.0; unchanged full version 2.0 text from Mozilla, the license steward. This is a canonical license document, not a package-owned LICENSE file.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/_ethereumjs_blockchain@6.3.0.json",
+          "sha256": "eef49c211a89ac71cf2a1b522b679158690e1c3d0139084085ccbbe8cd87d5ee"
+        }
+      ]
     },
+    {
+      "name": "@ethereumjs/trie",
+      "version": "5.0.4",
+      "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+      "commit": "295e5a3caa69c226e8f8edfad4ea72a843bc0b4f",
+      "registry": "https://registry.npmjs.org/%40ethereumjs%2Ftrie/5.0.4",
+      "sourceKind": "canonical-versioned-license",
+      "source": "Exact published package.json and README declare MPL-2.0; unchanged full version 2.0 text from Mozilla, the license steward. This is a canonical license document, not a package-owned LICENSE file.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/_ethereumjs_trie@5.0.4.json",
+          "sha256": "48af7a9d7dbc9e8163e2bbf75b7ab9a305eb7eff21b7e82532e27265e025a842"
+        }
+      ]
+    },
+    {
+      "name": "ethereumjs-util",
+      "version": "4.5.1",
+      "path": "licenses/upstream/Mozilla-MPL-2.0.txt",
+      "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "url": "https://www.mozilla.org/media/MPL/2.0/index.txt",
+      "commit": "860beb74e2c5444bbc0de0607f189e8d53d0a2f6",
+      "registry": "https://registry.npmjs.org/ethereumjs-util/4.5.1",
+      "sourceKind": "canonical-versioned-license",
+      "source": "Exact published package.json and README declare MPL-2.0; unchanged full version 2.0 text from Mozilla, the license steward. This is a canonical license document, not a package-owned LICENSE file.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/ethereumjs-util@4.5.1.json",
+          "sha256": "0f15d61b58f15edd911c5afa62e08149c44561d56f14bee31462749614460c84"
+        }
+      ]
+    },
+    {
+      "name": "bs58",
+      "version": "4.0.1",
+      "path": "licenses/upstream/bs58@4.0.1-LICENSE",
+      "sha256": "57efbd615689807b8341d557af0038fae58da7e2831f29f52d02902f657deb25",
+      "url": "https://github.com/cryptocoinjs/bs58/blob/ec21ace130d0c08cc317448952b679ec1b93f17d/LICENSE",
+      "commit": "ec21ace130d0c08cc317448952b679ec1b93f17d",
+      "publishedCommit": "ba80a23f74efc055577d7040ef32e1ae765d6702",
+      "registry": "https://registry.npmjs.org/bs58/4.0.1",
+      "sourceKind": "identical-published-source",
+      "source": "Official later LICENSE addition; published package.json and entire shipped runtime index.js are Git-blob-identical to the licensed commit, also checked against installed runtime.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/bs58@4.0.1.json",
+          "sha256": "415605ffa51773a15e5ae4414847439767d2544c5a4c87e0678ab789b70cf941"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
     {
       "name": "mcl-wasm",
       "version": "0.7.9",
       "repository": "herumi/mcl-wasm",
       "commit": "f4f02d3bf7a59ed7c0170fde43127584bbc920e4",
-      "reason": "No standalone license text at checked exact-commit paths"
-    },
-    {
-      "name": "@ethereumjs/trie",
-      "version": "5.0.4",
-      "repository": "ethereumjs/ethereumjs-monorepo",
-      "commit": "295e5a3caa69c226e8f8edfad4ea72a843bc0b4f",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "reason": "Exact wrapper README/package.json declare BSD-3-Clause. Pinned native submodule complete COPYRIGHT collected separately; wrapper notice applicability still requires confirmation.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/mcl-wasm@0.7.9.json",
+          "sha256": "b3aaacc13060fff84f4dfce93041f4cb788f70ca35f97311e7d62a06cb2bf127"
+        }
+      ]
     },
     {
       "name": "abstract-logging",
       "version": "2.0.1",
       "repository": "jsumners/abstract-logging",
       "commit": "80dfaef91ee87008f4ed2b6e78921d383bccd406",
-      "reason": "No standalone license text at checked exact-commit paths"
-    },
-    {
-      "name": "bs58",
-      "version": "4.0.1",
-      "repository": "cryptocoinjs/bs58",
-      "commit": "ba80a23f74efc055577d7040ef32e1ae765d6702",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "reason": "Linked complete author-page snapshot and immutable 2014 author mapping collected. Historical version-specific rendered notice/year has not been established.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/abstract-logging@2.0.1.json",
+          "sha256": "a8466fd9adcdbc04c8f2a3f523bae7efef03e1bc49625f9841c3a0da276ddb20"
+        }
+      ]
     },
     {
       "name": "eth-sig-util",
       "version": "2.5.3",
       "repository": "MetaMask/eth-sig-util",
       "commit": "c03817eafd2a6b9a768b84089d227c3bee750303",
-      "reason": "No standalone license text at checked exact-commit paths"
-    },
-    {
-      "name": "ethereumjs-util",
-      "version": "4.5.1",
-      "repository": "ethereumjs/ethereumjs-util",
-      "commit": "860beb74e2c5444bbc0de0607f189e8d53d0a2f6",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "reason": "Later official complete ISC notice collected, but runtime source differs from the published 2.5.3 gitHead; old-version applicability requires confirmation.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/eth-sig-util@2.5.3.json",
+          "sha256": "1ad634c818a8b6b6e03a4dc8c7fef34b8a13f17f521a551f1394e3f30c30b301"
+        }
+      ]
     },
     {
       "name": "mcl-wasm",
       "version": "0.9.0",
       "repository": "herumi/mcl-wasm",
       "commit": "1ce79dbf838c051f56d8b17f1368efe93989b2d2",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "reason": "Exact wrapper README/package.json declare BSD-3-Clause. Pinned native submodule complete COPYRIGHT collected separately; wrapper notice applicability still requires confirmation.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/mcl-wasm@0.9.0.json",
+          "sha256": "c151eb5a197b52ac9509b2568a87f6afaac4d26b373df41e1d7a4e54bb213aa3"
+        }
+      ]
     },
     {
       "name": "semaphore",
       "version": "1.1.0",
       "repository": "abrkn/semaphore.js",
       "commit": "88a33875b168cc7b5943d7fe987c36d08321d252",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "reason": "Exact published version metadata/README retain MIT declaration, but no complete package-specific notice was found in the checked release tree or current official tree.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/semaphore@1.1.0.json",
+          "sha256": "fac40bf5752b2b18a5a7a008d7f38331cf7a1df416bd6a0ee953f8940fd0568d"
+        }
+      ]
     },
     {
       "name": "tmp-promise",
       "version": "3.0.2",
       "repository": "benjamingr/tmp-promise",
       "commit": "993403581c09b63b88f57e4ed7f5e558d98afacc",
-      "reason": "No standalone license text at checked exact-commit paths"
+      "reason": "Exact published version metadata/README retain MIT declaration, but no complete package-specific notice was found in the checked release tree or current official tree.",
+      "evidence": [
+        {
+          "path": "licenses/evidence/tmp-promise@3.0.2.json",
+          "sha256": "95463ee129f7dd60b92411ea633f7e3e4a4228080e58c891da041d6107d34f34"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "name": "mcl-wasm",
+      "version": "0.7.9",
+      "path": "licenses/candidates/mcl-pinned-submodule-COPYRIGHT",
+      "sha256": "bdf1bf0d937bff0c9503d739fc9c61d0f8f22c5996427fc599e039db8bac10d1",
+      "url": "https://github.com/herumi/mcl/blob/a4fe1155c34cbbd7742cc1313c018f71418d9a81/COPYRIGHT",
+      "commit": "a4fe1155c34cbbd7742cc1313c018f71418d9a81",
+      "gitBlob": "bfe54da4d7d403e75140310bd7cbe108d21981ba",
+      "status": "subcomponent-only",
+      "reason": "Exact pinned native mcl submodule notice verified. It does not by itself establish the complete original notice for all mcl-wasm wrapper/generated runtime code."
+    },
+    {
+      "name": "abstract-logging",
+      "version": "2.0.1",
+      "path": "licenses/candidates/abstract-logging-author-page-2026.html",
+      "sha256": "dfcf7f057c45dd8d34af779cf70afd16e3e1dbfead3a9da164f0e5dbae8b628c",
+      "url": "https://jsumners.mit-license.org/",
+      "status": "dynamic-author-page",
+      "historicalAuthor": {
+        "path": "licenses/evidence/abstract-logging-author-2014.json",
+        "sha256": "3f2bc87a8d0ee2b2fc606438db4d5c2fc960c5dc68a08dc0e7cd686e81de1e27",
+        "commit": "103007f551e9b6d05f079e934b3e54aae8e47288",
+        "gitBlob": "b617f25cb44543f46d2ca3b0b3b32797697887a6",
+        "url": "https://github.com/remy/mit-license/blob/103007f551e9b6d05f079e934b3e54aae8e47288/users/jsumners.json"
+      },
+      "reason": "Exact published README links this author page, and historical author mapping is verified. Current rendered year is dynamic; saved snapshot is not asserted to be the historical version-specific notice."
+    },
+    {
+      "name": "eth-sig-util",
+      "version": "2.5.3",
+      "path": "licenses/candidates/eth-sig-util-later-LICENSE",
+      "sha256": "31ece466097a09d5226c3bbb06543d8f7b6881de291f5f0d4142daaadb30e324",
+      "url": "https://github.com/MetaMask/eth-sig-util/blob/ad73314c5a88ace89a15db8a657f9141b660d573/LICENSE",
+      "commit": "ad73314c5a88ace89a15db8a657f9141b660d573",
+      "gitBlob": "b5ed1b9c52fd1a9a2409f68870d73ada6b816f5d",
+      "status": "later-source-not-identical",
+      "publishedRuntimeSource": "82f9c49c593bb2595c64f081b8150ae8bcb6ae64",
+      "laterRuntimeSource": "c59259d9aa50224a1faf2de74ce655e65441c361",
+      "reason": "Exact version declares ISC, but the later complete 2020 MetaMask ISC notice was added after runtime source changed. Do not automatically attach it to the old version."
+    },
+    {
+      "name": "mcl-wasm",
+      "version": "0.9.0",
+      "path": "licenses/candidates/mcl-pinned-submodule-COPYRIGHT",
+      "sha256": "bdf1bf0d937bff0c9503d739fc9c61d0f8f22c5996427fc599e039db8bac10d1",
+      "url": "https://github.com/herumi/mcl/blob/45f95ec7b72825f3f3e680cc48728ebc3ac698ff/COPYRIGHT",
+      "commit": "45f95ec7b72825f3f3e680cc48728ebc3ac698ff",
+      "gitBlob": "bfe54da4d7d403e75140310bd7cbe108d21981ba",
+      "status": "subcomponent-only",
+      "reason": "Exact pinned native mcl submodule notice verified. It does not by itself establish the complete original notice for all mcl-wasm wrapper/generated runtime code."
     }
   ]
 }

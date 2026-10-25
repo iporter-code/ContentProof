@@ -1,0 +1,42 @@
+{
+  "name": "mcl-wasm",
+  "version": "0.9.0",
+  "registry": "https://registry.npmjs.org/mcl-wasm/0.9.0",
+  "published": {
+    "gitHead": "1ce79dbf838c051f56d8b17f1368efe93989b2d2",
+    "repository": {
+      "url": "git+https://github.com/herumi/mcl-wasm.git",
+      "type": "git"
+    },
+    "license": "BSD-3-Clause",
+    "dist": {
+      "shasum": "83b64fb62faa91295817702a987fd3fb52789446",
+      "tarball": "https://registry.npmjs.org/mcl-wasm/-/mcl-wasm-0.9.0.tgz",
+      "fileCount": 8,
+      "integrity": "sha512-rvU7L/68ZrDk4dpPZteiEqvK9nB/1XbbHmuLK6qIvc4xuuJb/iv1p5X3KEyq6AYatLnc+zbdSlLXTlKgTnCRZQ==",
+      "signatures": [
+        {
+          "sig": "MEQCIG8/9P0fb3IwgO10ILpn6smncLZPMZlTFAdRQcXLN7qQAiB7H9jHVO4LVYrfxctcGliZbgRPHp6v1NTGvbXoSp68uw==",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "unpackedSize": 1199982
+    }
+  },
+  "repository": "herumi/mcl-wasm",
+  "commit": "1ce79dbf838c051f56d8b17f1368efe93989b2d2",
+  "files": [
+    {
+      "path": "package.json",
+      "gitBlob": "ab32529d20dcfed7e369d7f1be908a19d1912eef",
+      "content": "{\n  \"name\": \"mcl-wasm\",\n  \"version\": \"0.9.0\",\n  \"description\": \"mcl ; A portable and fast pairing-based cryptography library for Node.js by WebAssembly\",\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"lint\": \"standard --verbose src/mcl.js src/index.js test/test.js\",\n    \"lint-fix\": \"standard --fix src/mcl.js src/index.js test/test.js\",\n    \"test\": \"node test/test.js\"\n  },\n  \"types\": \"src/index.d.ts\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/herumi/mcl-wasm.git\"\n  },\n  \"keywords\": [\n    \"elliptic curve\",\n    \"WebAssembly\",\n    \"pairing\"\n  ],\n  \"files\": [\n    \"package.json\",\n    \"src/index.js\",\n    \"src/mcl.js\",\n    \"src/mcl_c.js\",\n    \"src/index.d.ts\",\n    \"browser/mcl.js\",\n    \"browser/package.json\"\n  ],\n  \"author\": \"herumi <herumi@nifty.com> (https://github.com/herumi/)\",\n  \"license\": \"BSD-3-Clause\",\n  \"bugs\": {\n    \"url\": \"https://github.com/herumi/mcl-wasm/issues\"\n  },\n  \"engines\": {\n    \"node\": \">=8.9.0\"\n  },\n  \"homepage\": \"https://github.com/herumi/mcl-wasm#readme\",\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@types/node\": \"^15.12.4\",\n    \"assert\": \"^2.0.0\",\n    \"perf_hooks\": \"^0.0.1\",\n    \"standard\": \"^16.0.4\",\n    \"typescript\": \"^4.3.4\"\n  }\n}\n",
+      "url": "https://github.com/herumi/mcl-wasm/blob/1ce79dbf838c051f56d8b17f1368efe93989b2d2/package.json"
+    },
+    {
+      "path": "readme.md",
+      "gitBlob": "1f9359c2eae7a9006268111cc0c63cc26e826a5a",
+      "content": "[![Build Status](https://github.com/herumi/mcl-wasm/actions/workflows/main.yml/badge.svg)](https://github.com/herumi/mcl-wasm/actions/workflows/main.yml)\r\n\r\n# A portable and fast pairing-based cryptography library for Node.js by WebAssembly\r\n\r\n# Abstract\r\n\r\nsee [mcl](https://github.com/herumi/mcl)\r\n\r\n## News\r\n- 2021/Nov/11 unify index.js of Node.js and browser\r\n- 2021/Aug/28 improve performance of `{G1,G2}::isValidOrder()`\r\n- 2021/Jun/22 add index.d.ts\r\n- 2021/Mar/02 improve performance\r\n- 2020/Nov/10 setup function has changed.\r\n- add `mulVec(xVec, yVec)` where xVec is an array of G1 or G2 and yVec is an array of Fr, which returns `sum of xVec[i] yVec[i]`.\r\n- G1.setHashOf is compatible with [hash-to-curve-09 BLS12381G1_XMD:SHA-256_SSWU_RO_](https://www.ietf.org/id/draft-irtf-cfrg-hash-to-curve-09.html#name-bls12381g1_xmdsha-256_sswu_)\r\n- support only BN254, ZKSNARK, BLS12-381 to remove mcl_c512.js\r\n- add mcl.precomputedMillerLoop2 and mcl.precomputedMillerLoop2mixed\r\n\r\n## How to use\r\nThe version `v0.6.0` breaks backward compatibility of the entry point.\r\n\r\n- Node.js : `const mcl = require('mcl-wasm')`\r\n- React : `const mcl = require('mcl-wasm')`\r\n- HTML : `<script src=\"https://herumi.github.io/mcl-wasm/browser/mcl.js\"></script>`\r\n\r\n## for Node.js\r\n```\r\nnode test/test.js\r\n```\r\n\r\n## browser demo\r\n[ID-based encryption](https://herumi.github.io/mcl-wasm/browser/demo.html)\r\n\r\n# usages\r\n\r\n## init\r\n\r\n```\r\n// Ethereum 2.0 spec mode\r\nmcl.init(mcl.BLS12_381)\r\n  .then(() => {\r\n    mcl.setETHserialization(true) // Ethereum serialization\r\n    mcl.setMapToMode(mcl.IRTF) // for G2.setHashOf(msg)\r\n    ...\r\n  })\r\n```\r\n\r\n## string conversion\r\n\r\n```\r\na = new mcl.Fr()\r\na.setStr('255') // set 255\r\na.setStr('0xff') // set 0xff = 255\r\na.setStr('ff', 16) // set ff as hex-string\r\n\r\na.getStr() // '255'\r\na.getStr(16) // 'ff'\r\n```\r\n\r\n## serialization\r\n\r\n```\r\n// byte array serialization\r\nb.deserialize(a.serialize()) // b.isEqualTo(a)\r\n// hex string of serialization()\r\nb.deserializeHexStr(a.serializeToHexStr())\r\n```\r\n\r\n```\r\n// serialization like Ethereum 2.0 only for BLS12-381\r\nmcl.setETHserialization(true)\r\n```\r\n\r\n## deserialization\r\n```\r\n/*\r\n  it is big cost to to verify the order\r\n  call once after init() if you want to disable it\r\n  cf. sub group problem\r\n*/\r\nmcl.verifyOrderG1(false)\r\nmcl.verifyOrderG2(false)\r\n```\r\n\r\nsee [test.js](https://github.com/herumi/mcl-wasm/blob/master/test/test.js)\r\n\r\n# License\r\n\r\nmodified new BSD License\r\nhttp://opensource.org/licenses/BSD-3-Clause\r\n\r\n# History\r\n\r\n2019/Jan/31 add Fp.mapToG1\r\n\r\n# Author\r\n\r\nMITSUNARI Shigeo(herumi@nifty.com)\r\n\r\n# Sponsors welcome\r\n[GitHub Sponsor](https://github.com/sponsors/herumi)\r\n",
+      "url": "https://github.com/herumi/mcl-wasm/blob/1ce79dbf838c051f56d8b17f1368efe93989b2d2/readme.md"
+    }
+  ]
+}
