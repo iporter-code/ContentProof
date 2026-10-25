@@ -1,0 +1,23 @@
+[Unit]
+Description=ContentProof Vault token renewal agent
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=contentproof
+Group=contentproof
+RuntimeDirectory=contentproof-vault
+RuntimeDirectoryMode=0700
+ExecStart=/usr/local/bin/vault agent -config=/etc/contentproof-vault/agent.hcl
+Restart=on-failure
+RestartSec=10
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+# Agent consumes a fresh bootstrap SecretID; no application data is writable.
+ReadWritePaths=/run/contentproof-vault
+
+[Install]
+WantedBy=multi-user.target

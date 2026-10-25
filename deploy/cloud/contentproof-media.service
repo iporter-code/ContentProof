@@ -1,0 +1,46 @@
+[Unit]
+Description=ContentProof historical image engine sandbox
+Requires=contentproof-media.socket
+After=contentproof-media.socket
+
+[Service]
+User=contentproof-media
+Group=contentproof-media
+WorkingDirectory=/opt/contentproof-media/current/bridge
+ExecStart=/opt/contentproof-media/current/runtime/bin/node --max-old-space-size=128 scripts/media-sandbox.js
+Environment=CP_MEDIA_ENGINES_FILE=/opt/contentproof-media/current/engines/catalog.json
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=10
+KillMode=control-group
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectProc=invisible
+InaccessiblePaths=/etc/contentproof /var/lib/contentproof /var/backups -/var/lib/contentproof-tests
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX
+IPAddressDeny=any
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+CPUQuota=50%
+MemoryHigh=256M
+MemoryMax=384M
+MemorySwapMax=64M
+TasksMax=32
+LimitNOFILE=128

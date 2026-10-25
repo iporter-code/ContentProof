@@ -1,5 +1,6 @@
 import { fork, type ChildProcess, type Serializable } from "node:child_process";
 import { ResourcePool } from "./resources.js";
+import { workerEnvironment } from "./worker-environment.js";
 export class ProcessJobs {
   private children = new Set<ChildProcess>();
   private closing = false;
@@ -20,6 +21,7 @@ export class ProcessJobs {
           const source = this.worker.pathname.endsWith(".ts"),
             child = fork(this.worker, [], {
               serialization: "advanced",
+              env: workerEnvironment(source),
               execArgv: [
                 "--max-old-space-size=192",
                 ...(source ? ["--import", "tsx"] : []),

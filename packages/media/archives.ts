@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 import { ProcessJobs } from "./process-jobs.js";
 import { mediaPool } from "./resources.js";
 import { z } from "zod";
+import { sandboxRequest } from "./sandbox-wire.js";
 const hash = (bytes: Uint8Array) =>
   createHash("sha256").update(bytes).digest("hex");
 const digest = z.string().regex(/^0x[0-9a-f]{64}$/),
@@ -114,6 +115,48 @@ export async function executeArchived(
   inputs: Uint8Array[],
   params: object,
 ): Promise<Buffer | undefined> {
+  const socket = process.env.CP_MEDIA_SANDBOX_SOCKET;
+  if (socket)
+    return mediaPool.run(async () => {
+      if (
+        inputs.length < 1 ||
+        inputs.length > 2 ||
+        inputs.some((b) => b.length < 1 || b.length > 20 * 1024 * 1024)
+      )
+        throw Error("MEDIA_INPUT_LIMIT");
+      const response = await sandboxRequest(socket, {
+        version: 1,
+        method: "execute",
+        engineDigest,
+        operation,
+        inputs: inputs.map((b) => Buffer.from(b).toString("base64")),
+        params,
+      });
+      if (response?.ok !== true)
+        throw Error(
+          typeof response?.error === "string" &&
+            /^[A-Z_]{3,80}$/.test(response.error)
+            ? response.error
+            : "MEDIA_SANDBOX_PROTOCOL",
+        );
+      if (response.available === false) return;
+      if (
+        response.available !== true ||
+        typeof response.result !== "string" ||
+        response.result.length > 27962028
+      )
+        throw Error("MEDIA_SANDBOX_PROTOCOL");
+      const bytes = Buffer.from(response.result, "base64");
+      if (
+        bytes.length < 1 ||
+        bytes.length > 20 * 1024 * 1024 ||
+        bytes.toString("base64") !== response.result
+      )
+        throw Error("MEDIA_SANDBOX_PROTOCOL");
+      return bytes;
+    });
+  if (process.env.CP_MEDIA_SANDBOX_REQUIRED === "true")
+    throw Error("MEDIA_SANDBOX_REQUIRED");
   const worker = archivedWorker(engineDigest);
   if (!worker) return;
   const jobs = new ProcessJobs(worker, mediaPool);

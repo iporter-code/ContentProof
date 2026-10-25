@@ -1,0 +1,21 @@
+# Supply a short-lived, preferably response-wrapped AppRole SecretID securely.
+# After it is consumed, a fresh bootstrap is needed if the agent must reauthenticate.
+pid_file = "/run/contentproof-vault/agent.pid"
+vault {
+  address = "https://vault-1.example.invalid:8200"
+  ca_cert = "/etc/contentproof-vault/ca.crt"
+}
+auto_auth {
+  method "approle" {
+    config = {
+      role_id_file_path = "/etc/contentproof-vault/role-id"
+      secret_id_file_path = "/run/contentproof-vault/bootstrap/secret-id"
+      remove_secret_id_file_after_reading = true
+    }
+  }
+  sink "file" {
+    config = {
+      path = "/run/contentproof-vault/token"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[Unit]
+Description=ContentProof local historical-image sandbox socket
+
+[Socket]
+ListenStream=/run/contentproof-media/sandbox.sock
+SocketUser=contentproof-media
+SocketGroup=contentproof
+SocketMode=0660
+DirectoryMode=0755
+RemoveOnStop=yes
+Backlog=4
+
+[Install]
+WantedBy=sockets.target

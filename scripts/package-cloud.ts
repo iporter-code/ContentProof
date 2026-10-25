@@ -31,7 +31,9 @@ function collect(path: string) {
     throw Error("CLOUD_SOURCE_CONTAINS_RUNTIME_FILE");
   const bytes = readFileSync(path);
   if (
-    /\.(?:ts|tsx|js|mjs|md|json|css|html|sh|service|timer|conf|yml)$/.test(rel)
+    /\.(?:ts|tsx|js|mjs|cjs|md|json|css|html|sh|service|socket|timer|conf|hcl|yml|example)$/.test(
+      rel,
+    )
   )
     assertNoConfiguredSecret(bytes.toString("utf8"));
   entries["app/" + rel] = bytes;

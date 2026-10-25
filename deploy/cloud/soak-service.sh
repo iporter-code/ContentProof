@@ -84,8 +84,10 @@ TimeoutStopSec=45
 KillMode=control-group
 Nice=10
 CPUQuota=50%
-MemoryHigh=450M
-MemoryMax=600M
+# Leave room for the frozen dependency page cache as well as the API/EVM.
+# The previous 450M high watermark was reached during concurrent maintenance.
+MemoryHigh=550M
+MemoryMax=700M
 MemorySwapMax=256M
 TasksMax=96
 UMask=0077

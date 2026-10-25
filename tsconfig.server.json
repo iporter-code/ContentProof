@@ -17,6 +17,8 @@
     "scripts/persistent-chain.ts",
     "scripts/deploy.ts",
     "scripts/maintenance.ts",
+    "scripts/media-sandbox.ts",
+    "scripts/deployment-readiness.ts",
     "scripts/test-business.ts",
     "scripts/test-audit-fixes.ts",
     "scripts/test-permissions.ts",

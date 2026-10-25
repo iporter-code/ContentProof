@@ -49,3 +49,34 @@ it("API image operations execute in bounded child processes and preserve output 
   await expect(inspect(Buffer.from("invalid"))).rejects.toThrow();
   expect((await inspect(bytes)).height).toBe(6);
 });
+it("workers cannot inherit application keys, Vault credentials or Node preload hooks", async () => {
+  const names = [
+    "STORAGE_KEY",
+    "RELAYER_PRIVATE_KEY",
+    "VAULT_TOKEN_FILE",
+    "CP_BACKUP_PASSWORD",
+    "NODE_OPTIONS",
+    "NODE_PATH",
+  ];
+  const old = Object.fromEntries(
+    names.map((name) => [name, process.env[name]]),
+  );
+  const pool = new ProcessJobs(
+    new URL("./fixtures/media-job-worker.mjs", import.meta.url),
+    new ResourcePool(1, 0),
+  );
+  try {
+    for (const name of names)
+      process.env[name] =
+        name === "NODE_OPTIONS"
+          ? "--trace-warnings"
+          : "synthetic-do-not-inherit";
+    const childNames = await pool.run<string[]>("environment");
+    for (const name of names) expect(childNames).not.toContain(name);
+  } finally {
+    pool.close();
+    for (const name of names)
+      if (old[name] === undefined) delete process.env[name];
+      else process.env[name] = old[name];
+  }
+});

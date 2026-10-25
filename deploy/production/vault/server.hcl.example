@@ -1,0 +1,17 @@
+# Template only: replace identities, private addresses and certificate paths.
+# Deploy on an independent Vault host; do not run Vault in -dev mode.
+ui = false
+disable_mlock = true # Integrated Raft storage; enforce host memory/swap policy.
+api_addr = "https://vault-1.example.invalid:8200"
+cluster_addr = "https://vault-1.example.invalid:8201"
+storage "raft" {
+  path = "/var/lib/vault"
+  node_id = "REPLACE_WITH_UNIQUE_NODE_ID"
+}
+listener "tcp" {
+  address = "10.0.0.10:8200"
+  cluster_address = "10.0.0.10:8201"
+  tls_cert_file = "/etc/vault/tls/server.crt"
+  tls_key_file = "/etc/vault/tls/server.key"
+  tls_min_version = "tls12"
+}
