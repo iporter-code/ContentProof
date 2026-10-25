@@ -8,6 +8,7 @@ import {
   Route,
   Link,
   NavLink,
+  Navigate,
   useNavigate,
   useParams,
   useLocation,
@@ -25,7 +26,8 @@ import {
 } from "./api";
 import { grantExpiry } from "./integrity";
 import "./style.css";
-import { AccountGate } from "./AccountGate";
+import { LoginScreen } from "./LoginScreen";
+import { loginDestination } from "./auth-navigation";
 import { Organizations } from "./Organizations";
 import { Operations } from "./Operations";
 const GraphCanvas = React.lazy(() => import("./GraphCanvas"));
@@ -231,13 +233,8 @@ function Head({
 }
 function App() {
   const [identity, setIdentity] = useState(""),
-    [ready, setReady] = useState(false),
-    [error, setError] = useState("");
+    [ready, setReady] = useState(false);
   const location = useLocation();
-  const net = useLoad(
-    () => api("/v1/chain/status"),
-    [location.pathname, ready],
-  );
   useEffect(() => {
     const reset = () => {
       lockWallet();
@@ -250,13 +247,48 @@ function App() {
     };
     window.addEventListener("cp-session-expired", reset);
     window.addEventListener("cp-locked", locked);
+    // A page reload locks the in-memory signer. A leftover bearer token alone
+    // must not make the workspace appear logged in.
+    lockWallet();
     return () => {
       window.removeEventListener("cp-session-expired", reset);
       window.removeEventListener("cp-locked", locked);
     };
   }, []);
+  useEffect(() => {
+    document.title = ready ? "内容证链 · ContentProof" : "登录 · 内容证链";
+  }, [ready]);
+  const loginPage =
+    location.pathname === "/login" || location.pathname === "/login/";
+  if (!ready) {
+    if (!loginPage)
+      return (
+        <Navigate
+          to="/login"
+          replace
+          state={{ from: location.pathname + location.search + location.hash }}
+        />
+      );
+    return (
+      <LoginScreen
+        onReady={() => {
+          const address = signingAddress();
+          if (!address || !token()) throw Error("身份状态已改变，请重新登录");
+          setIdentity(address);
+          setReady(true);
+        }}
+      />
+    );
+  }
+  if (loginPage)
+    return <Navigate to={loginDestination(location.state?.from)} replace />;
+  return <Workspace key={identity} identity={identity} />;
+}
+function Workspace({ identity }: { identity: string }) {
+  const location = useLocation();
+  const net = useLoad(() => api("/v1/chain/status"), [location.pathname]);
   return (
-    <div className="shell">
+    <div className="shell" data-consent-background>
       <aside>
         <Link className="brand" to="/">
           <span className="brand-mark">证</span>
@@ -306,52 +338,40 @@ function App() {
                 : "○ 链连接待检查"}
             </span>
             <span className="mono">{short(identity)}</span>
-            {ready && (
-              <button
-                className="secondary"
-                onClick={() => {
-                  void api("/v1/auth/logout", {}).finally(() => lockWallet());
-                }}
-              >
-                锁定并退出
-              </button>
-            )}
+            <button
+              className="secondary"
+              onClick={() => {
+                void api("/v1/auth/logout", {}).catch(() => {});
+                lockWallet();
+              }}
+            >
+              锁定并退出
+            </button>
           </div>
         </div>
         <main>
-          <Notice error={error} />
-          {!ready ? (
-            <AccountGate
-              onReady={() => {
-                setIdentity(signingAddress() ?? "");
-                setReady(true);
-                setError("");
-              }}
+          <Routes key={identity}>
+            <Route path="/organizations" element={<Organizations />} />
+            <Route path="/operations" element={<Operations />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/assets" element={<Assets />} />
+            <Route path="/editor" element={<Editor />} />
+            <Route path="/claims" element={<Claims />} />
+            <Route path="/claims/:id" element={<ClaimDetail />} />
+            <Route path="/claims/:id/graph" element={<Graph />} />
+            <Route path="/claims/:id/disclose" element={<Disclosure />} />
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/identities" element={<Identities />} />
+            <Route path="/demo" element={<Demo />} />
+            <Route
+              path="*"
+              element={
+                <p>
+                  页面不存在。<Link to="/">返回总览</Link>
+                </p>
+              }
             />
-          ) : (
-            <Routes key={identity}>
-              <Route path="/organizations" element={<Organizations />} />
-              <Route path="/operations" element={<Operations />} />
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/assets" element={<Assets />} />
-              <Route path="/editor" element={<Editor />} />
-              <Route path="/claims" element={<Claims />} />
-              <Route path="/claims/:id" element={<ClaimDetail />} />
-              <Route path="/claims/:id/graph" element={<Graph />} />
-              <Route path="/claims/:id/disclose" element={<Disclosure />} />
-              <Route path="/verify" element={<Verify />} />
-              <Route path="/identities" element={<Identities />} />
-              <Route path="/demo" element={<Demo />} />
-              <Route
-                path="*"
-                element={
-                  <p>
-                    页面不存在。<Link to="/">返回总览</Link>
-                  </p>
-                }
-              />
-            </Routes>
-          )}
+          </Routes>
         </main>
         <footer>
           ContentProof / 2026 · 自定义 sidecar 证据协议{" "}

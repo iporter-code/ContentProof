@@ -67,3 +67,25 @@ it("BUG10 polling rejects withdrawn and orphaned jobs instead of reporting succe
     await expect(waitForJob("job")).rejects.toThrow(state);
   }
 });
+it("a delayed 401 from the previous session cannot clear a newly established login", async () => {
+  let reply!: (value: Response) => void;
+  items.set("cp-token", "previous-session");
+  const eventCount = events.length;
+  vi.stubGlobal(
+    "fetch",
+    () =>
+      new Promise<Response>((resolve) => {
+        reply = resolve;
+      }),
+  );
+  const request = api("/v1/assets");
+  items.set("cp-token", "new-session");
+  reply(
+    new Response(JSON.stringify({ error: { message: "UNAUTHORIZED" } }), {
+      status: 401,
+    }),
+  );
+  await expect(request).rejects.toThrow("UNAUTHORIZED");
+  expect(items.get("cp-token")).toBe("new-session");
+  expect(events.length).toBe(eventCount);
+});

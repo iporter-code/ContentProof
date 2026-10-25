@@ -28,7 +28,9 @@ export function ConsentHost() {
   useEffect(() => {
     if (!pending) return;
     const previous = document.activeElement;
-    const shell = document.querySelector<HTMLElement>(".shell");
+    const shell = document.querySelector<HTMLElement>(
+      "[data-consent-background]",
+    );
     const wasInert = shell?.inert;
     if (shell) shell.inert = true;
     panel.current?.querySelector<HTMLButtonElement>("button")?.focus();

@@ -9,6 +9,37 @@ certbot=/opt/contentproof/certbot/bin/certbot
 common=(certonly --non-interactive --agree-tos --register-unsafely-without-email --required-profile shortlived --webroot --webroot-path /var/www/contentproof-acme --ip-address "$endpoint" --cert-name contentproof-ip)
 "$certbot" "${common[@]}" --staging --config-dir /etc/contentproof/acme-staging --work-dir /var/lib/contentproof-acme-staging --logs-dir /var/log/contentproof-acme-staging
 "$certbot" "${common[@]}"
+web_routes="$(cat <<'ROUTES'
+    location / {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Forwarded "";
+        proxy_read_timeout 60s;
+    }
+ROUTES
+)"
+# Preserve an independently published frontend when HTTPS is reprovisioned.
+if [ -f /opt/contentproof-web/current/index.html ]; then
+web_routes="$(python3 - "$web_routes" <<'PY'
+import sys
+proxy=sys.argv[1]
+print(proxy.replace('location / {','location ^~ /v1/ {',1)+'\n'+proxy.replace('location / {','location ^~ /health/ {',1)+'''
+    location ^~ /assets/ {
+        root /opt/contentproof-web/current;
+        try_files $uri =404;
+        expires 1y;
+    }
+    location / {
+        root /opt/contentproof-web/current;
+        try_files $uri $uri/ /index.html;
+        expires -1;
+    }''')
+PY
+)"
+fi
 cat > /etc/nginx/sites-available/contentproof <<EOF
 server {
     listen 80 default_server;
@@ -27,15 +58,7 @@ server {
     add_header X-Content-Type-Options nosniff always;
     add_header X-Frame-Options DENY always;
     add_header Referrer-Policy same-origin always;
-    location / {
-        proxy_pass http://127.0.0.1:3001;
-        proxy_http_version 1.1;
-        proxy_set_header Host \$host;
-        proxy_set_header X-Forwarded-Proto https;
-        proxy_set_header X-Forwarded-For \$remote_addr;
-        proxy_set_header Forwarded "";
-        proxy_read_timeout 60s;
-    }
+$web_routes
 }
 EOF
 nginx -t

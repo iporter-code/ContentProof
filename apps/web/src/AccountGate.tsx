@@ -45,8 +45,10 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
         await unlockVault(v, password);
         label = v.name;
       }
+      const address = signingAddress();
+      if (!address) throw Error("请先解锁签名身份");
       const challenge = await api("/v1/auth/challenge", {
-        address: signingAddress(),
+        address,
       });
       const session = await api("/v1/auth/verify", {
         id: challenge.id,
@@ -59,6 +61,8 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           throw Error("请填写至少2字的显示名称后重新连接");
         await api("/v1/profile", { name: label });
       }
+      if (signingAddress()?.toLowerCase() !== address.toLowerCase())
+        throw Error("身份状态已改变，请重新登录");
       setPassword("");
       onReady();
     } catch (e) {
@@ -68,22 +72,31 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
     }
   }
   return (
-    <section className="login">
-      <div className="eyebrow">个人签名身份 · 私钥由你持有</div>
-      <h1>
-        为内容署名，
-        <br />
-        从自己的身份开始。
-      </h1>
-      <div className="panel form" style={{ maxWidth: 520 }}>
+    <section className="login" aria-labelledby="login-title">
+      <div className="eyebrow">WELCOME / 身份登录</div>
+      <h1 id="login-title">登录内容证链</h1>
+      <p className="login-description">
+        解锁你的签名身份，进入内容证据工作空间。
+      </p>
+      <form
+        className="panel form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          void login("local");
+        }}
+      >
         <div className="actions">
           <button
+            type="button"
+            disabled={busy}
             className={create ? "" : "secondary"}
             onClick={() => setCreate(true)}
           >
             创建身份
           </button>
           <button
+            type="button"
+            disabled={busy}
             className={!create ? "" : "secondary"}
             onClick={() => setCreate(false)}
           >
@@ -98,6 +111,9 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
               onChange={(e) => setName(e.target.value)}
               minLength={2}
               maxLength={80}
+              required
+              disabled={busy}
+              autoComplete="nickname"
               placeholder="个人或机构自述名称"
             />
           </label>
@@ -105,6 +121,7 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           <label>
             本机身份
             <select
+              disabled={busy}
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
             >
@@ -120,6 +137,9 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           本机解锁口令
           <input
             type="password"
+            required
+            minLength={create ? 12 : undefined}
+            disabled={busy}
             autoComplete={create ? "new-password" : "current-password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -134,8 +154,8 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           </div>
         )}
         <button
+          type="submit"
           disabled={busy || (create && name.trim().length < 2)}
-          onClick={() => void login("local")}
         >
           {busy
             ? "正在验证身份与登记…"
@@ -147,6 +167,7 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           恢复加密备份
           <input
             type="file"
+            disabled={busy}
             accept=".json"
             onChange={async (e) => {
               try {
@@ -163,6 +184,7 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           />
         </label>
         <button
+          type="button"
           className="secondary"
           disabled={busy}
           onClick={() => void login("external")}
@@ -172,7 +194,7 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
         <small>
           私钥在浏览器生成，使用口令加密后保存在本机。名称为用户自述，不代表第三方机构认证。请下载加密备份并妥善保管口令。
         </small>
-      </div>
+      </form>
     </section>
   );
 }

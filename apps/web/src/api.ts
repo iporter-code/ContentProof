@@ -145,11 +145,12 @@ export async function api<T = any>(
   body?: unknown,
   method?: string,
 ): Promise<T> {
+  const requestToken = token();
   const response = await fetch(path, {
     signal: AbortSignal.timeout(30000),
     method: method ?? (body === undefined ? "GET" : "POST"),
     headers: {
-      Authorization: `Bearer ${token()}`,
+      Authorization: `Bearer ${requestToken}`,
       ...(body instanceof FormData
         ? {}
         : body !== undefined
@@ -164,7 +165,7 @@ export async function api<T = any>(
           : JSON.stringify(body),
   });
   if (!response.ok) {
-    if (response.status === 401) {
+    if (response.status === 401 && token() === requestToken) {
       sessionStorage.removeItem("cp-token");
       window.dispatchEvent(new Event("cp-session-expired"));
     }
