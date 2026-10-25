@@ -124,18 +124,9 @@ try {
       throw Error("EXTERNAL_RPC_UNAVAILABLE");
     start(
       "chain",
-      demoMode
-        ? [
-            "node_modules/hardhat/dist/src/cli.js",
-            "node",
-            "--hostname",
-            "127.0.0.1",
-            "--port",
-            new URL(rpcUrl).port || "8545",
-          ]
-        : built
-          ? ["dist/server/scripts/persistent-chain.js"]
-          : ["--import", "tsx", "scripts/persistent-chain.ts"],
+      built
+        ? ["dist/server/scripts/persistent-chain.js"]
+        : ["--import", "tsx", "scripts/persistent-chain.ts"],
     );
     for (let i = 0; i < 100; i++) {
       try {

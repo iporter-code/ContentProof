@@ -111,7 +111,10 @@ function useLoad<T>(fn: () => Promise<T>, deps: unknown[] = []) {
         if (current === generation.current) setData(value);
       })
       .catch((e) => {
-        if (current === generation.current) setError(e.message);
+        if (current === generation.current) {
+          setData(undefined);
+          setError(e.message);
+        }
       })
       .finally(() => {
         if (current === generation.current) setBusy(false);
@@ -864,7 +867,14 @@ function ClaimDetail() {
     return (
       <>
         <Notice error={error} />
-        <p>读取声明…</p>
+        {error ? (
+          <p>
+            声明暂不可访问，请核对当前身份及授权状态。
+            <Link to="/claims">返回声明记录 →</Link>
+          </p>
+        ) : (
+          <p>读取声明…</p>
+        )}
       </>
     );
   const m = data.manifest;
@@ -875,7 +885,7 @@ function ClaimDetail() {
           设置披露与导出 ↗
         </Link>
       </Head>
-      <Notice error={err} />
+      <Notice error={err || error} />
       {notice && (
         <div className="notice neutral" role="status">
           {notice}

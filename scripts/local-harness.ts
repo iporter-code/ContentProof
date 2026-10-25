@@ -25,7 +25,12 @@ export class LocalHarness {
       log: this.log,
     };
   }
-  constructor(name: string, port: number, rpcPort: number) {
+  constructor(
+    name: string,
+    port: number,
+    rpcPort: number,
+    readonly projectRoot = process.cwd(),
+  ) {
     mkdirSync("data/engineering-runs", { recursive: true });
     this.dir = mkdtempSync(resolve(`data/engineering-runs/${name}-`));
     this.base = `http://127.0.0.1:${port}`;
@@ -80,12 +85,17 @@ export class LocalHarness {
       assert(!occupied, "TEST_PORT_ALREADY_IN_USE");
     }
     this.log = "";
-    this.child = fork("scripts/start-app.mjs", ["--built"], {
-      execArgv: [],
-      env: this.env,
-      windowsHide: true,
-      stdio: ["ignore", "pipe", "pipe", "ipc"],
-    });
+    this.child = fork(
+      resolve(this.projectRoot, "scripts/start-app.mjs"),
+      ["--built"],
+      {
+        cwd: this.projectRoot,
+        execArgv: [],
+        env: this.env,
+        windowsHide: true,
+        stdio: ["ignore", "pipe", "pipe", "ipc"],
+      },
+    );
     for (const stream of [this.child.stdout!, this.child.stderr!])
       stream.on("data", (b) => {
         this.log = (this.log + b).slice(-16000);

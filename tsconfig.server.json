@@ -20,6 +20,8 @@
     "scripts/test-business.ts",
     "scripts/test-audit-fixes.ts",
     "scripts/test-permissions.ts",
+    "scripts/test-node-upgrade.ts",
+    "scripts/test-demo-engine.ts",
     "scripts/test-engine-upgrade.ts",
     "scripts/test-persistence.ts",
     "scripts/media-vectors.ts",

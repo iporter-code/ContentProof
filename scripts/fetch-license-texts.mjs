@@ -8,7 +8,9 @@ const results = existsSync("docs/LICENSE_SOURCES.json")
     : [],
   unresolved = [];
 mkdirSync("docs/licenses/upstream", { recursive: true });
+const cache = new Map();
 const request = async (url) => {
+  if (cache.has(url)) return cache.get(url);
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const r = await fetch(url, {
@@ -18,6 +20,7 @@ const request = async (url) => {
       if (!r.ok) return null;
       const text = await r.text();
       if (text.length > 2000000) throw Error("LICENSE_RESPONSE_TOO_LARGE");
+      cache.set(url, text);
       return text;
     } catch {
       if (attempt < 2)
@@ -26,7 +29,12 @@ const request = async (url) => {
   }
   return null;
 };
-for (const component of inventory.components.filter((c) => !c.texts.length)) {
+const missing = new Map(
+  inventory.components
+    .filter((c) => !c.texts.length)
+    .map((c) => [`${c.name}@${c.version}`, c]),
+);
+for (const component of missing.values()) {
   const { name, version } = component;
   const registry = `https://registry.npmjs.org/${encodeURIComponent(name)}/${version}`;
   const data = await request(registry);
@@ -76,10 +84,64 @@ for (const component of inventory.components.filter((c) => !c.texts.length)) {
     console.log(`${name}@${version}: exact source tree unavailable`);
     continue;
   }
-  const candidates = tree.filter(
-    (x) =>
-      x.type === "blob" &&
-      /^(LICENSE|LICENCE|COPYING)(?:[.-].*)?$/i.test(x.path),
+  const locations = [{ prefix: "", tree }];
+  let directory =
+    typeof meta.repository === "object" ? meta.repository.directory : undefined;
+  const inferredDirectory =
+    !directory &&
+    repo === "ethereumjs/ethereumjs-monorepo" &&
+    name.startsWith("@ethereumjs/");
+  if (inferredDirectory) directory = `packages/${name.split("/")[1]}`;
+  if (
+    typeof directory === "string" &&
+    directory
+      .split("/")
+      .every((p) => /^[A-Za-z0-9_.-]+$/.test(p) && p !== "." && p !== "..")
+  ) {
+    let nested = tree;
+    for (const part of directory.split("/")) {
+      const entry = nested.find((x) => x.path === part && x.type === "tree");
+      if (!entry) {
+        nested = null;
+        break;
+      }
+      const response = await request(
+        `https://api.github.com/repos/${repo}/git/trees/${entry.sha}`,
+      );
+      nested = response ? JSON.parse(response).tree : null;
+      if (!Array.isArray(nested)) break;
+    }
+    if (Array.isArray(nested) && inferredDirectory) {
+      const pkg = nested.find(
+        (x) => x.type === "blob" && x.path === "package.json",
+      );
+      const json = pkg
+        ? await request(
+            `https://api.github.com/repos/${repo}/git/blobs/${pkg.sha}`,
+          )
+        : null;
+      if (!json) nested = null;
+      else {
+        const blob = JSON.parse(json),
+          pkgMeta =
+            blob.encoding === "base64"
+              ? JSON.parse(Buffer.from(blob.content, "base64").toString("utf8"))
+              : null;
+        if (pkgMeta?.name !== name || pkgMeta?.version !== version)
+          nested = null;
+      }
+    }
+    if (Array.isArray(nested))
+      locations.unshift({ prefix: directory + "/", tree: nested });
+  }
+  const candidates = locations.flatMap((location) =>
+    location.tree
+      .filter(
+        (x) =>
+          x.type === "blob" &&
+          /^(LICENSE|LICENCE|COPYING)(?:[.-].*)?$/i.test(x.path),
+      )
+      .map((item) => ({ ...item, path: location.prefix + item.path })),
   );
   for (const item of candidates) {
     const file = item.path;
@@ -107,7 +169,7 @@ for (const component of inventory.components.filter((c) => !c.texts.length)) {
       registry,
       sha256: createHash("sha256").update(text).digest("hex"),
       source:
-        "Exact published gitHead; OpenZeppelin version tag resolved to immutable commit",
+        "Exact published gitHead, or explicitly resolved immutable version tag",
     });
     found = true;
     break;
@@ -118,7 +180,9 @@ for (const component of inventory.components.filter((c) => !c.texts.length)) {
       version,
       repository: repo,
       commit,
-      reason: "No standalone license text at checked exact-commit paths",
+      reason: candidates.length
+        ? "Exact license candidates exist but complete contents could not be verified"
+        : "No standalone license text at checked exact-commit paths",
     });
   console.log(
     `${name}@${version}: ${found ? "pinned upstream text saved" : "unresolved"}`,

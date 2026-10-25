@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T18:03:13.353Z",
+  "generated": "2026-10-25T06:18:21.147Z",
   "scope": "Text collection only, not a legal compliance opinion. Original upstream texts are preserved without alteration.",
   "sources": [
     {
@@ -31,41 +31,95 @@
       "registry": "https://registry.npmjs.org/%40openzeppelin%2Fcontracts/5.4.0",
       "sha256": "13cd784a6c31361f0e0c6aa3b410a1cb9a079868b7314c13e3eb8a75351746b9",
       "source": "Official release tag resolved to immutable commit; Git blob verified original LICENSE"
+    },
+    {
+      "name": "@ethersproject/logger",
+      "version": "5.8.0",
+      "path": "licenses/upstream/_ethersproject_logger@5.8.0-LICENSE.md",
+      "url": "https://github.com/ethers-io/ethers.js/blob/fa5f647bb2cde63dd0b9664c42cbfbdc1515e800/LICENSE.md",
+      "commit": "fa5f647bb2cde63dd0b9664c42cbfbdc1515e800",
+      "registry": "https://registry.npmjs.org/%40ethersproject%2Flogger/5.8.0",
+      "sha256": "38f156ca482f33e6ec062da7c682da058c65c2932782fd4ea47aaecd01138704",
+      "source": "Exact published gitHead; OpenZeppelin version tag resolved to immutable commit"
     }
   ],
   "unresolved": [
+    {
+      "name": "@ethereumjs/trie",
+      "version": "5.1.0",
+      "repository": "ethereumjs/ethereumjs-monorepo",
+      "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
+    {
+      "name": "@ethereumjs/blockchain",
+      "version": "6.3.0",
+      "repository": "ethereumjs/ethereumjs-monorepo",
+      "commit": "850860614ee1324863acdb2d3ff4255b8dab4553",
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
+    {
+      "name": "mcl-wasm",
+      "version": "0.7.9",
+      "repository": "herumi/mcl-wasm",
+      "commit": "f4f02d3bf7a59ed7c0170fde43127584bbc920e4",
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
+    {
+      "name": "@ethereumjs/trie",
+      "version": "5.0.4",
+      "repository": "ethereumjs/ethereumjs-monorepo",
+      "commit": "295e5a3caa69c226e8f8edfad4ea72a843bc0b4f",
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
     {
       "name": "abstract-logging",
       "version": "2.0.1",
       "repository": "jsumners/abstract-logging",
       "commit": "80dfaef91ee87008f4ed2b6e78921d383bccd406",
-      "reason": "Exact-version README links to the author-hosted MIT page; the current page has a dynamic 2026 copyright year. Historical exact-version full text remains unverified.",
-      "authorLicense": "https://jsumners.mit-license.org/"
+      "reason": "No standalone license text at checked exact-commit paths"
     },
     {
-      "name": "acorn-import-assertions",
-      "version": "1.8.0",
-      "repository": "xtuc/acorn-import-assertions",
-      "commit": "74ae50bf34ac4ca48cc7e8735fd18a017c75bb4e",
-      "reason": "Exact published commit still returns HTTP 404 in original and renamed upstream repository; no exact-version complete license text verified."
+      "name": "bs58",
+      "version": "4.0.1",
+      "repository": "cryptocoinjs/bs58",
+      "commit": "ba80a23f74efc055577d7040ef32e1ae765d6702",
+      "reason": "No standalone license text at checked exact-commit paths"
     },
     {
-      "name": "async-eventemitter",
-      "version": "0.2.4",
-      "reason": "Published gitHead resolved to the official repository. Installed README git blob matches the exact commit, but it contains only the MIT label and copyright notice, not complete terms.",
-      "repository": "ahultgren/async-eventemitter",
-      "commit": "e8268aab9bb032ace7a9557ca3af5c8217bea233",
-      "registry": "https://registry.npmjs.org/async-eventemitter/0.2.4",
-      "readmeBlob": "97703fe5b13ceab394d7661966f5aa535055fbc3"
+      "name": "eth-sig-util",
+      "version": "2.5.3",
+      "repository": "MetaMask/eth-sig-util",
+      "commit": "c03817eafd2a6b9a768b84089d227c3bee750303",
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
+    {
+      "name": "ethereumjs-util",
+      "version": "4.5.1",
+      "repository": "ethereumjs/ethereumjs-util",
+      "commit": "860beb74e2c5444bbc0de0607f189e8d53d0a2f6",
+      "reason": "No standalone license text at checked exact-commit paths"
     },
     {
       "name": "mcl-wasm",
       "version": "0.9.0",
       "repository": "herumi/mcl-wasm",
       "commit": "1ce79dbf838c051f56d8b17f1368efe93989b2d2",
-      "reason": "Exact published tree verified; README links to generic BSD-3-Clause terms and embeds an mcl submodule. A submodule license alone is not treated as verified full terms for the wrapper package.",
-      "submoduleCommit": "45f95ec7b72825f3f3e680cc48728ebc3ac698ff"
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
+    {
+      "name": "semaphore",
+      "version": "1.1.0",
+      "repository": "abrkn/semaphore.js",
+      "commit": "88a33875b168cc7b5943d7fe987c36d08321d252",
+      "reason": "No standalone license text at checked exact-commit paths"
+    },
+    {
+      "name": "tmp-promise",
+      "version": "3.0.2",
+      "repository": "benjamingr/tmp-promise",
+      "commit": "993403581c09b63b88f57e4ed7f5e558d98afacc",
+      "reason": "No standalone license text at checked exact-commit paths"
     }
-  ],
-  "lastReviewed": "2026-10-25"
+  ]
 }

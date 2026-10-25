@@ -26,3 +26,4 @@ jobs:
       - run: npm run test:audit-fixes
       - run: npm run test:permissions
       - run: npm run test:reliability
+      - run: npm run test:demo-engine

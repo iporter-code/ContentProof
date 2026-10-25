@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { api } from "./api";
 export function Organizations() {
+  const refreshGeneration = useRef(0);
   const [data, setData] = useState<any>({ organizations: [], operator: false }),
     [reviews, setReviews] = useState<any[]>([]),
     [id, setId] = useState(""),
@@ -17,13 +18,31 @@ export function Organizations() {
     [permission, setPermission] = useState("read"),
     [reason, setReason] = useState("");
   async function refresh(selected = id) {
-    const d = await api("/v1/organizations");
-    setData(d);
-    if (d.operator) setReviews(await api("/v1/operator/organizations"));
-    if (selected) setDetail(await api(`/v1/organizations/${selected}`));
+    const current = ++refreshGeneration.current;
+    try {
+      const d = await api("/v1/organizations");
+      if (current !== refreshGeneration.current) return;
+      setData(d);
+      const [nextReviews, nextDetail] = await Promise.all([
+        d.operator ? api("/v1/operator/organizations") : Promise.resolve([]),
+        selected
+          ? api(`/v1/organizations/${selected}`)
+          : Promise.resolve(undefined),
+      ]);
+      if (current !== refreshGeneration.current) return;
+      setReviews(nextReviews);
+      setDetail(nextDetail);
+    } catch (e) {
+      if (current !== refreshGeneration.current) return;
+      setDetail(undefined);
+      throw e;
+    }
   }
   useEffect(() => {
     void refresh().catch((e) => setError(e.message));
+    return () => {
+      refreshGeneration.current++;
+    };
   }, []);
   async function act(fn: () => Promise<unknown>) {
     setBusy(true);
@@ -110,6 +129,8 @@ export function Organizations() {
               <button
                 onClick={() => {
                   setId(o.id);
+                  setDetail(undefined);
+                  setError("");
                   void refresh(o.id).catch((e) => setError(e.message));
                 }}
               >

@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "node --import tsx scripts/start-app.mjs",
     "dev:demo": "node --import tsx scripts/start-app.mjs --demo",
-    "chain": "hardhat node --hostname 127.0.0.1",
+    "chain": "tsx scripts/persistent-chain.ts",
     "deploy": "tsx scripts/deploy.ts",
     "api": "tsx apps/api/main.ts",
     "web": "vite --config apps/web/vite.config.ts",
@@ -20,6 +20,8 @@
     "test:reliability": "tsx scripts/test-reliability.ts",
     "test:audit-fixes": "tsx scripts/test-audit-fixes.ts",
     "test:permissions": "tsx scripts/test-permissions.ts",
+    "test:demo-engine": "tsx scripts/test-demo-engine.ts",
+    "test:node-upgrade": "tsx scripts/test-node-upgrade.ts",
     "bench:protocol": "tsx scripts/scale-protocol.ts",
     "openapi": "tsx scripts/openapi.ts",
     "deploy:init": "node scripts/init-deploy.mjs",
@@ -70,7 +72,7 @@
     "canonicalize": "^2.1.0",
     "fastify": "^5.0.0",
     "fflate": "^0.8.2",
-    "ganache": "7.9.2",
+    "@ganache/core": "0.10.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.0",
@@ -81,6 +83,9 @@
     "zod": "^4.0.0"
   },
   "overrides": {
+    "secp256k1@^4.0.0": "4.0.4",
+    "ws@^8.0.0": "8.21.0",
+    "ws@^7.0.0": "7.5.11",
     "solc": {
       "tmp": "0.2.7"
     }
@@ -92,11 +97,10 @@
     "@types/yauzl": "^2.10.3",
     "@vitejs/plugin-react": "^4.0.0",
     "fast-check": "^4.0.0",
-    "hardhat": "^3.0.0",
     "prettier": "^3.9.10",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vite": "^6.0.0",
-    "vitest": "^3.0.0"
+    "vitest": "5.0.5"
   }
 }
