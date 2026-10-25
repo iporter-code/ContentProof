@@ -62,7 +62,7 @@ export async function downloadDisclosure(tab) {
   return path;
 }
 export async function verifyEvidence(tab, path) {
-  await tab.playwright.getByRole("link", { name: /独立验证$/ }).click();
+  await tab.playwright.getByRole("link", { name: /证据核验$/ }).click();
   const chooser = tab.playwright.waitForEvent("filechooser");
   await tab.playwright.getByLabel("上传证据包", { exact: true }).click();
   await (await chooser).setFiles(path);

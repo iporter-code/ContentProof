@@ -1,7 +1,16 @@
 // Execute inside the documented CUA JavaScript browser runtime, passing its
 // authenticated tab and viewport capability. No private keys or tokens saved.
-export async function navigationAudit(tab, viewport) {
+export async function navigationAudit(
+  tab,
+  viewport,
+  { development = false } = {},
+) {
   const results = [];
+  const experimentLink = tab.playwright.getByRole("link", {
+    name: /(?:攻击实验|验证实验)$/,
+  });
+  if (!development && (await experimentLink.count()) !== 0)
+    throw Error("EXPERIMENT_LINK_PRESENT_IN_USER_NAVIGATION");
   for (const width of [375, 768, 1280]) {
     await viewport.set({ width, height: 900 });
     for (const page of [
@@ -9,11 +18,11 @@ export async function navigationAudit(tab, viewport) {
       "素材库",
       "编辑与签名",
       "声明记录",
-      "独立验证",
+      "证据核验",
       "身份与密钥",
       "组织与权限",
       "运行状态",
-      "攻击实验",
+      ...(development ? ["验证实验"] : []),
     ]) {
       await tab.playwright
         .getByRole("link", { name: new RegExp(page + "$") })

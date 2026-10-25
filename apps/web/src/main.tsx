@@ -305,11 +305,11 @@ function Workspace({ identity }: { identity: string }) {
             ["/assets", "▧", "素材库"],
             ["/editor", "⌘", "编辑与签名"],
             ["/claims", "◇", "声明记录"],
-            ["/verify", "◎", "独立验证"],
+            ["/verify", "◎", "证据核验"],
             ["/identities", "⊙", "身份与密钥"],
             ["/organizations", "♧", "组织与权限"],
             ["/operations", "◉", "运行状态"],
-            ["/demo", "↗", "攻击实验"],
+            ...(import.meta.env.DEV ? [["/demo", "↗", "验证实验"]] : []),
           ].map(([url, icon, label]) => (
             <NavLink key={url} to={url} end={url === "/"}>
               <span>{icon}</span>
@@ -329,7 +329,11 @@ function Workspace({ identity }: { identity: string }) {
             工作空间 /{" "}
             {location.pathname === "/"
               ? "总览"
-              : location.pathname.split("/")[1]}
+              : location.pathname === "/verify"
+                ? "证据核验"
+                : location.pathname === "/demo" && import.meta.env.DEV
+                  ? "验证实验"
+                  : location.pathname.split("/")[1]}
           </span>
           <div>
             <span className="network">
@@ -362,7 +366,16 @@ function Workspace({ identity }: { identity: string }) {
             <Route path="/claims/:id/disclose" element={<Disclosure />} />
             <Route path="/verify" element={<Verify />} />
             <Route path="/identities" element={<Identities />} />
-            <Route path="/demo" element={<Demo />} />
+            <Route
+              path="/demo"
+              element={
+                import.meta.env.DEV ? (
+                  <Demo />
+                ) : (
+                  <Navigate to="/verify" replace />
+                )
+              }
+            />
             <Route
               path="*"
               element={
@@ -1408,7 +1421,7 @@ function Verify() {
   }
   return (
     <>
-      <Head eyebrow="VERIFY / 证据验证" title="让验证，发生在信任之前。" />
+      <Head eyebrow="VERIFY / 内容证据" title="证据核验" />
       <p className="lead">
         上传证据包，重新计算文件指纹、签名、承诺和编辑输出，并读取链上当前状态。
       </p>
@@ -1428,18 +1441,6 @@ function Verify() {
       <Notice error={error} />
       {report && <ReportView report={report} />}
       <NativeC2paVerify />
-      <section className="panel">
-        <h2>也可以离开业务服务验证</h2>
-        <code className="command">
-          npm run verify -- verify evidence.zip --json
-        </code>
-        <p>
-          独立CLI不调用本业务API。离线模式仍检查密码学证据，并明确标注未查询最新链上状态。
-        </p>
-        <code className="command">
-          npm run verify -- verify evidence.zip --offline --json
-        </code>
-      </section>
     </>
   );
 }
@@ -1835,7 +1836,10 @@ function Demo() {
   }
   return (
     <>
-      <Head eyebrow="LAB / 可复现实验" title="检验边界，而非展示结论。" />
+      <Head eyebrow="LAB / 开发测试" title="验证实验" />
+      <p className="lead">
+        此页面仅在开发测试环境提供，用于核对证据披露与验证边界。
+      </p>
       <section className="panel">
         <label>
           选择实际声明
@@ -1874,6 +1878,18 @@ function Demo() {
         </p>
         <code className="command">npm run test:e2e</code>
         <code className="command">npm run bench</code>
+      </section>
+      <section className="panel">
+        <h2>也可以离开业务服务验证</h2>
+        <code className="command">
+          npm run verify -- verify evidence.zip --json
+        </code>
+        <p>
+          独立CLI不调用本业务API。离线模式仍检查密码学证据，并明确标注未查询最新链上状态。
+        </p>
+        <code className="command">
+          npm run verify -- verify evidence.zip --offline --json
+        </code>
       </section>
       <Notice error={err || error} />
       {busy && <p role="status">正在构造并检查证据…</p>}
