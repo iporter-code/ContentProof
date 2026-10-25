@@ -1,0 +1,17 @@
+{
+  "c2patool": {
+    "version": "0.28.2",
+    "repository": "contentauth/c2patool",
+    "commit": "df3a52743e44795db7808a8f9055d66183c9690a",
+    "win32-x64": {
+      "url": "https://github.com/contentauth/c2patool/releases/download/v0.28.2/v0.28.2-x86_64-pc-windows-msvc.zip",
+      "sha256": "64ffece01fe6407f239e07e9fa5b4a335f8d4b01e326b09cab97e4c26891cc95",
+      "binarySha256": "b970c119c95539896c9a2a05b1bb160dce7da6874bafad08815c2bd6538f01e1"
+    },
+    "linux-x64": {
+      "url": "https://github.com/contentauth/c2patool/releases/download/v0.28.2/v0.28.2-x86_64-unknown-linux-gnu.tar.gz",
+      "sha256": "ff9f05d0f985a77995ec18956671f331d619c804e033c9929972a8d4f479e93a",
+      "binarySha256": "8f6ff063e443be7c48f1408e44514f9aae7146db4c817c980e8022d896c4ed5d"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily ContentProof encrypted backup
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+RandomizedDelaySec=20min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

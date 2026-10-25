@@ -1,0 +1,1505 @@
+{
+  "date": "2026-10-23T13:16:20.956Z",
+  "scope": "Exact installed Linux production image package and copyright-file collection, plus Node and sharp/libvips notices. Inventory only; not legal review, source-offer fulfillment or proof of compliance.",
+  "node": "v22.23.4",
+  "os": "PRETTY_NAME=\"Debian GNU/Linux 12 (bookworm)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"12\"\nVERSION=\"12 (bookworm)\"\nVERSION_CODENAME=bookworm\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+  "nativeVersions": {
+    "aom": "3.13.1",
+    "archive": "3.8.2",
+    "cairo": "1.18.4",
+    "cgif": "0.5.0",
+    "exif": "0.6.25",
+    "expat": "2.7.3",
+    "ffi": "3.5.2",
+    "fontconfig": "2.17.1",
+    "freetype": "2.14.1",
+    "fribidi": "1.0.16",
+    "glib": "2.86.1",
+    "harfbuzz": "12.1.0",
+    "heif": "1.20.2",
+    "highway": "1.3.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.17",
+    "mozjpeg": "0826579",
+    "pango": "1.57.0",
+    "pixman": "0.46.4",
+    "png": "1.6.50",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.61.2",
+    "spng": "0.7.4",
+    "tiff": "4.7.1",
+    "vips": "8.17.3",
+    "webp": "1.6.0",
+    "xml2": "2.15.1",
+    "zlib-ng": "2.2.5",
+    "sharp": "0.34.5"
+  },
+  "packages": [
+    {
+      "name": "adduser",
+      "version": "3.134",
+      "source": "adduser",
+      "notice": {
+        "path": "image-licenses/adduser-copyright",
+        "sha256": "b143053a4862ab354831487b5f8bd31dc9ffdc589d15de9d9c764332a0209796",
+        "licenseLabels": [
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "apt",
+      "version": "2.6.1",
+      "source": "apt",
+      "notice": {
+        "path": "image-licenses/apt-copyright",
+        "sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "BSD-3-clause",
+          "Expat"
+        ]
+      }
+    },
+    {
+      "name": "base-files",
+      "version": "12.4+deb12u15",
+      "source": "base-files",
+      "notice": {
+        "path": "image-licenses/base-files-copyright",
+        "sha256": "fd7e4aae7e7b05f217bcf2d02322825c360e66c52c4c2f1b28d784d6297a1c23",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "base-passwd",
+      "version": "3.6.1",
+      "source": "base-passwd",
+      "notice": {
+        "path": "image-licenses/base-passwd-copyright",
+        "sha256": "0f1cde79bd80a75f9029ae9a8c252b642223027ef36f6989c63a8230aae576a7",
+        "licenseLabels": [
+          "GPL-2",
+          "public-domain"
+        ]
+      }
+    },
+    {
+      "name": "bash",
+      "version": "5.2.15-2+b13",
+      "source": "bash",
+      "notice": {
+        "path": "image-licenses/bash-copyright",
+        "sha256": "06319d84c3e5ed096036f6a9310a030c7e84e50dff2b8a6792285c83ec0ada73",
+        "licenseLabels": [
+          "GPL-3+",
+          "GPL-3+ with Bison exception",
+          "GPL-2+",
+          "GFDL-NIV-1.3",
+          "Latex2e",
+          "BSD-4-clause-UC and MIT-like",
+          "BSD-4-clause-UC",
+          "MIT-like",
+          "permissive"
+        ]
+      }
+    },
+    {
+      "name": "bsdutils",
+      "version": "1:2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/bsdutils-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "coreutils",
+      "version": "9.1-1",
+      "source": "coreutils",
+      "notice": {
+        "path": "image-licenses/coreutils-copyright",
+        "sha256": "24e86c5ca53d6bfd8e0c47988160daa62d10a74997fe11f651e1d9533c78bff6",
+        "licenseLabels": [
+          "GPL-3+",
+          "GPL-3+ and BSD-4-clause-UC",
+          "BSD-4-clause-UC",
+          "GPL-3+ and ISC",
+          "ISC",
+          "FSFULLR",
+          "GFDL-NIV-1.3"
+        ]
+      }
+    },
+    {
+      "name": "dash",
+      "version": "0.5.12-2",
+      "source": "dash",
+      "notice": {
+        "path": "image-licenses/dash-copyright",
+        "sha256": "d98c53f281321baad38164aa9ae6e368a9253be6ec51bd26a759b5e72b326f4a",
+        "licenseLabels": [
+          "BSD-3-Clause",
+          "public-domain",
+          "GPL-2+",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "debconf",
+      "version": "1.5.82",
+      "source": "debconf",
+      "notice": {
+        "path": "image-licenses/debconf-copyright",
+        "sha256": "57163c71bd8a5289660892827dd0dfaa7fef47f89deedc9dc6711ced7d0a28d7",
+        "licenseLabels": [
+          "BSD-2-clause"
+        ]
+      }
+    },
+    {
+      "name": "debian-archive-keyring",
+      "version": "2023.3+deb12u2",
+      "source": "debian-archive-keyring",
+      "notice": {
+        "path": "image-licenses/debian-archive-keyring-copyright",
+        "sha256": "b32aecaae84643700a33bc9ee83fa9b36938d35aa7b61b5042092eca77ddb732",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "debianutils",
+      "version": "5.7-0.5~deb12u1",
+      "source": "debianutils",
+      "notice": {
+        "path": "image-licenses/debianutils-copyright",
+        "sha256": "fd2d797e208bcfb713510e47a89867191180943e1167d44c2acd8ff1b88e5c10",
+        "licenseLabels": [
+          "GPL-2+",
+          "public-domain",
+          "SMAIL-GPL"
+        ]
+      }
+    },
+    {
+      "name": "diffutils",
+      "version": "1:3.8-4",
+      "source": "diffutils",
+      "notice": {
+        "path": "image-licenses/diffutils-copyright",
+        "sha256": "8654d7cc7cdae1f31bb67a3ce5bf35d512c0bdfffd071df757edc54153cc7930",
+        "licenseLabels": [
+          "GPL-3+",
+          "FSFULLR",
+          "GPL-3+ and FSFULLR",
+          "LGPL-2.1+",
+          "GPL-3+ with autoconf exception",
+          "GPL-3+ with texinfo exception",
+          "LGPL-2.0+",
+          "GPL-2+",
+          "X11",
+          "FSFAP",
+          "GFDL-NIV-1.3",
+          "LGPL-3.0+",
+          "LGPL-3.0+ or GPL-2+",
+          "public-domain"
+        ]
+      }
+    },
+    {
+      "name": "dpkg",
+      "version": "1.21.23",
+      "source": "dpkg",
+      "notice": {
+        "path": "image-licenses/dpkg-copyright",
+        "sha256": "7442bdadcd44e818fddd786057db07639cc68225c389c7c240d3bb3984b05173",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "BSD-2-clause",
+          "public-domain-s-s-d"
+        ]
+      }
+    },
+    {
+      "name": "e2fsprogs",
+      "version": "1.47.0-2+b2",
+      "source": "e2fsprogs",
+      "notice": {
+        "path": "image-licenses/e2fsprogs-copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2",
+          "BSD-3-Clause",
+          "Apache-2",
+          "ISC",
+          "GPL or MIT-US-export",
+          "Kazlib",
+          "Latex2e",
+          "GPL-2+ with Texinfo exception"
+        ]
+      }
+    },
+    {
+      "name": "findutils",
+      "version": "4.9.0-4",
+      "source": "findutils",
+      "notice": {
+        "path": "image-licenses/findutils-copyright",
+        "sha256": "8fbcc77ed31f480a85654e9b6d1d25cbb95b62e9dc5159ae1565bca684c3e1dc",
+        "licenseLabels": [
+          "GFDL-NIV-1.3+",
+          "GPL-3+",
+          "FSFAP",
+          "GPL-3+ with Autoconf-data exception",
+          "FSFULLR",
+          "GPL-2+ with Autoconf-data exception",
+          "GPL-2+",
+          "X11",
+          "public-domain",
+          "GPL with automake exception",
+          "LGPL-2.1+",
+          "LGPL-2+",
+          "LGPL-3+",
+          "BSD-3-clause and/or GPL-3+",
+          "GPL-3+ with Bison-2.2 exception",
+          "LGPL-3",
+          "ISC and/or LGPL-2.1+",
+          "BSD-3-clause",
+          "ISC"
+        ]
+      }
+    },
+    {
+      "name": "gcc-12-base:amd64",
+      "version": "12.2.0-14+deb12u1",
+      "source": "gcc-12",
+      "notice": {
+        "path": "image-licenses/gcc-12-base_amd64-copyright",
+        "sha256": "da8191658b3452ce9caf31638ba61dab31a38c619fa39df119812e050f592fd3",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "gpgv",
+      "version": "2.2.40-1.1+deb12u2",
+      "source": "gnupg2",
+      "notice": {
+        "path": "image-licenses/gpgv-copyright",
+        "sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54",
+        "licenseLabels": [
+          "GPL-3+",
+          "permissive",
+          "LGPL-2.1+",
+          "Expat",
+          "GPL-3+ or BSD-3-clause",
+          "LGPL-3+",
+          "RFC-Reference",
+          "TinySCHEME",
+          "CC0-1.0",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "grep",
+      "version": "3.8-5",
+      "source": "grep",
+      "notice": {
+        "path": "image-licenses/grep-copyright",
+        "sha256": "42d9b4d610396b1e8d1303dcb9487af3f5a2d2709623cf03a04cf76acdf6c5e3",
+        "licenseLabels": [
+          "GPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "gzip",
+      "version": "1.12-1",
+      "source": "gzip",
+      "notice": {
+        "path": "image-licenses/gzip-copyright",
+        "sha256": "1ca5dd5098fe2e1c0f0d05196f5b3da8b414a807702e6ca8b536eb5fd3059130",
+        "licenseLabels": [
+          "GPL-3+",
+          "GFDL-1.3+-no-invariant",
+          "FSF-manpages"
+        ]
+      }
+    },
+    {
+      "name": "hostname",
+      "version": "3.23+nmu1",
+      "source": "hostname",
+      "notice": {
+        "path": "image-licenses/hostname-copyright",
+        "sha256": "94189fc5a9a7b7224d96e1a0cfdfe9be0df2018b04bf21d591627ab96b30cad1",
+        "licenseLabels": [
+          "GPL-2"
+        ]
+      }
+    },
+    {
+      "name": "init-system-helpers",
+      "version": "1.65.2+deb12u1",
+      "source": "init-system-helpers",
+      "notice": {
+        "path": "image-licenses/init-system-helpers-copyright",
+        "sha256": "7534601cc4fa513804d16490359f5831e7b6a1212da3bbf948bebdd4c8799783",
+        "licenseLabels": [
+          "BSD-3-clause",
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libacl1:amd64",
+      "version": "2.3.1-3",
+      "source": "acl",
+      "notice": {
+        "path": "image-licenses/libacl1_amd64-copyright",
+        "sha256": "9a2dfb4a5abc7e84be2cc41f1089be665519c9409549296f6c19de57ab1d37c2",
+        "licenseLabels": [
+          "GPL-2+",
+          "LGPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libapt-pkg6.0:amd64",
+      "version": "2.6.1",
+      "source": "apt",
+      "notice": {
+        "path": "image-licenses/libapt-pkg6.0_amd64-copyright",
+        "sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "BSD-3-clause",
+          "Expat"
+        ]
+      }
+    },
+    {
+      "name": "libattr1:amd64",
+      "version": "1:2.5.1-4",
+      "source": "attr",
+      "notice": {
+        "path": "image-licenses/libattr1_amd64-copyright",
+        "sha256": "0cbec745d85ea775450b2d54fac55277197f429e52d611f72852ed420450620e",
+        "licenseLabels": [
+          "GPL-2+",
+          "LGPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libaudit-common",
+      "version": "1:3.0.9-1",
+      "source": "audit",
+      "notice": {
+        "path": "image-licenses/libaudit-common-copyright",
+        "sha256": "6c7011e93f643b112c4cc3622131e28a30477afad6c4f5efe466b13aa7f603cc",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2.1"
+        ]
+      }
+    },
+    {
+      "name": "libaudit1:amd64",
+      "version": "1:3.0.9-1",
+      "source": "audit",
+      "notice": {
+        "path": "image-licenses/libaudit1_amd64-copyright",
+        "sha256": "6c7011e93f643b112c4cc3622131e28a30477afad6c4f5efe466b13aa7f603cc",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2.1"
+        ]
+      }
+    },
+    {
+      "name": "libblkid1:amd64",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/libblkid1_amd64-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libbz2-1.0:amd64",
+      "version": "1.0.8-5+b1",
+      "source": "bzip2",
+      "notice": {
+        "path": "image-licenses/libbz2-1.0_amd64-copyright",
+        "sha256": "832ed535ff3c3d025a8d2348eb1b697b89addcf2eaadbc17650262040b9145e2",
+        "licenseLabels": [
+          "BSD-variant",
+          "GPL-2"
+        ]
+      }
+    },
+    {
+      "name": "libc-bin",
+      "version": "2.36-9+deb12u14",
+      "source": "glibc",
+      "notice": {
+        "path": "image-licenses/libc-bin-copyright",
+        "sha256": "40c7e1f2118531f038ca22999bd976901254e1bc5cd1b0f0211bdd064c599987",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libc6:amd64",
+      "version": "2.36-9+deb12u14",
+      "source": "glibc",
+      "notice": {
+        "path": "image-licenses/libc6_amd64-copyright",
+        "sha256": "40c7e1f2118531f038ca22999bd976901254e1bc5cd1b0f0211bdd064c599987",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libcap-ng0:amd64",
+      "version": "0.8.3-1+b3",
+      "source": "libcap-ng",
+      "notice": {
+        "path": "image-licenses/libcap-ng0_amd64-copyright",
+        "sha256": "49b5db19990a3e3cc1a9ed716aed231f6f3c1c217e58f62ae4dc2818c6d3e9cc",
+        "licenseLabels": [
+          "LGPL-2.1+",
+          "GPL-2+",
+          "GPL-3"
+        ]
+      }
+    },
+    {
+      "name": "libcap2:amd64",
+      "version": "1:2.66-4+deb12u3+b1",
+      "source": "libcap2",
+      "notice": {
+        "path": "image-licenses/libcap2_amd64-copyright",
+        "sha256": "e60a5642e12e340060e4e519a65b2eb0330be2917854841c644e36268f607d54",
+        "licenseLabels": [
+          "BSD-3-clause or GPL-2",
+          "BSD-3-clause or GPL-2+",
+          "BSD-3-clause",
+          "GPL-2",
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libcom-err2:amd64",
+      "version": "1.47.0-2+b2",
+      "source": "e2fsprogs",
+      "notice": {
+        "path": "image-licenses/libcom-err2_amd64-copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2",
+          "BSD-3-Clause",
+          "Apache-2",
+          "ISC",
+          "GPL or MIT-US-export",
+          "Kazlib",
+          "Latex2e",
+          "GPL-2+ with Texinfo exception"
+        ]
+      }
+    },
+    {
+      "name": "libcrypt1:amd64",
+      "version": "1:4.4.33-2",
+      "source": "libxcrypt",
+      "notice": {
+        "path": "image-licenses/libcrypt1_amd64-copyright",
+        "sha256": "5a5e7ca0e9f3f9679977e3a3e9ede45ad92885a3297ea78e766979f9866c5a16",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libdb5.3:amd64",
+      "version": "5.3.28+dfsg2-1",
+      "source": "db5.3",
+      "notice": {
+        "path": "image-licenses/libdb5.3_amd64-copyright",
+        "sha256": "8b53da37d73289d9df7317b3a2dbe16491f1fa9fec8b77b86d69704b40ce2c26",
+        "licenseLabels": [
+          "Sleepycat and BSD-3-clause",
+          "Sleepycat",
+          "BSD-3-clause",
+          "Ms-PL",
+          "GPL or Artistic",
+          "X11",
+          "MIT-old",
+          "TCL-like",
+          "BSD-3-clause-fjord",
+          "GPL-3",
+          "zlib",
+          "Artistic or BSD-3-clause",
+          "GPL"
+        ]
+      }
+    },
+    {
+      "name": "libdebconfclient0:amd64",
+      "version": "0.270",
+      "source": "cdebconf",
+      "notice": {
+        "path": "image-licenses/libdebconfclient0_amd64-copyright",
+        "sha256": "cf63099896d1c0f6529c41b8d95738e6fea342ffba609187d339c4f38ce36ecc",
+        "licenseLabels": [
+          "BSD-2-Clause",
+          "GPL-2+",
+          "BSD-2-clause"
+        ]
+      }
+    },
+    {
+      "name": "libext2fs2:amd64",
+      "version": "1.47.0-2+b2",
+      "source": "e2fsprogs",
+      "notice": {
+        "path": "image-licenses/libext2fs2_amd64-copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2",
+          "BSD-3-Clause",
+          "Apache-2",
+          "ISC",
+          "GPL or MIT-US-export",
+          "Kazlib",
+          "Latex2e",
+          "GPL-2+ with Texinfo exception"
+        ]
+      }
+    },
+    {
+      "name": "libffi8:amd64",
+      "version": "3.4.4-1",
+      "source": "libffi",
+      "notice": {
+        "path": "image-licenses/libffi8_amd64-copyright",
+        "sha256": "f83d2ecba1ea4d99957e81c50bebbd076a128194288a3ec22cc8ccdb77c43087",
+        "licenseLabels": [
+          "Expat",
+          "X11",
+          "GPL-2+",
+          "GPL-3+",
+          "MPL-1.1 or GPL-2+ or LGPL-2.1+",
+          "public-domain",
+          "GPL"
+        ]
+      }
+    },
+    {
+      "name": "libgcc-s1:amd64",
+      "version": "12.2.0-14+deb12u1",
+      "source": "gcc-12",
+      "notice": {
+        "path": "image-licenses/libgcc-s1_amd64-copyright",
+        "sha256": "da8191658b3452ce9caf31638ba61dab31a38c619fa39df119812e050f592fd3",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libgcrypt20:amd64",
+      "version": "1.10.1-3+deb12u1",
+      "source": "libgcrypt20",
+      "notice": {
+        "path": "image-licenses/libgcrypt20_amd64-copyright",
+        "sha256": "95db2f9da663f2bfe2aabe9c72fce9d6c9ae767b912f397d7823f50bd55a1a7d",
+        "licenseLabels": [
+          "Most of the package is licensed under the GNU Lesser General Public"
+        ]
+      }
+    },
+    {
+      "name": "libgmp10:amd64",
+      "version": "2:6.2.1+dfsg1-1.1",
+      "source": "gmp",
+      "notice": {
+        "path": "image-licenses/libgmp10_amd64-copyright",
+        "sha256": "7d366aef5ba325150246de1d7820c4c9926cd27ca61a69948492b26cd3b61601",
+        "licenseLabels": [
+          "GPL-2+ or LGPL-3+",
+          "GPL-3+",
+          "GPL-3+ with Bison exception",
+          "GPL-2+",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libgnutls30:amd64",
+      "version": "3.7.9-2+deb12u7",
+      "source": "gnutls28",
+      "notice": {
+        "path": "image-licenses/libgnutls30_amd64-copyright",
+        "sha256": "bb7e5c24b3e27bbba5671dd710d159a0066833bda4caa1d55d8027ffed539337",
+        "licenseLabels": [
+          "The main library is licensed under GNU Lesser",
+          "* Redistribution and use in source and binary forms, with or without",
+          "Public domain.",
+          "CC0 license",
+          "Expat",
+          "Apache-2.0",
+          "LGPLv3+_or_GPLv2+",
+          "LGPLv2.1+",
+          "based on Russian standard GOST 28147-89",
+          "GPLv3+",
+          "BSD-3-Clause"
+        ]
+      }
+    },
+    {
+      "name": "libgpg-error0:amd64",
+      "version": "1.46-1",
+      "source": "libgpg-error",
+      "notice": {
+        "path": "image-licenses/libgpg-error0_amd64-copyright",
+        "sha256": "8760fd36efa1d7186f8769d4e76a3e678045b94d54465bf6f2db5eb871c7c27f",
+        "licenseLabels": [
+          "LGPL-2.1+",
+          "LGPL-2.1+ or BSD-3-clause",
+          "g10-permissive",
+          "GPL-3+",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "libhogweed6:amd64",
+      "version": "3.8.1-2",
+      "source": "nettle",
+      "notice": {
+        "path": "image-licenses/libhogweed6_amd64-copyright",
+        "sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93",
+        "licenseLabels": [
+          "LGPL-3+ or GPL-2+",
+          "LGPL-2+",
+          "Expat",
+          "GPL-3+",
+          "GPL-2+",
+          "GPL-3+ with Autoconf exception",
+          "public-domain",
+          "GPL-2",
+          "GAP",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libidn2-0:amd64",
+      "version": "2.3.3-1+b1",
+      "source": "libidn2",
+      "notice": {
+        "path": "image-licenses/libidn2-0_amd64-copyright",
+        "sha256": "41702469f28e8ff406345e3d1dd0c741f11bdfca319264f67036efd6aaa79e4b",
+        "licenseLabels": [
+          "GPL-3+",
+          "LGPL-3+ or GPL-2+",
+          "Unicode",
+          "GPL-2+",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "liblz4-1:amd64",
+      "version": "1.9.4-1",
+      "source": "lz4",
+      "notice": {
+        "path": "image-licenses/liblz4-1_amd64-copyright",
+        "sha256": "d3be0f43fe14da244f97c451bbae789c0acf868612598a69f5f22a289abeca40",
+        "licenseLabels": [
+          "BSD-2-clause",
+          "GPL-2+",
+          "GPL-2+ or BSD-2-clause"
+        ]
+      }
+    },
+    {
+      "name": "liblzma5:amd64",
+      "version": "5.4.1-1+deb12u2",
+      "source": "xz-utils",
+      "notice": {
+        "path": "image-licenses/liblzma5_amd64-copyright",
+        "sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8",
+        "licenseLabels": [
+          "Different licenses apply to different files in this package. Here",
+          "PD",
+          "probably-PD",
+          "GPL-2+",
+          "LGPL-2.1+",
+          "permissive-fsf",
+          "Autoconf",
+          "permissive-nowarranty",
+          "GPL-2",
+          "none",
+          "config-h",
+          "noderivs",
+          "PD-debian"
+        ]
+      }
+    },
+    {
+      "name": "libmd0:amd64",
+      "version": "1.0.4-2",
+      "source": "libmd",
+      "notice": {
+        "path": "image-licenses/libmd0_amd64-copyright",
+        "sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6",
+        "licenseLabels": [
+          "BSD-3-clause",
+          "BSD-3-clause-Aaron-D-Gifford",
+          "BSD-2-clause",
+          "BSD-2-clause-NetBSD",
+          "ISC",
+          "Beerware",
+          "public-domain-md4",
+          "public-domain-md5",
+          "public-domain-sha1"
+        ]
+      }
+    },
+    {
+      "name": "libmount1:amd64",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/libmount1_amd64-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libnettle8:amd64",
+      "version": "3.8.1-2",
+      "source": "nettle",
+      "notice": {
+        "path": "image-licenses/libnettle8_amd64-copyright",
+        "sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93",
+        "licenseLabels": [
+          "LGPL-3+ or GPL-2+",
+          "LGPL-2+",
+          "Expat",
+          "GPL-3+",
+          "GPL-2+",
+          "GPL-3+ with Autoconf exception",
+          "public-domain",
+          "GPL-2",
+          "GAP",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libp11-kit0:amd64",
+      "version": "0.24.1-2",
+      "source": "p11-kit",
+      "notice": {
+        "path": "image-licenses/libp11-kit0_amd64-copyright",
+        "sha256": "ed139379f7c874f0ee75f3ddcc2e01091dd828d84ee1a0bdff6a1c5673ee6e58",
+        "licenseLabels": [
+          "BSD-3-Clause",
+          "permissive-like-automake-output",
+          "ISC",
+          "ISC+IBM",
+          "LGPL-2.1+",
+          "Apache-2.0",
+          "same-as-rest-of-p11kit"
+        ]
+      }
+    },
+    {
+      "name": "libpam-modules:amd64",
+      "version": "1.5.2-6+deb12u2",
+      "source": "pam",
+      "notice": {
+        "path": "image-licenses/libpam-modules_amd64-copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+        "licenseLabels": [
+          "BSD-3-clause or GPL",
+          "GPL-2",
+          "GPL-2+",
+          "GPL-3",
+          "GPL-3+ with Bison exception",
+          "BSD-tcp_wrappers",
+          "LGPL-2+",
+          "public-domain",
+          "Beerware"
+        ]
+      }
+    },
+    {
+      "name": "libpam-modules-bin",
+      "version": "1.5.2-6+deb12u2",
+      "source": "pam",
+      "notice": {
+        "path": "image-licenses/libpam-modules-bin-copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+        "licenseLabels": [
+          "BSD-3-clause or GPL",
+          "GPL-2",
+          "GPL-2+",
+          "GPL-3",
+          "GPL-3+ with Bison exception",
+          "BSD-tcp_wrappers",
+          "LGPL-2+",
+          "public-domain",
+          "Beerware"
+        ]
+      }
+    },
+    {
+      "name": "libpam-runtime",
+      "version": "1.5.2-6+deb12u2",
+      "source": "pam",
+      "notice": {
+        "path": "image-licenses/libpam-runtime-copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+        "licenseLabels": [
+          "BSD-3-clause or GPL",
+          "GPL-2",
+          "GPL-2+",
+          "GPL-3",
+          "GPL-3+ with Bison exception",
+          "BSD-tcp_wrappers",
+          "LGPL-2+",
+          "public-domain",
+          "Beerware"
+        ]
+      }
+    },
+    {
+      "name": "libpam0g:amd64",
+      "version": "1.5.2-6+deb12u2",
+      "source": "pam",
+      "notice": {
+        "path": "image-licenses/libpam0g_amd64-copyright",
+        "sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+        "licenseLabels": [
+          "BSD-3-clause or GPL",
+          "GPL-2",
+          "GPL-2+",
+          "GPL-3",
+          "GPL-3+ with Bison exception",
+          "BSD-tcp_wrappers",
+          "LGPL-2+",
+          "public-domain",
+          "Beerware"
+        ]
+      }
+    },
+    {
+      "name": "libpcre2-8-0:amd64",
+      "version": "10.42-1+deb12u2",
+      "source": "pcre2",
+      "notice": {
+        "path": "image-licenses/libpcre2-8-0_amd64-copyright",
+        "sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38",
+        "licenseLabels": [
+          "BSD-3-clause-Cambridge with BINARY LIBRARY-LIKE PACKAGES exception",
+          "BSD-3-clause",
+          "X11",
+          "BSD-2-clause",
+          "public-domain"
+        ]
+      }
+    },
+    {
+      "name": "libseccomp2:amd64",
+      "version": "2.5.4-1+deb12u1",
+      "source": "libseccomp",
+      "notice": {
+        "path": "image-licenses/libseccomp2_amd64-copyright",
+        "sha256": "6da0653a365b80ab31478dbfe9e7c358e80d58b6d2b52b4e16b4dbb42d7d9f5c",
+        "licenseLabels": [
+          "LGPL-2.1"
+        ]
+      }
+    },
+    {
+      "name": "libselinux1:amd64",
+      "version": "3.4-1+b6",
+      "source": "libselinux",
+      "notice": {
+        "path": "image-licenses/libselinux1_amd64-copyright",
+        "sha256": "641806738b0c6a3d03168c2649e6b94205198bb66cd557e6bae3a20b71c9bb0b",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libsemanage-common",
+      "version": "3.4-1",
+      "source": "libsemanage",
+      "notice": {
+        "path": "image-licenses/libsemanage-common-copyright",
+        "sha256": "e00e6a86c598f9e24ced0180a70a5f2f2e45e133d93adf2b17ce8a06ce4b1b51",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libsemanage2:amd64",
+      "version": "3.4-1+b5",
+      "source": "libsemanage",
+      "notice": {
+        "path": "image-licenses/libsemanage2_amd64-copyright",
+        "sha256": "e00e6a86c598f9e24ced0180a70a5f2f2e45e133d93adf2b17ce8a06ce4b1b51",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libsepol2:amd64",
+      "version": "3.4-2.1",
+      "source": "libsepol",
+      "notice": {
+        "path": "image-licenses/libsepol2_amd64-copyright",
+        "sha256": "78d2a34606a0302057ec499a3b3c07bcbc43ca334064ce4c80891a0f69c8f6c6",
+        "licenseLabels": [
+          "LGPL-2.1+",
+          "Zlib",
+          "GPL-2",
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libsmartcols1:amd64",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/libsmartcols1_amd64-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libss2:amd64",
+      "version": "1.47.0-2+b2",
+      "source": "e2fsprogs",
+      "notice": {
+        "path": "image-licenses/libss2_amd64-copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2",
+          "BSD-3-Clause",
+          "Apache-2",
+          "ISC",
+          "GPL or MIT-US-export",
+          "Kazlib",
+          "Latex2e",
+          "GPL-2+ with Texinfo exception"
+        ]
+      }
+    },
+    {
+      "name": "libstdc++6:amd64",
+      "version": "12.2.0-14+deb12u1",
+      "source": "gcc-12",
+      "notice": {
+        "path": "image-licenses/libstdc++6_amd64-copyright",
+        "sha256": "da8191658b3452ce9caf31638ba61dab31a38c619fa39df119812e050f592fd3",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libsystemd0:amd64",
+      "version": "252.39-1~deb12u2",
+      "source": "systemd",
+      "notice": {
+        "path": "image-licenses/libsystemd0_amd64-copyright",
+        "sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3",
+        "licenseLabels": [
+          "LGPL-2.1+",
+          "CC0-1.0",
+          "GPL-2 with Linux-syscall-note exception",
+          "Expat",
+          "public-domain",
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libtasn1-6:amd64",
+      "version": "4.19.0-2+deb12u1",
+      "source": "libtasn1-6",
+      "notice": {
+        "path": "image-licenses/libtasn1-6_amd64-copyright",
+        "sha256": "572ad60ad184d8f52c6dc66d83a61a68f137db560b3452ce00588c9ecf128a65",
+        "licenseLabels": []
+      }
+    },
+    {
+      "name": "libtinfo6:amd64",
+      "version": "6.4-4",
+      "source": "ncurses",
+      "notice": {
+        "path": "image-licenses/libtinfo6_amd64-copyright",
+        "sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e",
+        "licenseLabels": [
+          "MIT/X11",
+          "X11",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "libudev1:amd64",
+      "version": "252.39-1~deb12u2",
+      "source": "systemd",
+      "notice": {
+        "path": "image-licenses/libudev1_amd64-copyright",
+        "sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3",
+        "licenseLabels": [
+          "LGPL-2.1+",
+          "CC0-1.0",
+          "GPL-2 with Linux-syscall-note exception",
+          "Expat",
+          "public-domain",
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "libunistring2:amd64",
+      "version": "1.0-2",
+      "source": "libunistring",
+      "notice": {
+        "path": "image-licenses/libunistring2_amd64-copyright",
+        "sha256": "0035f89e5317f3cec389383e8727788521b0fde3e75cea881fa0e92e1d48cb57",
+        "licenseLabels": [
+          "LGPL-3+ or GPL-2+",
+          "FreeSoftware",
+          "GPL-3+ or GFDL-1.2+",
+          "GPL-3+",
+          "GPL-2+",
+          "GPL-2+ with distribution exception",
+          "MIT",
+          "LGPL-3+",
+          "GFDL-1.2+"
+        ]
+      }
+    },
+    {
+      "name": "libuuid1:amd64",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/libuuid1_amd64-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "libxxhash0:amd64",
+      "version": "0.8.1-1",
+      "source": "xxhash",
+      "notice": {
+        "path": "image-licenses/libxxhash0_amd64-copyright",
+        "sha256": "a123c93b07e781919ae996276ac02bb1c8b19dfde88176cd1240ab277c14a4ce",
+        "licenseLabels": [
+          "BSD-2-clause",
+          "GPL-2"
+        ]
+      }
+    },
+    {
+      "name": "libzstd1:amd64",
+      "version": "1.5.4+dfsg2-5",
+      "source": "libzstd",
+      "notice": {
+        "path": "image-licenses/libzstd1_amd64-copyright",
+        "sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49",
+        "licenseLabels": [
+          "BSD-3-clause or GPL-2",
+          "zlib",
+          "Expat",
+          "GPL-2",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "login",
+      "version": "1:4.13+dfsg1-1+deb12u2",
+      "source": "shadow",
+      "notice": {
+        "path": "image-licenses/login-copyright",
+        "sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5",
+        "licenseLabels": [
+          "BSD-3-clause",
+          "GPL-1",
+          "GPL-2+",
+          "public-domain"
+        ]
+      }
+    },
+    {
+      "name": "logsave",
+      "version": "1.47.0-2+b2",
+      "source": "e2fsprogs",
+      "notice": {
+        "path": "image-licenses/logsave-copyright",
+        "sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+        "licenseLabels": [
+          "GPL-2",
+          "LGPL-2",
+          "BSD-3-Clause",
+          "Apache-2",
+          "ISC",
+          "GPL or MIT-US-export",
+          "Kazlib",
+          "Latex2e",
+          "GPL-2+ with Texinfo exception"
+        ]
+      }
+    },
+    {
+      "name": "mawk",
+      "version": "1.3.4.20200120-3.1",
+      "source": "mawk",
+      "notice": {
+        "path": "image-licenses/mawk-copyright",
+        "sha256": "167d04422f2fdf76ab565878c23be8ba0c2ebb2c57a5dac0a5a59ccd27e747a5",
+        "licenseLabels": [
+          "GPL-2",
+          "X11",
+          "CC-BY-3.0"
+        ]
+      }
+    },
+    {
+      "name": "mount",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/mount-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "ncurses-base",
+      "version": "6.4-4",
+      "source": "ncurses",
+      "notice": {
+        "path": "image-licenses/ncurses-base-copyright",
+        "sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e",
+        "licenseLabels": [
+          "MIT/X11",
+          "X11",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "ncurses-bin",
+      "version": "6.4-4",
+      "source": "ncurses",
+      "notice": {
+        "path": "image-licenses/ncurses-bin-copyright",
+        "sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e",
+        "licenseLabels": [
+          "MIT/X11",
+          "X11",
+          "BSD-3-clause"
+        ]
+      }
+    },
+    {
+      "name": "passwd",
+      "version": "1:4.13+dfsg1-1+deb12u2",
+      "source": "shadow",
+      "notice": {
+        "path": "image-licenses/passwd-copyright",
+        "sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5",
+        "licenseLabels": [
+          "BSD-3-clause",
+          "GPL-1",
+          "GPL-2+",
+          "public-domain"
+        ]
+      }
+    },
+    {
+      "name": "perl-base",
+      "version": "5.36.0-7+deb12u4",
+      "source": "perl",
+      "notice": {
+        "path": "image-licenses/perl-base-copyright",
+        "sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d",
+        "licenseLabels": [
+          "GPL-1+ or Artistic",
+          "Expat",
+          "REGCOMP, and GPL-1+ or Artistic",
+          "GPL-3+-WITH-BISON-EXCEPTION",
+          "Unicode",
+          "GPL-1+ or Artistic, and Unicode",
+          "BZIP",
+          "ZLIB",
+          "Artistic",
+          "GPL-2+ or Artistic",
+          "Expat or GPL-1+ or Artistic",
+          "RRA-KEEP-THIS-NOTICE",
+          "BSD-3-clause-with-weird-numbering",
+          "CC0-1.0",
+          "TEXT-TABS",
+          "GPL-1+ or Artistic, and BSD-4-clause-POWERDOG",
+          "GPL-1+ or Artistic, and BSD-3-clause-GENERIC",
+          "BSD-3-clause",
+          "SDBM-PUBLIC-DOMAIN",
+          "DONT-CHANGE-THE-GPL",
+          "GPL-1+ or Artistic or Artistic-dist",
+          "Artistic-dist",
+          "Artistic or GPL-1+ or Artistic-dist",
+          "GPL-1+ or Artistic, and Expat",
+          "LGPL-2.1",
+          "GPL-1+",
+          "GPL-2+",
+          "Artistic-2",
+          "BSD-4-clause-POWERDOG",
+          "BSD-3-clause-GENERIC",
+          "REGCOMP",
+          "HSIEH-DERIVATIVE",
+          "HSIEH-BSD"
+        ]
+      }
+    },
+    {
+      "name": "sed",
+      "version": "4.9-1+deb12u1",
+      "source": "sed",
+      "notice": {
+        "path": "image-licenses/sed-copyright",
+        "sha256": "719320e425e8e6da53a55e0fcfa2f2ed9b1332cea16abd65321bd651b2a88568",
+        "licenseLabels": [
+          "GPL-3+",
+          "X11",
+          "GFDL-NIV-1.3+",
+          "GPL-3+ and ISC",
+          "ISC",
+          "BSD-4-clause-UC",
+          "BSL-1",
+          "pcre"
+        ]
+      }
+    },
+    {
+      "name": "sysvinit-utils",
+      "version": "3.06-4",
+      "source": "sysvinit",
+      "notice": {
+        "path": "image-licenses/sysvinit-utils-copyright",
+        "sha256": "ad7cb339e58a88918a883d553ca236795191f027e158788a8b33f747ff502fb2",
+        "licenseLabels": [
+          "GPL-2.0+",
+          "GPL-3.0",
+          "GPL-2.0"
+        ]
+      }
+    },
+    {
+      "name": "tar",
+      "version": "1.34+dfsg-1.2+deb12u1",
+      "source": "tar",
+      "notice": {
+        "path": "image-licenses/tar-copyright",
+        "sha256": "bea61e0c172868e07845cf50423f97f093a9a46de167dbbe333a38be610c8e00",
+        "licenseLabels": [
+          "GPL-3+",
+          "GPL-3+ with Bison exception",
+          "LGPL-3+",
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "tzdata",
+      "version": "2026c-0+deb12u1",
+      "source": "tzdata",
+      "notice": {
+        "path": "image-licenses/tzdata-copyright",
+        "sha256": "cb61132bc0fc7b26ef5a82ee18b2fb644a1362f4f286ed980ff22e408471f59a",
+        "licenseLabels": [
+          "public-domain"
+        ]
+      }
+    },
+    {
+      "name": "usr-is-merged",
+      "version": "37~deb12u1",
+      "source": "usrmerge",
+      "notice": {
+        "path": "image-licenses/usr-is-merged-copyright",
+        "sha256": "9836bfe2ef94505bbf29701e8c90799ab1a5fd966d26d60d019a822cdbf3d61a",
+        "licenseLabels": [
+          "GPL-2+"
+        ]
+      }
+    },
+    {
+      "name": "util-linux",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/util-linux-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "util-linux-extra",
+      "version": "2.38.1-5+deb12u3",
+      "source": "util-linux",
+      "notice": {
+        "path": "image-licenses/util-linux-extra-copyright",
+        "sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+        "licenseLabels": [
+          "GPL-2+",
+          "GPL-2",
+          "GPL-3+",
+          "public-domain",
+          "BSD-4-clause",
+          "MIT",
+          "BSD-3-clause",
+          "BSLA",
+          "LGPL-2+",
+          "LGPL-2.1+",
+          "LGPL",
+          "LGPL-3+"
+        ]
+      }
+    },
+    {
+      "name": "zlib1g:amd64",
+      "version": "1:1.2.13.dfsg-1",
+      "source": "zlib",
+      "notice": {
+        "path": "image-licenses/zlib1g_amd64-copyright",
+        "sha256": "9e5b96d63773a5d177ba264254390f792be07e41748ebd94730981c6cac31cc6",
+        "licenseLabels": [
+          "Zlib"
+        ]
+      }
+    }
+  ],
+  "missingCopyright": [],
+  "extras": [
+    {
+      "name": "node",
+      "path": "image-licenses/node-LICENSE",
+      "sha256": "c738ae413cf561f174e34f6961f8ca458aae2369a73640dda6234c629b98bcc4"
+    },
+    {
+      "name": "sharp",
+      "path": "image-licenses/sharp-LICENSE",
+      "sha256": "73ba74dfaa520b49a401b5d21459a8523a146f3b7518a833eea5efa85130bf68"
+    }
+  ],
+  "npmComponents": 174,
+  "npmScope": "All package manifests physically present after npm prune, including bundled/extraneous files. Relationships are not inferred; this is not a lockfile dependency graph."
+}

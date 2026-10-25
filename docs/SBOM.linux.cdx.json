@@ -1,0 +1,4188 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:e21db24f-7904-49e8-ac00-a4ed80cfc292",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-23T13:16:20.955Z",
+    "tools": [
+      {
+        "vendor": "ContentProof",
+        "name": "installed-image-inventory",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "@adraffy/ens-normalize",
+      "version": "1.11.1",
+      "bom-ref": "node_modules/@adraffy/ens-normalize",
+      "purl": "pkg:npm/%40adraffy/ens-normalize@1.11.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@adraffy/ens-normalize"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "fbc5b24e52963420ec80bdfb24d21e783428afe612545ce4dd8e4a43a2f6dbd7"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/ajv-compiler",
+      "version": "4.0.7",
+      "bom-ref": "node_modules/@fastify/ajv-compiler",
+      "purl": "pkg:npm/%40fastify/ajv-compiler@4.0.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/ajv-compiler"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "94a92686520ae1ddee2d8aaa0f69b6df4794f2b39c5dd98ab47cafe104dd5d3a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/busboy",
+      "version": "3.2.4",
+      "bom-ref": "node_modules/@fastify/busboy",
+      "purl": "pkg:npm/%40fastify/busboy@3.2.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/busboy"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "90c6652169a7bc4a0c617e1d6091b9d127385ffe48a10843d9a65b1749be472c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/cors",
+      "version": "11.3.1",
+      "bom-ref": "node_modules/@fastify/cors",
+      "purl": "pkg:npm/%40fastify/cors@11.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/cors"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "00baf40ebdb6586a0dd48446d9ef591e7262e2457b56f76b3b0c6de6cdad45fd"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/deepmerge",
+      "version": "3.2.4",
+      "bom-ref": "node_modules/@fastify/deepmerge",
+      "purl": "pkg:npm/%40fastify/deepmerge@3.2.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/deepmerge"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "fa027a5223da5b2d7fe1ccfe2de29507c4efda832845562acf0ca94f921cf861"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/error",
+      "version": "4.2.1",
+      "bom-ref": "node_modules/@fastify/error",
+      "purl": "pkg:npm/%40fastify/error@4.2.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/error"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "69f9cc4a23595b805ad1ec13a5559e368160408c5936596500042ad3da63917d"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/fast-json-stringify-compiler",
+      "version": "5.1.1",
+      "bom-ref": "node_modules/@fastify/fast-json-stringify-compiler",
+      "purl": "pkg:npm/%40fastify/fast-json-stringify-compiler@5.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/fast-json-stringify-compiler"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c69a31cbfe8fd682fb2d08f20e7c11b1704772c2dab839511c99b21cd89d9421"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/forwarded",
+      "version": "3.1.2",
+      "bom-ref": "node_modules/@fastify/forwarded",
+      "purl": "pkg:npm/%40fastify/forwarded@3.1.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/forwarded"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "995a9bb292a388e208c2ee2f7840c7a89bc087abf27b53a2f76a29084c908e2a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/merge-json-schemas",
+      "version": "0.2.2",
+      "bom-ref": "node_modules/@fastify/merge-json-schemas",
+      "purl": "pkg:npm/%40fastify/merge-json-schemas@0.2.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/merge-json-schemas"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "09027a040470097d76dd485286ee8c2d7fbfd609b292c82a716de2e49d77e794"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/multipart",
+      "version": "9.4.0",
+      "bom-ref": "node_modules/@fastify/multipart",
+      "purl": "pkg:npm/%40fastify/multipart@9.4.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/multipart"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "594d2570035d289f7e0ab326f7004d63477669ae24728b66679196b55e7a3076"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fastify-plugin",
+      "version": "5.1.0",
+      "bom-ref": "node_modules/@fastify/multipart/node_modules/fastify-plugin",
+      "purl": "pkg:npm/fastify-plugin@5.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/multipart/node_modules/fastify-plugin"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "cedfb935b8b86ea88952387d7cf135f0d1fbecc76af0c64c3acf5cd3d03541f2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/proxy-addr",
+      "version": "5.1.2",
+      "bom-ref": "node_modules/@fastify/proxy-addr",
+      "purl": "pkg:npm/%40fastify/proxy-addr@5.1.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/proxy-addr"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "1cb5768b81dde67200ebe035e040c4a6310dc2b0b8777de8e6c2761a4616299c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@fastify/rate-limit",
+      "version": "10.3.0",
+      "bom-ref": "node_modules/@fastify/rate-limit",
+      "purl": "pkg:npm/%40fastify/rate-limit@10.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/rate-limit"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "43ddec8ce9d57c118c95aa62199c3f3460f3eac33c0a69a5b251cae82367008d"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fastify-plugin",
+      "version": "5.1.0",
+      "bom-ref": "node_modules/@fastify/rate-limit/node_modules/fastify-plugin",
+      "purl": "pkg:npm/fastify-plugin@5.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@fastify/rate-limit/node_modules/fastify-plugin"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "cedfb935b8b86ea88952387d7cf135f0d1fbecc76af0c64c3acf5cd3d03541f2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@img/colour",
+      "version": "1.1.0",
+      "bom-ref": "node_modules/@img/colour",
+      "purl": "pkg:npm/%40img/colour@1.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@img/colour"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "bc38c5097693ed53b91c32f35fb0a52569736c7854ba2eb6d080f3252071f75c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@img/sharp-libvips-linux-x64",
+      "version": "1.2.4",
+      "bom-ref": "node_modules/@img/sharp-libvips-linux-x64",
+      "purl": "pkg:npm/%40img/sharp-libvips-linux-x64@1.2.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-3.0-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@img/sharp-libvips-linux-x64"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d45b80cb79391bbfe21e935e599d30c545b62f5c255d96fee2cb7b6f0b171f5a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "version": "1.2.4",
+      "bom-ref": "node_modules/@img/sharp-libvips-linuxmusl-x64",
+      "purl": "pkg:npm/%40img/sharp-libvips-linuxmusl-x64@1.2.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-3.0-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@img/sharp-libvips-linuxmusl-x64"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c1d9859ac56602e92577bbaee7d4acd788d12e92fa8c715440aa2c6c683107cb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@img/sharp-linux-x64",
+      "version": "0.34.5",
+      "bom-ref": "node_modules/@img/sharp-linux-x64",
+      "purl": "pkg:npm/%40img/sharp-linux-x64@0.34.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@img/sharp-linux-x64"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "049911809cbabb4496f28fbf6e6b4d854fff7b8699a225dcec779d81a72e9781"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@img/sharp-linuxmusl-x64",
+      "version": "0.34.5",
+      "bom-ref": "node_modules/@img/sharp-linuxmusl-x64",
+      "purl": "pkg:npm/%40img/sharp-linuxmusl-x64@0.34.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@img/sharp-linuxmusl-x64"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "2616e8b2d6371f498f3cc8cc687bc3b9c4b8181cfbd058b6c97775d9205559c3"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@lukeed/ms",
+      "version": "2.0.2",
+      "bom-ref": "node_modules/@lukeed/ms",
+      "purl": "pkg:npm/%40lukeed/ms@2.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@lukeed/ms"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "19c29d8502cb18fee42d5b9fc768c5bca5c7c4ff539fc2b22b8017814398acad"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@noble/ciphers",
+      "version": "1.3.0",
+      "bom-ref": "node_modules/@noble/ciphers",
+      "purl": "pkg:npm/%40noble/ciphers@1.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@noble/ciphers"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d4fd92770dc4d2af454902aaea3e16f053e6f8b48ad2d95c016c662a5f1be2d4"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@noble/curves",
+      "version": "1.9.0",
+      "bom-ref": "node_modules/@noble/curves",
+      "purl": "pkg:npm/%40noble/curves@1.9.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@noble/curves"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3d2670188c9e042faf02cf3a3b94d0e1fcdd32d8e51aca2d1215708ad4497a9a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@noble/hashes",
+      "version": "1.8.0",
+      "bom-ref": "node_modules/@noble/hashes",
+      "purl": "pkg:npm/%40noble/hashes@1.8.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@noble/hashes"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "7c4657c5e616c22cefa2691cc30670824a639dc71d97bf83925be2d239dc60e3"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@openzeppelin/contracts",
+      "version": "5.2.0",
+      "bom-ref": "node_modules/@openzeppelin/contracts",
+      "purl": "pkg:npm/%40openzeppelin/contracts@5.2.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@openzeppelin/contracts"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a0b136852c4d36c261ed32f0f29aa78e7feadeeec8ded5667cf8b2f1566a2f44"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@pinojs/redact",
+      "version": "0.4.0",
+      "bom-ref": "node_modules/@pinojs/redact",
+      "purl": "pkg:npm/%40pinojs/redact@0.4.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@pinojs/redact"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "65c7d0c0ccc98f05bfe3be4a220463ceaf718467d348133db07d04ec80ab093c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@scure/base",
+      "version": "1.2.6",
+      "bom-ref": "node_modules/@scure/base",
+      "purl": "pkg:npm/%40scure/base@1.2.6",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@scure/base"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "55662e9d984231ed6fb2b4b36e4acb96075b44f8b1478c8bd51c6b03a888c25c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@scure/bip32",
+      "version": "1.7.0",
+      "bom-ref": "node_modules/@scure/bip32",
+      "purl": "pkg:npm/%40scure/bip32@1.7.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@scure/bip32"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "8820d4ea4671d2a3b08165b343a06a8c073134bfa673650c68543bded6180a35"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@scure/bip39",
+      "version": "1.6.0",
+      "bom-ref": "node_modules/@scure/bip39",
+      "purl": "pkg:npm/%40scure/bip39@1.6.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@scure/bip39"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "151886550749a81544445ab42710109941fb643a0ba8c674253d99fefa2c1b24"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/d3-color",
+      "version": "3.1.3",
+      "bom-ref": "node_modules/@types/d3-color",
+      "purl": "pkg:npm/%40types/d3-color@3.1.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/d3-color"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "409ac013405caa33f42ed394d92b357fde96b950ee4d5bbfb7de8d6dbebe6f37"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/d3-drag",
+      "version": "3.0.7",
+      "bom-ref": "node_modules/@types/d3-drag",
+      "purl": "pkg:npm/%40types/d3-drag@3.0.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/d3-drag"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "8d2695642e6eaf9da61aac7a1044aa23b42167ddd3eae3bbad7ed4a422e997a4"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/d3-interpolate",
+      "version": "3.0.4",
+      "bom-ref": "node_modules/@types/d3-interpolate",
+      "purl": "pkg:npm/%40types/d3-interpolate@3.0.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/d3-interpolate"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "751bcbf0a81dc0b5e507e535e29d9c27b7132b74b3b950594391f9eea0b46a76"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/d3-selection",
+      "version": "3.0.12",
+      "bom-ref": "node_modules/@types/d3-selection",
+      "purl": "pkg:npm/%40types/d3-selection@3.0.12",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/d3-selection"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "4f8dc655fb0f7d3f90d70679c91771dc3bb822ee73d86f22aaf1f389d67fa021"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/d3-transition",
+      "version": "3.0.9",
+      "bom-ref": "node_modules/@types/d3-transition",
+      "purl": "pkg:npm/%40types/d3-transition@3.0.9",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/d3-transition"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "cd880a8ea664d612d89e8e33b3abd7511e655306e72567ef31e26e760ce6d052"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/d3-zoom",
+      "version": "3.0.9",
+      "bom-ref": "node_modules/@types/d3-zoom",
+      "purl": "pkg:npm/%40types/d3-zoom@3.0.9",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/d3-zoom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "8b276af293ac92af38ef572572e8ad78f0d632c05cf2ddd8b40c7e498f90cd6e"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/react",
+      "version": "19.3.0",
+      "bom-ref": "node_modules/@types/react",
+      "purl": "pkg:npm/%40types/react@19.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/react"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "505c0df4cd73d6a02c946bd9b81451584bd9c83ea72d75cff9b826efceaa19c2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/react-dom",
+      "version": "19.3.0",
+      "bom-ref": "node_modules/@types/react-dom",
+      "purl": "pkg:npm/%40types/react-dom@19.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@types/react-dom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "4a2052bb362c34f1d39cfe0818b6fe01a9f988b609e8b7e4832aff7dbf2f7180"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@xyflow/react",
+      "version": "12.12.0",
+      "bom-ref": "node_modules/@xyflow/react",
+      "purl": "pkg:npm/%40xyflow/react@12.12.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@xyflow/react"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "92d35db4281bb51c2b755b26b9d479957273d48e8c17e5d7faceab704aee58cb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@xyflow/system",
+      "version": "0.0.83",
+      "bom-ref": "node_modules/@xyflow/system",
+      "purl": "pkg:npm/%40xyflow/system@0.0.83",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/@xyflow/system"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d93a60ac2e8c633349515a84f576a9629a40de4f501508dda026f4c43c91533b"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "abitype",
+      "version": "1.2.3",
+      "bom-ref": "node_modules/abitype",
+      "purl": "pkg:npm/abitype@1.2.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/abitype"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "fe6fd08cbe8b817ef097fce3f9180325ae1020d4b685905171bbe96cb55e45a0"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "abstract-logging",
+      "version": "2.0.1",
+      "bom-ref": "node_modules/abstract-logging",
+      "purl": "pkg:npm/abstract-logging@2.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/abstract-logging"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "33f6c3a8ec869b76fba4173cd688d1865ae74d746cc3f3b5d85abf9f40ab4038"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ajv",
+      "version": "8.20.0",
+      "bom-ref": "node_modules/ajv",
+      "purl": "pkg:npm/ajv@8.20.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ajv"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "1f9033ee5a6515e7d76938b7072941862d1ed228a6879cc7fe10cdeb75107989"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-uri",
+      "version": "3.1.9",
+      "bom-ref": "node_modules/ajv/node_modules/fast-uri",
+      "purl": "pkg:npm/fast-uri@3.1.9",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ajv/node_modules/fast-uri"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "06728ad83c4df979c6895d089452622441e34afe9b1c24584e2acac8d94a2876"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ajv-formats",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/ajv-formats",
+      "purl": "pkg:npm/ajv-formats@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ajv-formats"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "402fb4bcfa457f0226813f3976ac42839dd619907c075c108efba8600d7edb69"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "atomic-sleep",
+      "version": "1.0.0",
+      "bom-ref": "node_modules/atomic-sleep",
+      "purl": "pkg:npm/atomic-sleep@1.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/atomic-sleep"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a9cf82d72a5f240fe051ad0db112bed603df981074928291680d221b96a92d5e"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "avvio",
+      "version": "9.3.1",
+      "bom-ref": "node_modules/avvio",
+      "purl": "pkg:npm/avvio@9.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/avvio"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0e484d3cbd5ec55485f5db304a844eada599309e24942cb1efb6298c12a2202e"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "canonicalize",
+      "version": "2.1.0",
+      "bom-ref": "node_modules/canonicalize",
+      "purl": "pkg:npm/canonicalize@2.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/canonicalize"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "1c0de6f2742e9c61f8983c38093cca1b14564a7a982ef96cb04a60328b5653a8"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "classcat",
+      "version": "5.0.5",
+      "bom-ref": "node_modules/classcat",
+      "purl": "pkg:npm/classcat@5.0.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/classcat"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3deeb9533e14dcea3a8a998716e3eb7d08496f71a1c699266aec7a5d39c09126"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "command-exists",
+      "version": "1.2.9",
+      "bom-ref": "node_modules/command-exists",
+      "purl": "pkg:npm/command-exists@1.2.9",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/command-exists"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c0acc936f656bc164946c40c8283b18d53f33cf316569adaf8b6eee195d512cf"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "commander",
+      "version": "8.3.0",
+      "bom-ref": "node_modules/commander",
+      "purl": "pkg:npm/commander@8.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/commander"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "5f5944b2fa479bf68003ca239940f8ad9cae893ddfc3662272a1855dfb9ce4db"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cookie",
+      "version": "2.0.1",
+      "bom-ref": "node_modules/cookie",
+      "purl": "pkg:npm/cookie@2.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/cookie"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "75cd16a27d7d0018a08dcbe46eef242f5cbaae4c47efd95979c77ddad59e5fac"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "csstype",
+      "version": "3.2.3",
+      "bom-ref": "node_modules/csstype",
+      "purl": "pkg:npm/csstype@3.2.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/csstype"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c818b74a9bc1556488b7ec2a65399224738f6619228f9a6491c5c02ca91f849e"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-color",
+      "version": "3.1.0",
+      "bom-ref": "node_modules/d3-color",
+      "purl": "pkg:npm/d3-color@3.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-color"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3de1c3c467f09ffc0372c8b765f8981535c22e1d9f944d17a35ee37df1033516"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-dispatch",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/d3-dispatch",
+      "purl": "pkg:npm/d3-dispatch@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-dispatch"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6d9bb49819ec45e2187304df1b25e731c246d646cd2eb5aa2fe06e6c9cc7ad84"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-drag",
+      "version": "3.0.0",
+      "bom-ref": "node_modules/d3-drag",
+      "purl": "pkg:npm/d3-drag@3.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-drag"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "daecac22c0dfda72109fdd75e3817a15082a6f58d9bdc1380d77e06f7f44c218"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-ease",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/d3-ease",
+      "purl": "pkg:npm/d3-ease@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-ease"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "393518c7886852c8cdeae42a54065c3ba54eddb701dd2da98c6d048f92cbc91c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-interpolate",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/d3-interpolate",
+      "purl": "pkg:npm/d3-interpolate@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-interpolate"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3e2ce33f9d7072b6bfedbae949c1df546e187994e44b6f4b3795abeb63914613"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-selection",
+      "version": "3.0.0",
+      "bom-ref": "node_modules/d3-selection",
+      "purl": "pkg:npm/d3-selection@3.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-selection"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "adbb86f6d93c60a3789af9be6f6cdc40127ce15f63187a1e94c46fe26b0776ec"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-timer",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/d3-timer",
+      "purl": "pkg:npm/d3-timer@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-timer"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d2b6cb2200728b60982aa30c4caf787f0bda2c066ef9176282ab54ba656403cb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-transition",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/d3-transition",
+      "purl": "pkg:npm/d3-transition@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-transition"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6ee7ce4fb0e59ee6be93d5a5fb33db804add32dbb3afb6c753659b99084fde84"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "d3-zoom",
+      "version": "3.0.0",
+      "bom-ref": "node_modules/d3-zoom",
+      "purl": "pkg:npm/d3-zoom@3.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/d3-zoom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0adc45c5f4e5830e8c639c3953761e73e9493f1cb5f3dea6abc2249adb8ff2a9"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dequal",
+      "version": "2.0.3",
+      "bom-ref": "node_modules/dequal",
+      "purl": "pkg:npm/dequal@2.0.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/dequal"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a41e430cd3d990700f1544c5ffece552449ab758d778fa34ad5458cf6ec35d6b"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "bom-ref": "node_modules/detect-libc",
+      "purl": "pkg:npm/detect-libc@2.1.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/detect-libc"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "ee88e5b954fdf3a8480b1d01ef767d68d8ca2c6da269f58c5cf1c5550e9aa2a7"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "eventemitter3",
+      "version": "5.0.1",
+      "bom-ref": "node_modules/eventemitter3",
+      "purl": "pkg:npm/eventemitter3@5.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/eventemitter3"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "7ad3766f9fede4b61775a7da6a64bf68e1d73e6298e54ac03425279df2f2d1eb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-decode-uri-component",
+      "version": "1.0.1",
+      "bom-ref": "node_modules/fast-decode-uri-component",
+      "purl": "pkg:npm/fast-decode-uri-component@1.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fast-decode-uri-component"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "ebdbe738d2ac40389ca3b8b60ae72c248e7293bb5fcffcf2ada794877c0de54a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "bom-ref": "node_modules/fast-deep-equal",
+      "purl": "pkg:npm/fast-deep-equal@3.1.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fast-deep-equal"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a5c63940db0260739be9e2ac67f3aac268df4db5770420ee4e34e493152f97d2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-json-stringify",
+      "version": "7.1.3",
+      "bom-ref": "node_modules/fast-json-stringify",
+      "purl": "pkg:npm/fast-json-stringify@7.1.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fast-json-stringify"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d76d219b9c7f7a06851fbeff5bb26db18f1e061709e2664b6c33b0a31f3b2cfc"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-querystring",
+      "version": "1.1.2",
+      "bom-ref": "node_modules/fast-querystring",
+      "purl": "pkg:npm/fast-querystring@1.1.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fast-querystring"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "59c73b5528880f45dc59746065b35e5b56cefbecbf893bfe607cbf0f96ef89b7"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fast-uri",
+      "version": "4.2.3",
+      "bom-ref": "node_modules/fast-uri",
+      "purl": "pkg:npm/fast-uri@4.2.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fast-uri"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6225bc609df1f93477aaeb391e87caab843fa86403afacda3b339b66db46e0b3"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fastify",
+      "version": "5.12.7",
+      "bom-ref": "node_modules/fastify",
+      "purl": "pkg:npm/fastify@5.12.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fastify"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e62c8961246f029b70e19cb3523fdd07a78cb0f622951cf2b539dc94d7d65beb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "semver",
+      "version": "7.8.5",
+      "bom-ref": "node_modules/fastify/node_modules/semver",
+      "purl": "pkg:npm/semver@7.8.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fastify/node_modules/semver"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "7c94cb7f2a53c27b20d76386ec144c062894dbcc909cfabd0f728c37874b1776"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fastify-plugin",
+      "version": "6.0.1",
+      "bom-ref": "node_modules/fastify-plugin",
+      "purl": "pkg:npm/fastify-plugin@6.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fastify-plugin"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3c527d393e3c710d93d11a3a0b072fc4a7c91ffc43af48b7ac6a0101d66d9c3c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fastq",
+      "version": "1.20.3",
+      "bom-ref": "node_modules/fastq",
+      "purl": "pkg:npm/fastq@1.20.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fastq"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0e01425632d69b4e148bcde6edcfddce0f39889cb4ea70a4d52bbf622b44e553"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fflate",
+      "version": "0.8.3",
+      "bom-ref": "node_modules/fflate",
+      "purl": "pkg:npm/fflate@0.8.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/fflate"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "5922d8150b307bc0e4e441491c779c45379e9913d348848fca8d5cf02db4d134"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "find-my-way",
+      "version": "9.10.0",
+      "bom-ref": "node_modules/find-my-way",
+      "purl": "pkg:npm/find-my-way@9.10.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/find-my-way"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "13a65cc40d946c68a0cc03a80208d37c5e5f46c57f12ddbc32599e84e99f804b"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "follow-redirects",
+      "version": "1.16.1",
+      "bom-ref": "node_modules/follow-redirects",
+      "purl": "pkg:npm/follow-redirects@1.16.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/follow-redirects"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3b63e57223c63eff7b1c9ecdcd6615af8c6fcbaa9d436e949f02acf2b6dbe588"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ganache",
+      "version": "7.9.2",
+      "bom-ref": "node_modules/ganache",
+      "purl": "pkg:npm/ganache@7.9.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "8b257b4387f16176518127b21943fb451c1aad4c8f586eb8d7a3caa00333fa29"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@trufflesuite/bigint-buffer",
+      "version": "1.1.10",
+      "bom-ref": "node_modules/ganache/node_modules/@trufflesuite/bigint-buffer",
+      "purl": "pkg:npm/%40trufflesuite/bigint-buffer@1.1.10",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@trufflesuite/bigint-buffer"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "ebbfeccecf5072008f0107f7c9e11a3a5c5b89b7cb4777b01106da880590fe0f"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "node-gyp-build",
+      "version": "4.4.0",
+      "bom-ref": "node_modules/ganache/node_modules/@trufflesuite/bigint-buffer/node_modules/node-gyp-build",
+      "purl": "pkg:npm/node-gyp-build@4.4.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@trufflesuite/bigint-buffer/node_modules/node-gyp-build"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0c04ec35fb23893259d88a37e53f06925ba9c686f13804dee48642990ecfaa48"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@trufflesuite/uws-js-unofficial",
+      "version": "20.30.0-unofficial.0",
+      "bom-ref": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial",
+      "purl": "pkg:npm/%40trufflesuite/uws-js-unofficial@20.30.0-unofficial.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "48f0f874eeee0571e0d5795914b9153390af2e3066e38f3e03fa2ca5c7c84274"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bufferutil",
+      "version": "4.0.7",
+      "bom-ref": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/node_modules/bufferutil",
+      "purl": "pkg:npm/bufferutil@4.0.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/node_modules/bufferutil"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "4f859028cec82c6871a6ee1626066307fbd179f97741799e70d4bd8e2d69d431"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "utf-8-validate",
+      "version": "6.0.3",
+      "bom-ref": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/node_modules/utf-8-validate",
+      "purl": "pkg:npm/utf-8-validate@6.0.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/node_modules/utf-8-validate"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0ff6cdcf9d082f59ba92b2886438504b8ff4879dd5fd64a95da0312d98787d4c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ws",
+      "version": "8.13.0",
+      "bom-ref": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/node_modules/ws",
+      "purl": "pkg:npm/ws@8.13.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/node_modules/ws"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9878ff3ab7d933d5f517b6b51ad73e1895d64154b45926a51e90bdaa7fdf4055"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/bn.js",
+      "version": "5.1.0",
+      "bom-ref": "node_modules/ganache/node_modules/@types/bn.js",
+      "purl": "pkg:npm/%40types/bn.js@5.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@types/bn.js"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "732ab256b184f27572dd53d3d7cd3d44d209381bc3d221274ef250eb2fc3ec9a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/lru-cache",
+      "version": "5.1.1",
+      "bom-ref": "node_modules/ganache/node_modules/@types/lru-cache",
+      "purl": "pkg:npm/%40types/lru-cache@5.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@types/lru-cache"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6606e02b26ca594443b43fc787896bc000b1cc138026e1b63140578de91400d9"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/node",
+      "version": "17.0.0",
+      "bom-ref": "node_modules/ganache/node_modules/@types/node",
+      "purl": "pkg:npm/%40types/node@17.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@types/node"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6ac33e4b65e4172e4e63c400ab55d7cb1a7ec77da7a7ef672c4bc49448623ab6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@types/seedrandom",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/ganache/node_modules/@types/seedrandom",
+      "purl": "pkg:npm/%40types/seedrandom@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/@types/seedrandom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "cac6a953aeb9a1c02e1555bd28dbfdf47999f10506d46cdf23d20d872d2ede5d"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "abstract-level",
+      "version": "1.0.3",
+      "bom-ref": "node_modules/ganache/node_modules/abstract-level",
+      "purl": "pkg:npm/abstract-level@1.0.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/abstract-level"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "b9a2ab3093641ad0655332901fe466eccb8d40519829195ed9ab099d8f53ec3f"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "level-supports",
+      "version": "4.0.1",
+      "bom-ref": "node_modules/ganache/node_modules/abstract-level/node_modules/level-supports",
+      "purl": "pkg:npm/level-supports@4.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/abstract-level/node_modules/level-supports"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9439f3542546a518d5e3d2160300ae9c8e7baa4fc7004e3179545b00084a9a52"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "abstract-leveldown",
+      "version": "7.2.0",
+      "bom-ref": "node_modules/ganache/node_modules/abstract-leveldown",
+      "purl": "pkg:npm/abstract-leveldown@7.2.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/abstract-leveldown"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9637403bb3b028a9073b492021592ab8a9ee79afcd5c5094da79c579f554577a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "async",
+      "version": "2.6.4",
+      "bom-ref": "node_modules/ganache/node_modules/async",
+      "purl": "pkg:npm/async@2.6.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/async"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "180dfef0fd278a5225cdd10d1f352041129c337a961fb32ee53437fa85de76c1"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "async-eventemitter",
+      "version": "0.2.4",
+      "bom-ref": "node_modules/ganache/node_modules/async-eventemitter",
+      "purl": "pkg:npm/async-eventemitter@0.2.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/async-eventemitter"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6d0776015e9adf1dac57ec32c87ed1db0dc9c88a7497dbf2557f857e40849fee"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "base64-js",
+      "version": "1.5.1",
+      "bom-ref": "node_modules/ganache/node_modules/base64-js",
+      "purl": "pkg:npm/base64-js@1.5.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/base64-js"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9758f3ab8c45e07bb9a368e32f9a8b3729623bbf47cbbb205b32d674ab2a91f0"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "brorand",
+      "version": "1.1.0",
+      "bom-ref": "node_modules/ganache/node_modules/brorand",
+      "purl": "pkg:npm/brorand@1.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/brorand"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6a271145938041a44e1fb46558a4df1a70d2d82ebab42652c488a0e42c86c6de"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "buffer",
+      "version": "6.0.3",
+      "bom-ref": "node_modules/ganache/node_modules/buffer",
+      "purl": "pkg:npm/buffer@6.0.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/buffer"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "5b105ac0abbf5985cbe62ad28a34032d85c7ef623e0eb01f39441b0feb419004"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bufferutil",
+      "version": "4.0.5",
+      "bom-ref": "node_modules/ganache/node_modules/bufferutil",
+      "purl": "pkg:npm/bufferutil@4.0.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/bufferutil"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "80eb2820b0ad8cb86cf7df1efb32984e08e4b1b9ba30e7ffd67a20963890183b"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "catering",
+      "version": "2.1.1",
+      "bom-ref": "node_modules/ganache/node_modules/catering",
+      "purl": "pkg:npm/catering@2.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/catering"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e95c13eb8bdb9e634de5c789469eb425f166d206d6e9694ba22c3d87dafa3bdf"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "elliptic",
+      "version": "6.5.4",
+      "bom-ref": "node_modules/ganache/node_modules/elliptic",
+      "purl": "pkg:npm/elliptic@6.5.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/elliptic"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a407add4af0e17550e7213076cfbf205d0014df8792826d696d64edd05f04824"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "bn.js",
+      "version": "4.12.0",
+      "bom-ref": "node_modules/ganache/node_modules/elliptic/node_modules/bn.js",
+      "purl": "pkg:npm/bn.js@4.12.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/elliptic/node_modules/bn.js"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "70972cd2e3d7446720e8954694e30d11f47d5068a9f134c5e66f75df112eb565"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "emittery",
+      "version": "0.10.0",
+      "bom-ref": "node_modules/ganache/node_modules/emittery",
+      "purl": "pkg:npm/emittery@0.10.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/emittery"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "5206c8dab02d5a83ef52c065934705393917f3a77acd045d3b0abcef77b32d7c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hash.js",
+      "version": "1.1.7",
+      "bom-ref": "node_modules/ganache/node_modules/hash.js",
+      "purl": "pkg:npm/hash.js@1.1.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/hash.js"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "b97d8c10d1ed1b3355394a6a0cf9846716e39e87d32ee13e7edd56195b9b8950"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hmac-drbg",
+      "version": "1.0.1",
+      "bom-ref": "node_modules/ganache/node_modules/hmac-drbg",
+      "purl": "pkg:npm/hmac-drbg@1.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/hmac-drbg"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "51686d06bb1a95461ccd713a0dbbdbd7af6f4c1738d172345598660f19af3e8e"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ieee754",
+      "version": "1.2.1",
+      "bom-ref": "node_modules/ganache/node_modules/ieee754",
+      "purl": "pkg:npm/ieee754@1.2.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/ieee754"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a8004b9c8dffe2e1b01a058ecf968a5d50beabcabc43cc98c655184ba6afc050"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "inherits",
+      "version": "2.0.4",
+      "bom-ref": "node_modules/ganache/node_modules/inherits",
+      "purl": "pkg:npm/inherits@2.0.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/inherits"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "be645800bc94fd8de29c8ae91690549b316cc437100108aeea7b2f347693cc80"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "is-buffer",
+      "version": "2.0.5",
+      "bom-ref": "node_modules/ganache/node_modules/is-buffer",
+      "purl": "pkg:npm/is-buffer@2.0.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/is-buffer"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "79325587cb7a4e56a8bb43343b6cc98ebed94f36f79ec9f10baad9deef52bfda"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "keccak",
+      "version": "3.0.2",
+      "bom-ref": "node_modules/ganache/node_modules/keccak",
+      "purl": "pkg:npm/keccak@3.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/keccak"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "92b9ce5d2f9483b23a3fcfa7e850508686031f7f49234f4bf80f56f70d1fbfa6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "level-concat-iterator",
+      "version": "3.1.0",
+      "bom-ref": "node_modules/ganache/node_modules/level-concat-iterator",
+      "purl": "pkg:npm/level-concat-iterator@3.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/level-concat-iterator"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "737b257a5a980a54ce585d305184cf7523ef9531df143fd5b01c58f282745215"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "level-supports",
+      "version": "2.1.0",
+      "bom-ref": "node_modules/ganache/node_modules/level-supports",
+      "purl": "pkg:npm/level-supports@2.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/level-supports"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "7e60ea35e66f13820da22805b5c4887a81ea23b5816feacbe79742a5475d5a54"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "level-transcoder",
+      "version": "1.0.1",
+      "bom-ref": "node_modules/ganache/node_modules/level-transcoder",
+      "purl": "pkg:npm/level-transcoder@1.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/level-transcoder"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "84aaba1f3d5d18bd11be33a3e8cd81e8ea983f69e85bfe06f3a8fb5baa900db2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "leveldown",
+      "version": "6.1.0",
+      "bom-ref": "node_modules/ganache/node_modules/leveldown",
+      "purl": "pkg:npm/leveldown@6.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/leveldown"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "04284273c51f96abf4ba22bc3b8b5d786620b1455f289b86da4691c74346090b"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "lodash",
+      "version": "4.17.21",
+      "bom-ref": "node_modules/ganache/node_modules/lodash",
+      "purl": "pkg:npm/lodash@4.17.21",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/lodash"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "8e41b07c744a0de0d2c1c23ed41418ecb0849abb56395d28802e601b4730d7c2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimalistic-assert",
+      "version": "1.0.1",
+      "bom-ref": "node_modules/ganache/node_modules/minimalistic-assert",
+      "purl": "pkg:npm/minimalistic-assert@1.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/minimalistic-assert"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9a8e71d52eadcfae410d56953bf873e4089903001c872f964fc529fe906b8335"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "minimalistic-crypto-utils",
+      "version": "1.0.1",
+      "bom-ref": "node_modules/ganache/node_modules/minimalistic-crypto-utils",
+      "purl": "pkg:npm/minimalistic-crypto-utils@1.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/minimalistic-crypto-utils"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "4a73d64162b21429dde273e9565a986bab12abd253487b9ba6b2c5c2a124ffc6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "module-error",
+      "version": "1.0.2",
+      "bom-ref": "node_modules/ganache/node_modules/module-error",
+      "purl": "pkg:npm/module-error@1.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/module-error"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c6a284e744ee2286d321d0d2494e34e19ccabb028ce73ee5aa487a64a386de07"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "napi-macros",
+      "version": "2.0.0",
+      "bom-ref": "node_modules/ganache/node_modules/napi-macros",
+      "purl": "pkg:npm/napi-macros@2.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/napi-macros"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "4b94483b37e1d82e198bcaad8610711d7dce86ab0b55b27421c4eab7b640d3d4"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "node-addon-api",
+      "version": "2.0.2",
+      "bom-ref": "node_modules/ganache/node_modules/node-addon-api",
+      "purl": "pkg:npm/node-addon-api@2.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/node-addon-api"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "489cf6237a199aa008fc93b51c0ad443aae9add13f9e82d6d9f29b2c1d3a4403"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "node-gyp-build",
+      "version": "4.5.0",
+      "bom-ref": "node_modules/ganache/node_modules/node-gyp-build",
+      "purl": "pkg:npm/node-gyp-build@4.5.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/node-gyp-build"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "997a8d2536892af84f4bd4507ea382f9a10f0f86f1125ce360f0943c4797c74a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "queue-microtask",
+      "version": "1.2.3",
+      "bom-ref": "node_modules/ganache/node_modules/queue-microtask",
+      "purl": "pkg:npm/queue-microtask@1.2.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/queue-microtask"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e6d153dda4c9aee863e7d8cc59419d4eb94b9829277cda9289a40f96efb36c11"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "readable-stream",
+      "version": "3.6.0",
+      "bom-ref": "node_modules/ganache/node_modules/readable-stream",
+      "purl": "pkg:npm/readable-stream@3.6.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/readable-stream"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9845678a9df52230f257033394f3c7ccd7de8aa5799160dbb40ab45c25cd8199"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safe-buffer",
+      "version": "5.2.1",
+      "bom-ref": "node_modules/ganache/node_modules/safe-buffer",
+      "purl": "pkg:npm/safe-buffer@5.2.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/safe-buffer"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e4018fdbfe625433371f48274fee26f520bbe865e0d8c85bf3aa07424134b90c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "secp256k1",
+      "version": "4.0.3",
+      "bom-ref": "node_modules/ganache/node_modules/secp256k1",
+      "purl": "pkg:npm/secp256k1@4.0.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/secp256k1"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e4bd7a46179b5ee25e3c581b75ae8486ed154d67ae6746327c0f511a653930b6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "string_decoder",
+      "version": "1.3.0",
+      "bom-ref": "node_modules/ganache/node_modules/string_decoder",
+      "purl": "pkg:npm/string_decoder@1.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/string_decoder"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "31984c85cd4f3df0aa75075acdec98c25961496897d1f46d04ed4a701f129c54"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "utf-8-validate",
+      "version": "5.0.7",
+      "bom-ref": "node_modules/ganache/node_modules/utf-8-validate",
+      "purl": "pkg:npm/utf-8-validate@5.0.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/utf-8-validate"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "86a69eb364bbbd384ae222151249b8f62fee50b38ca9f58cc88914eef10a95a3"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "util-deprecate",
+      "version": "1.0.2",
+      "bom-ref": "node_modules/ganache/node_modules/util-deprecate",
+      "purl": "pkg:npm/util-deprecate@1.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ganache/node_modules/util-deprecate"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "7bba467f049074957e693fc06672848b040c38fa071b6eed8690f5fbe090a8b2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ipaddr.js",
+      "version": "2.5.0",
+      "bom-ref": "node_modules/ipaddr.js",
+      "purl": "pkg:npm/ipaddr.js@2.5.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ipaddr.js"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "a124e0548d4c1f9e2c694807947ef527fa7f7f3012474d54c1df3cc21a5ddb9c"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "isows",
+      "version": "1.0.7",
+      "bom-ref": "node_modules/isows",
+      "purl": "pkg:npm/isows@1.0.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/isows"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "b639ba3903501c3e04df42d82106ada7576f6e99b4c1367c0a365289f2adef91"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "js-sha3",
+      "version": "0.8.0",
+      "bom-ref": "node_modules/js-sha3",
+      "purl": "pkg:npm/js-sha3@0.8.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/js-sha3"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "ba89a2a2189db98b8b9a4134ec744737f2ed3e26ee59357279a170faf93709dd"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "json-schema-ref-resolver",
+      "version": "3.0.1",
+      "bom-ref": "node_modules/json-schema-ref-resolver",
+      "purl": "pkg:npm/json-schema-ref-resolver@3.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/json-schema-ref-resolver"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "68fa69c889635218988c1cf0e9fd47683b78979a90fdaef86cce62172ccd6789"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "bom-ref": "node_modules/json-schema-traverse",
+      "purl": "pkg:npm/json-schema-traverse@1.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/json-schema-traverse"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "156fb24af02845c190701360d06dfda35ef04282e34a734289ea9535ad9819ae"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "light-my-request",
+      "version": "6.8.0",
+      "bom-ref": "node_modules/light-my-request",
+      "purl": "pkg:npm/light-my-request@6.8.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/light-my-request"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "78633a5c025a36862900dc628280851db95ab0f8edb8db65d9717595f1e57f41"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "memorystream",
+      "version": "0.3.1",
+      "bom-ref": "node_modules/memorystream",
+      "purl": "pkg:npm/memorystream@0.3.1",
+      "licenses": [],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/memorystream"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "dfff650f4c6c600aaaeeab58f50429325a94ebcbe28a0689c3c4b545b270b76a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "on-exit-leak-free",
+      "version": "2.1.2",
+      "bom-ref": "node_modules/on-exit-leak-free",
+      "purl": "pkg:npm/on-exit-leak-free@2.1.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/on-exit-leak-free"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "6c6b59245a8a357ba616afd6e1b9bee4caf9c0ed01a21d8f81108ee120d76eb5"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "os-tmpdir",
+      "version": "1.0.2",
+      "bom-ref": "node_modules/os-tmpdir",
+      "purl": "pkg:npm/os-tmpdir@1.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/os-tmpdir"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "708404ce657fbad57a4804f3ccfcda877e038b981fb9675aebcc57de91e95694"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ox",
+      "version": "0.14.57",
+      "bom-ref": "node_modules/ox",
+      "purl": "pkg:npm/ox@0.14.57",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ox"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "45611ecc982c485f6a59c7f1697da848941f12e5c533913388f951f44f7bb8fd"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@noble/curves",
+      "version": "1.9.1",
+      "bom-ref": "node_modules/ox/node_modules/@noble/curves",
+      "purl": "pkg:npm/%40noble/curves@1.9.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ox/node_modules/@noble/curves"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d496cbba8f48a7407657170c84542e337e2fdfdc71bb7f5fd9e350daab119f31"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pend",
+      "version": "1.2.0",
+      "bom-ref": "node_modules/pend",
+      "purl": "pkg:npm/pend@1.2.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/pend"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "1e4f01d39cc13c261f7ab81d0509d36bd98d8eceaf9ed75f2ab274286f3c3920"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pino",
+      "version": "10.4.0",
+      "bom-ref": "node_modules/pino",
+      "purl": "pkg:npm/pino@10.4.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/pino"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "882af7236d74b02e48c0963ef69bf2d549568bcf0b076a7dbec8174082943b72"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pino-abstract-transport",
+      "version": "3.0.0",
+      "bom-ref": "node_modules/pino-abstract-transport",
+      "purl": "pkg:npm/pino-abstract-transport@3.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/pino-abstract-transport"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e62251a7110b225c1a4a7690846b2e82593c2345fb11c5b926700ffd3daf7db3"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pino-std-serializers",
+      "version": "7.1.0",
+      "bom-ref": "node_modules/pino-std-serializers",
+      "purl": "pkg:npm/pino-std-serializers@7.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/pino-std-serializers"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "14d9f107bb3666f82cd90d3b21a2f8d71fd05feb986439b6fb8df16afe908a3a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "process-warning",
+      "version": "5.1.1",
+      "bom-ref": "node_modules/process-warning",
+      "purl": "pkg:npm/process-warning@5.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/process-warning"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "1cfa5a7c795afde7764f89d1d567f042168700c52dbab12bfb3965a554a48f51"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "quick-format-unescaped",
+      "version": "4.0.4",
+      "bom-ref": "node_modules/quick-format-unescaped",
+      "purl": "pkg:npm/quick-format-unescaped@4.0.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/quick-format-unescaped"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e25559231cba29186a6c278ac945ef19c65b9dca221394892d6682d6a22c046a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "react",
+      "version": "19.3.1",
+      "bom-ref": "node_modules/react",
+      "purl": "pkg:npm/react@19.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/react"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9cc9c3de5441a2eea7f41f52f3f2a15a4fc51f90c0b72741f0d7638643a85e67"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "react-dom",
+      "version": "19.3.1",
+      "bom-ref": "node_modules/react-dom",
+      "purl": "pkg:npm/react-dom@19.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/react-dom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "89d54f11575c9b0f7819962d9d72a31970dfb4d103f07e8b1d1b37e6d1fc3258"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "react-router",
+      "version": "7.18.4",
+      "bom-ref": "node_modules/react-router",
+      "purl": "pkg:npm/react-router@7.18.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/react-router"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0323fe65d0b03a170d0ee0c880a28d3499528995ca50bc946a778c6450c275f0"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cookie",
+      "version": "1.1.1",
+      "bom-ref": "node_modules/react-router/node_modules/cookie",
+      "purl": "pkg:npm/cookie@1.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/react-router/node_modules/cookie"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e13337a4eb106b201e0502361f3214af9cc22ae88b2bfac2368996bb949a102f"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "set-cookie-parser",
+      "version": "2.7.2",
+      "bom-ref": "node_modules/react-router/node_modules/set-cookie-parser",
+      "purl": "pkg:npm/set-cookie-parser@2.7.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/react-router/node_modules/set-cookie-parser"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "30485e315a03f4ffbafbbcdc205542b754526850a6d71e4cfc1130a4a986a057"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "react-router-dom",
+      "version": "7.18.4",
+      "bom-ref": "node_modules/react-router-dom",
+      "purl": "pkg:npm/react-router-dom@7.18.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/react-router-dom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c23e49bc92b009d2492a84c8d575b86f57661bcce801af1813cf4f2140034915"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "real-require",
+      "version": "1.0.0",
+      "bom-ref": "node_modules/real-require",
+      "purl": "pkg:npm/real-require@1.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/real-require"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "363c0f322273e0ea290e610886baf05db5174ea09c83f11fb585b43627d3d5dc"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "bom-ref": "node_modules/require-from-string",
+      "purl": "pkg:npm/require-from-string@2.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/require-from-string"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c0002f7d4c7d7e2a885cf0f97226344902417c3a0980f2beca41962d2bc1f6d8"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ret",
+      "version": "0.5.1",
+      "bom-ref": "node_modules/ret",
+      "purl": "pkg:npm/ret@0.5.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ret"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "fb9896e4341cf11d318bd3957528fef8d7ffdcd3fb58fc2dbabfe3f0f4cc3d5b"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "reusify",
+      "version": "1.1.0",
+      "bom-ref": "node_modules/reusify",
+      "purl": "pkg:npm/reusify@1.1.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/reusify"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "db69497e33cebb1296cd68a9202cc4df7b8d1dc895a423f2153e8c157068aa76"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "rfdc",
+      "version": "1.4.1",
+      "bom-ref": "node_modules/rfdc",
+      "purl": "pkg:npm/rfdc@1.4.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/rfdc"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "587604c366b2f0f40e660ef8496d0480dd0cd839cfc3e64b32f644a7a2a549cf"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safe-regex2",
+      "version": "5.1.2",
+      "bom-ref": "node_modules/safe-regex2",
+      "purl": "pkg:npm/safe-regex2@5.1.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/safe-regex2"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "2dcce1799070217f6a9e0cde94708df9fe509e98d9c7e75db81225650880e0fa"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safe-stable-stringify",
+      "version": "2.5.0",
+      "bom-ref": "node_modules/safe-stable-stringify",
+      "purl": "pkg:npm/safe-stable-stringify@2.5.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/safe-stable-stringify"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "797e552ecb0f8ffe8ffb714e6c4888b28a8ca39eb9c0040836b2b6f640037798"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "scheduler",
+      "version": "0.28.0",
+      "bom-ref": "node_modules/scheduler",
+      "purl": "pkg:npm/scheduler@0.28.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/scheduler"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "06290718f22bcd93f29eaa1ac8d2ec9a7592ba4fec12bf1230e7cdd9a871b324"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "secure-json-parse",
+      "version": "4.1.1",
+      "bom-ref": "node_modules/secure-json-parse",
+      "purl": "pkg:npm/secure-json-parse@4.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/secure-json-parse"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "b8809570084bc71755124a8acdb7882b4a41649f408767b851c49d0556e91897"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "set-cookie-parser",
+      "version": "3.2.1",
+      "bom-ref": "node_modules/set-cookie-parser",
+      "purl": "pkg:npm/set-cookie-parser@3.2.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/set-cookie-parser"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "214dcc7a92fda0f71dddbdf15575a3e060bfaac3a23482800abfdaa0be335de6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sharp",
+      "version": "0.34.5",
+      "bom-ref": "node_modules/sharp",
+      "purl": "pkg:npm/sharp@0.34.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/sharp"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "e6be69319929151be3aa240bf1485f25a3477cb6d2286f92510b9fceb3cbef26"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "semver",
+      "version": "7.8.5",
+      "bom-ref": "node_modules/sharp/node_modules/semver",
+      "purl": "pkg:npm/semver@7.8.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/sharp/node_modules/semver"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "7c94cb7f2a53c27b20d76386ec144c062894dbcc909cfabd0f728c37874b1776"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "solc",
+      "version": "0.8.28",
+      "bom-ref": "node_modules/solc",
+      "purl": "pkg:npm/solc@0.8.28",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/solc"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d9062b42d4e7861ba23849de567de0365e88fbc2c60994d2420096d602fb7693"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "semver",
+      "version": "5.7.2",
+      "bom-ref": "node_modules/solc/node_modules/semver",
+      "purl": "pkg:npm/semver@5.7.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/solc/node_modules/semver"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "5040deda6072a93c40e36c5188f24159498f6f84fe586bc47dea4a2de7a8fcdb"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "sonic-boom",
+      "version": "4.2.1",
+      "bom-ref": "node_modules/sonic-boom",
+      "purl": "pkg:npm/sonic-boom@4.2.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/sonic-boom"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "bf4b79130506871f2b715121491400f0796a282a5560028d27ffaae5492d5305"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "split2",
+      "version": "4.2.0",
+      "bom-ref": "node_modules/split2",
+      "purl": "pkg:npm/split2@4.2.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/split2"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "87b734c3087c8d9ed5d76d1bff00db30f960831ba8705dd18d73b180d08d2140"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "thread-stream",
+      "version": "4.2.0",
+      "bom-ref": "node_modules/thread-stream",
+      "purl": "pkg:npm/thread-stream@4.2.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/thread-stream"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0f289b7da1bdf19b3e96566714090e06e1103f011cc6f09bde377387332b5938"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tmp",
+      "version": "0.0.33",
+      "bom-ref": "node_modules/tmp",
+      "purl": "pkg:npm/tmp@0.0.33",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/tmp"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "0d16aba4ccec87190ee9759b70afcb3e57f068f311d440b5093bde3a4c7a8175"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "toad-cache",
+      "version": "3.7.4",
+      "bom-ref": "node_modules/toad-cache",
+      "purl": "pkg:npm/toad-cache@3.7.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/toad-cache"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "9a5432cd1cbf647e5ea89ed66938566437dae04c65c286c0459fb1e7152f55d6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "typescript",
+      "version": "5.9.3",
+      "bom-ref": "node_modules/typescript",
+      "purl": "pkg:npm/typescript@5.9.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/typescript"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "use-sync-external-store",
+      "version": "1.7.0",
+      "bom-ref": "node_modules/use-sync-external-store",
+      "purl": "pkg:npm/use-sync-external-store@1.7.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/use-sync-external-store"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "ba3694aec166f2f53612c4978bc85fb31dd4eee75a2eccc1ad1a1cc49c9428d2"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "viem",
+      "version": "2.57.10",
+      "bom-ref": "node_modules/viem",
+      "purl": "pkg:npm/viem@2.57.10",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/viem"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "277123c0fcecac380bbd50d2407d5cb3a45a2ae7fe38c6f6f8352acea0ca5a7a"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@noble/curves",
+      "version": "1.9.1",
+      "bom-ref": "node_modules/viem/node_modules/@noble/curves",
+      "purl": "pkg:npm/%40noble/curves@1.9.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/viem/node_modules/@noble/curves"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d496cbba8f48a7407657170c84542e337e2fdfdc71bb7f5fd9e350daab119f31"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ws",
+      "version": "8.21.0",
+      "bom-ref": "node_modules/viem/node_modules/ws",
+      "purl": "pkg:npm/ws@8.21.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/viem/node_modules/ws"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "584ce6e7516587ba249dc910b0c04e2753f6b3f451fc3a5bc324f7735bdacc71"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ws",
+      "version": "8.22.0",
+      "bom-ref": "node_modules/ws",
+      "purl": "pkg:npm/ws@8.22.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/ws"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c1ef91ca04eb4754c011c5f0e7638b5078ff71104fada400c44ac761cf93e0b1"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "yauzl",
+      "version": "3.4.0",
+      "bom-ref": "node_modules/yauzl",
+      "purl": "pkg:npm/yauzl@3.4.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/yauzl"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "d7d5418b74b185df4ad276b73cf1e36040dd417d22520354e609e2748a29fcbd"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "zod",
+      "version": "4.6.7",
+      "bom-ref": "node_modules/zod",
+      "purl": "pkg:npm/zod@4.6.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/zod"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "c2d190d9ee4e0bdb60332aaa2130a6a98d65ddb903fe1d29248b15de57832c45"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "zustand",
+      "version": "4.5.7",
+      "bom-ref": "node_modules/zustand",
+      "purl": "pkg:npm/zustand@4.5.7",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "installedPath",
+          "value": "node_modules/zustand"
+        },
+        {
+          "name": "manifestSHA256",
+          "value": "3be250433bb3c42b82b9a8a67654fca222d3e370f703204c69b4dfa4f6c74de6"
+        }
+      ]
+    }
+  ]
+}

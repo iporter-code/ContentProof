@@ -1,0 +1,29 @@
+services:
+  contentproof:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    volumes:
+      - contentproof-data:/app/data
+    ports:
+      - "127.0.0.1:3001:3001"
+    secrets:
+      - storage_key
+    environment:
+      HOST: "0.0.0.0"
+      DEMO_MODE: "false"
+      DATA_DIR: "/app/data/app"
+      STORAGE_KEY_FILE: "/run/secrets/storage_key"
+      REGISTRATION_MODE: "open"
+      AUTH_AUDIENCE: "http://127.0.0.1:3001"
+      ALLOWED_ORIGINS: "http://127.0.0.1:3001,http://localhost:3001"
+    mem_limit: 1536m
+    cpus: 2
+    pids_limit: 128
+    restart: unless-stopped
+    stop_grace_period: 30s
+secrets:
+  storage_key:
+    file: ./runtime/storage.key
+volumes:
+  contentproof-data:

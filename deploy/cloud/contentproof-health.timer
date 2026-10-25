@@ -1,0 +1,9 @@
+[Unit]
+Description=Periodic ContentProof local health check
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=1min
+
+[Install]
+WantedBy=timers.target

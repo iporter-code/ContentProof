@@ -1,0 +1,10 @@
+[Unit]
+Description=Check short-lived ContentProof certificate every six hours
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:00:00
+RandomizedDelaySec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

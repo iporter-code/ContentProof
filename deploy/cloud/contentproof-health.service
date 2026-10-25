@@ -1,0 +1,8 @@
+[Unit]
+Description=Check ContentProof local service readiness
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/contentproof-health
+TimeoutStartSec=2min

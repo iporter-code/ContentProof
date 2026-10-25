@@ -1,0 +1,34 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": false,
+    "rootDir": ".",
+    "outDir": "dist/server",
+    "types": ["node"],
+    "declaration": false,
+    "sourceMap": true
+  },
+  "include": [
+    "apps/api/**/*.ts",
+    "apps/verifier/**/*.ts",
+    "packages/**/*.ts",
+    "scripts/persistent-chain.ts",
+    "scripts/deploy.ts",
+    "scripts/maintenance.ts",
+    "scripts/test-business.ts",
+    "scripts/test-audit-fixes.ts",
+    "scripts/test-permissions.ts",
+    "scripts/test-engine-upgrade.ts",
+    "scripts/test-persistence.ts",
+    "scripts/media-vectors.ts",
+    "scripts/codec-vectors.ts",
+    "scripts/local-harness.ts",
+    "scripts/test-faults.ts",
+    "scripts/test-partition.ts",
+    "scripts/bench-local.ts",
+    "scripts/test-capacity.ts"
+  ],
+  "exclude": ["node_modules", "apps/web", "test", "data"]
+}

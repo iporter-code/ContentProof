@@ -1,0 +1,11 @@
+[Unit]
+Description=Renew ContentProof public IP HTTPS certificate
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/contentproof/certbot/bin/certbot renew --quiet --no-random-sleep-on-renew
+TimeoutStartSec=10min
+Nice=10
+UMask=0077

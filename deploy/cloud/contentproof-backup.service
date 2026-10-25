@@ -1,0 +1,9 @@
+[Unit]
+Description=ContentProof stopped-state encrypted backup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/contentproof-backup
+TimeoutStartSec=15min
+Nice=10
+UMask=0077
