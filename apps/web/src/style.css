@@ -1088,6 +1088,26 @@ textarea {
 .login button[type="submit"] {
   padding: 13px;
 }
+.password-field {
+  display: grid;
+  gap: 9px;
+}
+.password-control {
+  display: flex;
+  gap: 8px;
+}
+.password-control input {
+  flex: 1;
+  min-width: 0;
+}
+.password-control input::-ms-reveal {
+  display: none;
+}
+.password-control button {
+  flex: none;
+  min-width: 72px;
+  min-height: 44px;
+}
 .login input[type="file"] {
   font-size: 11px;
   padding: 9px;

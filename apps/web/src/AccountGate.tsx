@@ -16,10 +16,12 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
     [selected, setSelected] = useState(vaults()[0]?.address ?? ""),
     [name, setName] = useState(""),
     [password, setPassword] = useState(""),
+    [showPassword, setShowPassword] = useState(false),
     [create, setCreate] = useState(!vaults().length),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   async function login(mode: "local" | "external") {
+    setShowPassword(false);
     setBusy(true);
     setError("");
     try {
@@ -90,7 +92,10 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             type="button"
             disabled={busy}
             className={create ? "" : "secondary"}
-            onClick={() => setCreate(true)}
+            onClick={() => {
+              setShowPassword(false);
+              setCreate(true);
+            }}
           >
             创建身份
           </button>
@@ -98,7 +103,10 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             type="button"
             disabled={busy}
             className={!create ? "" : "secondary"}
-            onClick={() => setCreate(false)}
+            onClick={() => {
+              setShowPassword(false);
+              setCreate(false);
+            }}
           >
             解锁已有身份
           </button>
@@ -133,21 +141,39 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             </select>
           </label>
         )}
-        <label>
-          本机解锁口令
-          <input
-            type="password"
-            required
-            minLength={create ? 12 : undefined}
-            disabled={busy}
-            autoComplete={create ? "new-password" : "current-password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder={
-              create ? "至少12位，遗失无法恢复" : "仅在本机解密，不发送到服务端"
-            }
-          />
-        </label>
+        <div className="password-field">
+          <label htmlFor="login-password">本机解锁口令</label>
+          <div className="password-control">
+            <input
+              id="login-password"
+              type={showPassword ? "text" : "password"}
+              required
+              minLength={create ? 12 : undefined}
+              disabled={busy}
+              autoComplete={create ? "new-password" : "current-password"}
+              autoCapitalize="none"
+              spellCheck={false}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={
+                create
+                  ? "至少12位，遗失无法恢复"
+                  : "仅在本机解密，不发送到服务端"
+              }
+            />
+            <button
+              type="button"
+              className="secondary"
+              disabled={busy}
+              aria-label={showPassword ? "隐藏口令" : "显示口令"}
+              aria-pressed={showPassword}
+              aria-controls="login-password"
+              onClick={() => setShowPassword((shown) => !shown)}
+            >
+              {showPassword ? "隐藏" : "显示"}
+            </button>
+          </div>
+        </div>
         {error && (
           <div className="notice" role="alert">
             {error}
@@ -177,6 +203,7 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
                 setList(vaults());
                 setSelected(v.address);
                 setCreate(false);
+                setShowPassword(false);
               } catch (e) {
                 setError((e as Error).message);
               }
