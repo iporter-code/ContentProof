@@ -28,6 +28,10 @@ import { grantExpiry } from "./integrity";
 import "./style.css";
 import { LoginScreen } from "./LoginScreen";
 import { loginDestination } from "./auth-navigation";
+import {
+  verificationFileError,
+  verificationExplanation,
+} from "./verification-help";
 import { Organizations } from "./Organizations";
 import { Operations } from "./Operations";
 const GraphCanvas = React.lazy(() => import("./GraphCanvas"));
@@ -1359,6 +1363,7 @@ function ReportView({ report: r }: { report: any }) {
         <Badge value={r.outcome} />
       </div>
       <p className="mono">{r.claimId}</p>
+      <p className="notice neutral">{verificationExplanation(r)}</p>
       <div className="check-grid">
         {Object.entries(r.checks).map(([k, v]) => (
           <div key={k}>
@@ -1397,6 +1402,9 @@ function ReportView({ report: r }: { report: any }) {
       >
         下载报告 JSON ↓
       </button>
+      <p>
+        JSON报告用于保存本次检查结果，不包含重新核验所需的完整材料。再次核验或向他人提供证据，请从声明详情导出ZIP证据包。
+      </p>
     </section>
   );
 }
@@ -1410,6 +1418,9 @@ function Verify() {
     setReport(undefined);
     setError("");
     try {
+      const fileError = verificationFileError(file.name);
+      if (fileError) throw Error(fileError);
+      if (file.size > 128 * 1024 * 1024) throw Error("ZIP证据包超过128MB上限");
       const form = new FormData();
       form.append("file", file);
       setReport(await api("/v1/verify", form));
@@ -1424,6 +1435,9 @@ function Verify() {
       <Head eyebrow="VERIFY / 内容证据" title="证据核验" />
       <p className="lead">
         上传证据包，重新计算文件指纹、签名、承诺和编辑输出，并读取链上当前状态。
+      </p>
+      <p className="notice neutral">
+        请上传从声明详情“设置披露与导出”获得的ZIP证据包。“下载报告JSON”只保存检查结果，不能替代证据包，也不能用来恢复登录身份。
       </p>
       <label className="dropzone">
         <input

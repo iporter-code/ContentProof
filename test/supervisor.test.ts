@@ -46,6 +46,10 @@ it.each([0, 7])(
       readFileSync("scripts/start-app.mjs", "utf8"),
     );
     save(
+      "scripts/process-shutdown.mjs",
+      readFileSync("scripts/process-shutdown.mjs", "utf8"),
+    );
+    save(
       "deployment.json",
       JSON.stringify({
         chainId: 31337,

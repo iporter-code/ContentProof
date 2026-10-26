@@ -59,6 +59,9 @@ if (action === "status") {
         complete:
           state?.passed === true &&
           state.status === "completed" &&
+          state.cleanup?.passed === true &&
+          state.runnerExit?.code === 0 &&
+          state.runnerExit?.signal === null &&
           state.elapsedSeconds >= seconds,
       },
       null,
@@ -119,7 +122,12 @@ if (action === "status") {
       {
         date: new Date().toISOString(),
         status,
-        passed: status === "completed" && state?.passed === true,
+        passed:
+          status === "completed" &&
+          state?.passed === true &&
+          state.cleanup?.passed === true &&
+          state.runnerExit?.code === 0 &&
+          state.runnerExit?.signal === null,
         processAlive: false,
       },
       null,

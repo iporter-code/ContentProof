@@ -81,8 +81,11 @@ const png = await sharp(raw, { raw: { width: 256, height: 192, channels: 3 } })
   .png()
   .toBuffer();
 const ablation: any[] = [];
+let report: any;
+let runError: unknown;
+let snapshotDigest: string | null = null;
 try {
-  const snapshotDigest =
+  snapshotDigest =
     process.env.CP_SOAK_SNAPSHOT === "required"
       ? verifySnapshotManifest(process.cwd())
       : null;
@@ -246,10 +249,11 @@ try {
   const durations = latency["complete-workflow"],
     elapsed = (Date.now() - activeStart) / 1000;
   const cancelled = existsSync(stopFile);
-  const report = {
+  report = {
     date: new Date().toISOString(),
-    passed: errors.length === 0 && !cancelled,
-    status: cancelled ? "cancelled" : "completed",
+    passed: false,
+    businessPassed: errors.length === 0 && !cancelled,
+    status: cancelled ? "cancelled" : "finalizing",
     targetSeconds: seconds,
     durationSeconds: elapsed,
     completedWorkflows: completed,
@@ -316,7 +320,7 @@ try {
   saveReport(`${reportName}-diagnostics`, h.diagnostics());
   const message = (error as Error).message;
   if (!errors.includes(message)) errors.push(message);
-  const failed = {
+  report = {
     date: new Date().toISOString(),
     status: "failed",
     passed: false,
@@ -327,10 +331,47 @@ try {
     reauthentications,
     errors,
   };
-  saveReport(reportName, failed);
-  saveReport(`${reportName}-progress`, failed);
-  throw error;
+  runError = error;
 } finally {
-  stopMediaWorkers();
-  await h.stop();
+  const cleanupAt = performance.now();
+  let cleanupPassed = false;
+  try {
+    stopMediaWorkers();
+    await h.stop();
+    if (snapshotDigest)
+      assert.equal(verifySnapshotManifest(process.cwd()), snapshotDigest);
+    cleanupPassed = true;
+  } catch (error) {
+    const message = (error as Error).message;
+    if (!errors.includes(message)) errors.push(message);
+    runError ??= error;
+    saveReport(`${reportName}-diagnostics`, h.diagnostics());
+  }
+  report.cleanup = {
+    passed: cleanupPassed,
+    milliseconds: performance.now() - cleanupAt,
+  };
+  report.date = new Date().toISOString();
+  report.status = runError
+    ? "failed"
+    : report.businessPassed
+      ? "completed"
+      : "cancelled";
+  report.passed = report.status === "completed" && cleanupPassed;
+  saveReport(reportName, report);
+  saveReport(`${reportName}-progress`, {
+    date: report.date,
+    status: report.status,
+    passed: report.passed,
+    businessPassed: report.businessPassed ?? false,
+    cleanup: report.cleanup,
+    pid: process.pid,
+    targetSeconds: seconds,
+    elapsedSeconds: report.durationSeconds ?? report.elapsedSeconds,
+    completedWorkflows: completed,
+    reauthentications,
+    lastSample: memory.at(-1),
+    errors,
+  });
 }
+if (runError) throw runError;

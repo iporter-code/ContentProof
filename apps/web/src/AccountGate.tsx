@@ -1,25 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { api, download } from "./api";
 import { requestConsent } from "./consent-store";
 import {
-  vaults,
+  readVaultState,
   createVault,
   unlockVault,
   importVault,
   connectExternal,
   signText,
   signingAddress,
-  type Vault,
 } from "./wallet";
 export function AccountGate({ onReady }: { onReady: () => void }) {
-  const [list, setList] = useState(vaults()),
-    [selected, setSelected] = useState(vaults()[0]?.address ?? ""),
+  const [stored, setStored] = useState(readVaultState),
+    [selected, setSelected] = useState(stored.vaults[0]?.address ?? ""),
     [name, setName] = useState(""),
     [password, setPassword] = useState(""),
     [showPassword, setShowPassword] = useState(false),
-    [create, setCreate] = useState(!vaults().length),
+    [create, setCreate] = useState(!stored.vaults.length),
     [busy, setBusy] = useState(false),
-    [error, setError] = useState("");
+    [error, setError] = useState(""),
+    [notice, setNotice] = useState("");
+  const list = stored.vaults;
+  function refreshIdentities() {
+    const next = readVaultState();
+    setStored(next);
+    setSelected((current) =>
+      next.vaults.some((v) => v.address === current)
+        ? current
+        : (next.vaults[0]?.address ?? ""),
+    );
+    if (!stored.vaults.length && next.vaults.length) setCreate(false);
+  }
+  useEffect(() => {
+    const refresh = () => {
+      if (!busy) refreshIdentities();
+    };
+    const changed = (event: StorageEvent) => {
+      if (event.key === "contentproof-vaults" || event.key === null) refresh();
+    };
+    window.addEventListener("focus", refresh);
+    window.addEventListener("storage", changed);
+    return () => {
+      window.removeEventListener("focus", refresh);
+      window.removeEventListener("storage", changed);
+    };
+  }, [busy, stored]);
   async function login(mode: "local" | "external") {
     setShowPassword(false);
     setBusy(true);
@@ -29,7 +54,7 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
       if (mode === "external") await connectExternal();
       else if (create) {
         const v = await createVault(name, password);
-        setList(vaults());
+        setStored(readVaultState());
         setSelected(v.address);
         setCreate(false);
         label = v.name;
@@ -111,6 +136,28 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             解锁已有身份
           </button>
         </div>
+        {(stored.issue || !list.length) && (
+          <div className="notice neutral" role="status">
+            {stored.issue === "unavailable"
+              ? "浏览器暂不允许读取本机身份，请检查网站存储权限或退出无痕模式后重试。"
+              : stored.issue === "invalid"
+                ? "本机身份记录异常，原数据未清除。请保留浏览器数据，并在可正常保存数据的浏览器中恢复加密备份。"
+                : "当前浏览器未找到身份。若以前创建过，请使用原浏览器和原网站地址，或在下方恢复加密备份。创建身份会生成新的地址。"}
+            <button
+              type="button"
+              className="secondary"
+              disabled={busy}
+              onClick={refreshIdentities}
+            >
+              重新检查本机身份
+            </button>
+          </div>
+        )}
+        {notice && (
+          <div className="notice neutral" role="status">
+            {notice}
+          </div>
+        )}
         {create ? (
           <label>
             显示名称
@@ -129,10 +176,13 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           <label>
             本机身份
             <select
-              disabled={busy}
+              disabled={busy || !list.length}
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
             >
+              {!list.length && (
+                <option value="">未找到身份，请恢复加密备份</option>
+              )}
               {list.map((v) => (
                 <option key={v.address} value={v.address}>
                   {v.name} · {v.address.slice(0, 10)}
@@ -181,7 +231,11 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
         )}
         <button
           type="submit"
-          disabled={busy || (create && name.trim().length < 2)}
+          disabled={
+            busy ||
+            !!stored.issue ||
+            (create ? name.trim().length < 2 : !selected)
+          }
         >
           {busy
             ? "正在验证身份与登记…"
@@ -196,20 +250,35 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             disabled={busy}
             accept=".json"
             onChange={async (e) => {
+              const f = e.target.files?.[0];
+              if (!f) return;
+              setBusy(true);
+              setError("");
+              setNotice("");
               try {
-                const f = e.target.files?.[0];
-                if (!f || f.size > 8192) throw Error("备份文件过大");
+                if (f.size > 8192)
+                  throw Error("身份备份文件过大，请选择原加密身份备份JSON");
                 const v = importVault(await f.text());
-                setList(vaults());
+                setStored(readVaultState());
                 setSelected(v.address);
                 setCreate(false);
                 setShowPassword(false);
+                setNotice(
+                  "已导入原身份，请输入创建时的原口令解锁。恢复身份不会改变原地址。",
+                );
               } catch (e) {
                 setError((e as Error).message);
+              } finally {
+                setBusy(false);
+                e.target.value = "";
               }
             }}
           />
         </label>
+        <small>
+          恢复文件名通常为
+          contentproof-identity.encrypted.json；核验报告JSON不能用来恢复身份。
+        </small>
         <button
           type="button"
           className="secondary"

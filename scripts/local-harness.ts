@@ -125,11 +125,12 @@ export class LocalHarness {
     const ended = new Promise<void>((res, rej) => {
       const timer = setTimeout(
         () => rej(Error("TEST_GRACEFUL_STOP_TIMEOUT")),
-        25000,
+        65000,
       );
-      c.once("exit", () => {
+      c.once("exit", (code, signal) => {
         clearTimeout(timer);
-        res();
+        if (code === 0 && signal === null) res();
+        else rej(Error(`TEST_SERVICE_STOP_FAILED:${signal ?? code}`));
       });
     });
     c.send("shutdown");

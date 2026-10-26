@@ -10,6 +10,8 @@ import {
   signTyped,
   signingAddress,
   connectExternal,
+  readVaultState,
+  importVault,
 } from "../apps/web/src/wallet.js";
 const memory = new Map<string, string>();
 Object.defineProperty(globalThis, "localStorage", {
@@ -32,6 +34,60 @@ beforeEach(() => {
   lockWallet();
   delete (window as any).ethereum;
   memory.clear();
+});
+it("restores an encrypted backup after local records are absent without changing the signer", async () => {
+  const v = await createVault("backup-test", "synthetic-backup-password");
+  lockWallet();
+  memory.clear();
+  expect(readVaultState()).toEqual({ vaults: [], issue: null });
+  const restored = importVault(JSON.stringify(v));
+  await expect(unlockVault(restored, "wrong")).rejects.toThrow();
+  await unlockVault(restored, "synthetic-backup-password");
+  expect(signingAddress()).toBe(v.address);
+});
+it("keeps malformed local data instead of overwriting it while creating or importing", async () => {
+  const backup = await createVault(
+    "preserve-test",
+    "synthetic-backup-password",
+  );
+  const damaged = "{broken";
+  memory.set("contentproof-vaults", damaged);
+  expect(readVaultState().issue).toBe("invalid");
+  await expect(
+    createVault("other", "synthetic-other-password"),
+  ).rejects.toThrow("原数据");
+  expect(() => importVault(JSON.stringify(backup))).toThrow("原数据");
+  expect(memory.get("contentproof-vaults")).toBe(damaged);
+});
+it("distinguishes unavailable browser storage from an empty identity list", () => {
+  const descriptor = Object.getOwnPropertyDescriptor(
+    globalThis,
+    "localStorage",
+  )!;
+  Object.defineProperty(globalThis, "localStorage", {
+    value: {
+      getItem: () => {
+        throw Error("denied");
+      },
+    },
+    configurable: true,
+  });
+  try {
+    expect(readVaultState()).toEqual({ vaults: [], issue: "unavailable" });
+  } finally {
+    Object.defineProperty(globalThis, "localStorage", descriptor);
+  }
+});
+it("rejects a verification report as an identity backup", () => {
+  expect(() =>
+    importVault(
+      JSON.stringify({
+        schemaVersion: "contentproof-report/1",
+        outcome: "fail",
+      }),
+    ),
+  ).toThrow("这是核验结果报告");
+  expect(vaults()).toEqual([]);
 });
 it("switching to an external wallet drops the previous delegated signer", async () => {
   await createVault("master", "only-local-test-password");

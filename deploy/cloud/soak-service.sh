@@ -80,7 +80,7 @@ Environment=MEDIA_CONCURRENCY=1
 Environment=MEDIA_QUEUE_LIMIT=4
 Restart=no
 RuntimeMaxSec=$((seconds+600))
-TimeoutStopSec=45
+TimeoutStopSec=75
 KillMode=control-group
 Nice=10
 CPUQuota=50%

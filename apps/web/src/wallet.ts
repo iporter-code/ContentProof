@@ -33,13 +33,69 @@ function detachExternal() {
     /* A disconnected provider can reject listener removal. */
   }
 }
-export const vaults = (): Vault[] => {
+function parsedVault(input: unknown): Vault {
+  if (!input || typeof input !== "object") throw Error("INVALID_VAULT");
+  const v = input as Vault;
+  if (
+    v.version !== 1 ||
+    typeof v.address !== "string" ||
+    !/^0x[0-9a-fA-F]{40}$/.test(v.address) ||
+    typeof v.name !== "string" ||
+    ![v.salt, v.iv, v.ciphertext].every(
+      (s) => typeof s === "string" && s.length < 1024,
+    ) ||
+    bytes(v.salt).length !== 16 ||
+    bytes(v.iv).length !== 12 ||
+    bytes(v.ciphertext).length < 17
+  )
+    throw Error("INVALID_VAULT");
+  return {
+    version: 1,
+    address: v.address,
+    name: v.name,
+    salt: v.salt,
+    iv: v.iv,
+    ciphertext: v.ciphertext,
+  };
+}
+export function readVaultState(): {
+  vaults: Vault[];
+  issue: "unavailable" | "invalid" | null;
+} {
+  let raw: string | null;
   try {
-    return JSON.parse(localStorage.getItem("contentproof-vaults") ?? "[]");
+    raw = localStorage.getItem("contentproof-vaults");
   } catch {
-    return [];
+    return { vaults: [], issue: "unavailable" };
   }
-};
+  try {
+    const value = JSON.parse(raw ?? "[]");
+    if (!Array.isArray(value)) throw Error("INVALID_VAULT_LIST");
+    return { vaults: value.map(parsedVault), issue: null };
+  } catch {
+    return { vaults: [], issue: "invalid" };
+  }
+}
+export const vaults = (): Vault[] => readVaultState().vaults;
+function storedVaults() {
+  const state = readVaultState();
+  if (state.issue)
+    throw Error(
+      state.issue === "invalid"
+        ? "本机身份记录异常，已保留原数据；请在可正常保存数据的浏览器中恢复加密备份"
+        : "浏览器不允许读取本机身份，请检查网站存储权限或退出无痕模式后重试",
+    );
+  return state.vaults;
+}
+function saveVaults(list: Vault[]) {
+  try {
+    const text = JSON.stringify(list);
+    localStorage.setItem("contentproof-vaults", text);
+    if (localStorage.getItem("contentproof-vaults") !== text) throw Error();
+  } catch {
+    throw Error("浏览器未能保存身份，请检查网站存储权限或可用空间后重试");
+  }
+}
 async function key(password: string, salt: Uint8Array) {
   const material = await crypto.subtle.importKey(
     "raw",
@@ -67,6 +123,7 @@ export async function createVault(
   activate = true,
 ) {
   if (password.length < 12) throw Error("解锁口令至少12位");
+  const existing = storedVaults();
   const secret = generatePrivateKey(),
     account = privateKeyToAccount(secret),
     salt = crypto.getRandomValues(new Uint8Array(16)),
@@ -84,7 +141,7 @@ export async function createVault(
     iv: base64(iv),
     ciphertext: base64(new Uint8Array(ciphertext)),
   };
-  localStorage.setItem("contentproof-vaults", JSON.stringify([...vaults(), v]));
+  saveVaults([...existing, v]);
   if (activate) {
     detachExternal();
     unlocked = account;
@@ -118,20 +175,22 @@ export async function unlockVault(v: Vault, password: string, activate = true) {
   }
 }
 export function importVault(text: string) {
-  const v = JSON.parse(text) as Vault;
-  if (
-    v.version !== 1 ||
-    !/^0x[0-9a-fA-F]{40}$/.test(v.address) ||
-    typeof v.name !== "string" ||
-    ![v.salt, v.iv, v.ciphertext].every(
-      (s) => typeof s === "string" && s.length < 1024,
-    ) ||
-    bytes(v.salt).length !== 16 ||
-    bytes(v.iv).length !== 12
-  )
-    throw Error("无效的加密身份备份");
-  const list = vaults().filter((x) => x.address !== v.address);
-  localStorage.setItem("contentproof-vaults", JSON.stringify([...list, v]));
+  let v: Vault;
+  try {
+    const input = JSON.parse(text);
+    if (input?.schemaVersion === "contentproof-report/1")
+      throw Error(
+        "这是核验结果报告，请选择 contentproof-identity.encrypted.json 加密身份备份",
+      );
+    v = parsedVault(input);
+  } catch (e) {
+    if ((e as Error).message.startsWith("这是核验结果报告")) throw e;
+    throw Error("无效的加密身份备份，请选择创建身份时保存的加密备份文件");
+  }
+  const list = storedVaults().filter(
+    (x) => x.address.toLowerCase() !== v.address.toLowerCase(),
+  );
+  saveVaults([...list, v]);
   return v;
 }
 export const signingAddress = () => unlocked?.address ?? externalAddress;

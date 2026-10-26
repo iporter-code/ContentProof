@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { stopOwnedProcess } from "./process-shutdown.mjs";
 if (process.argv.includes("--demo")) process.env.DEMO_MODE = "true";
 const built = process.argv.includes("--built");
 const { loadConfiguredSecrets } = await import(
@@ -15,6 +16,7 @@ const { demoMode, dataPath, rpcUrl, rpcUrls, apiPort, webPort, chainId } =
       : "../packages/config/index.ts"
   );
 const children = [];
+const childNames = new Map();
 if (existsSync(`${dataPath}.key-rotation.json`))
   throw Error("KEY_ROTATION_RECOVERY_REQUIRED");
 await loadConfiguredSecrets();
@@ -55,6 +57,7 @@ function start(name, args, required = true) {
     stdio: ["ignore", "pipe", "pipe", "ipc"],
   });
   children.push(c);
+  childNames.set(c, name);
   for (const stream of [c.stdout, c.stderr])
     stream.on("data", (data) => {
       if (name !== "chain") process.stdout.write(`[${name}] ${data}`);
@@ -81,30 +84,24 @@ function stop() {
   if (stopTask) return stopTask;
   stopping = true;
   stopTask = (async () => {
-    for (const c of [...children].reverse())
-      await new Promise((resolve) => {
-        if (c.exitCode !== null || c.signalCode !== null) {
-          resolve();
-          return;
-        }
-        const timer = setTimeout(() => {
-          c.kill();
-          resolve();
-        }, 15000);
-        c.once("exit", () => {
-          clearTimeout(timer);
-          resolve();
-        });
-        if (c.connected) c.send("shutdown", () => {});
-        else c.kill();
-      });
+    const outcomes = [];
+    for (const c of [...children].reverse()) {
+      const result = await stopOwnedProcess(c, childNames.get(c));
+      outcomes.push(result);
+      console.log(`[shutdown] ${JSON.stringify(result)}`);
+    }
+    return outcomes.every((result) => result.passed);
   })();
   return stopTask;
 }
 for (const signal of ["SIGINT", "SIGTERM"])
-  process.on(signal, () => void stop().then(() => process.exit(0)));
+  process.on(
+    signal,
+    () => void stop().then((passed) => process.exit(passed ? 0 : 1)),
+  );
 process.on("message", (message) => {
-  if (message === "shutdown") void stop().then(() => process.exit(0));
+  if (message === "shutdown")
+    void stop().then((passed) => process.exit(passed ? 0 : 1));
 });
 if (process.connected)
   process.on("disconnect", () => void stop().then(() => process.exit(1)));
