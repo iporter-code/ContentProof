@@ -13,6 +13,7 @@ import {
 } from "viem";
 import { z } from "zod";
 import { trustedProxies } from "../../packages/config/proxy.js";
+import { browserSecurityHeaders } from "../../packages/config/browser-security.js";
 import {
   prepare,
   disclose,
@@ -113,6 +114,11 @@ export const app = Fastify({
   requestTimeout: 30000,
 });
 registerResponseContracts(app);
+app.addHook("onSend", async (_req, reply, payload) => {
+  for (const [name, value] of Object.entries(browserSecurityHeaders))
+    reply.header(name, value);
+  return payload;
+});
 app.setNotFoundHandler((req, reply) =>
   reply.code(404).send({
     error: { code: "NOT_FOUND", message: "NOT_FOUND" },

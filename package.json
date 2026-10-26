@@ -60,6 +60,8 @@
     "source:index": "node scripts/source-index.mjs",
     "package:cloud": "tsx scripts/package-cloud.ts",
     "release": "tsx scripts/release.ts",
+    "release:verify": "node scripts/verify-release.mjs",
+    "data:inventory": "node scripts/data-inventory.mjs",
     "format": "prettier --write \"{apps,packages,scripts,experiments,test,configs}/**/*.{ts,tsx,mjs,cjs,css,json,html}\" package.json tsconfig.json hardhat.config.ts vitest.config.ts",
     "format:check": "prettier --check \"{apps,packages,scripts,experiments,test,configs}/**/*.{ts,tsx,mjs,cjs,css,json,html}\" package.json tsconfig.json hardhat.config.ts vitest.config.ts"
   },

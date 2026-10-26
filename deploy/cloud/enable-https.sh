@@ -40,6 +40,8 @@ print(proxy.replace('location / {','location ^~ /v1/ {',1)+'\n'+proxy.replace('l
 PY
 )"
 fi
+install -d -m 0755 /etc/nginx/snippets
+/opt/contentproof/current/runtime/bin/node /opt/contentproof/current/app/deploy/cloud/browser-security.mjs /etc/nginx/snippets/contentproof-security.conf
 cat > /etc/nginx/sites-available/contentproof <<EOF
 server {
     listen 80 default_server;
@@ -55,9 +57,11 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/contentproof-ip/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
     client_max_body_size 128m;
-    add_header X-Content-Type-Options nosniff always;
-    add_header X-Frame-Options DENY always;
-    add_header Referrer-Policy same-origin always;
+    include /etc/nginx/snippets/contentproof-security.conf;
+    proxy_hide_header Content-Security-Policy;
+    proxy_hide_header X-Content-Type-Options;
+    proxy_hide_header X-Frame-Options;
+    proxy_hide_header Referrer-Policy;
 $web_routes
 }
 EOF

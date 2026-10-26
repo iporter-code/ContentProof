@@ -1,4 +1,7 @@
-# 第二轮工程补全与验收
+# 归档：第二轮工程补全与验收
+
+<!-- archived-status-snapshot -->
+> 已归档：只记录标题日期的验收与处理范围，文中的测试数量、运行中或未推送描述均为历史事实。当前有效状态统一见[CURRENT_STATUS](CURRENT_STATUS.md)。
 
 > 历史记录：第三轮已补充外置文件 secret 轮换、授权期限、浏览器摘要核对、严格响应、图片子进程与本机告警；当前结果以 LOCAL_ENGINEERING_UPDATE_2026-10-23.md 和 IMPLEMENTATION_STATUS.md 为准。
 

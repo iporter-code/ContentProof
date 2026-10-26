@@ -1,4 +1,7 @@
-# 第七轮：Vault 重加密、Transit 与恢复
+# 归档：第七轮：Vault 重加密、Transit 与恢复
+
+<!-- archived-status-snapshot -->
+> 已归档：只记录标题日期的验收与处理范围，文中的测试数量、运行中或未推送描述均为历史事实。当前有效状态统一见[CURRENT_STATUS](CURRENT_STATUS.md)。
 
 本轮继续完成可在本机验收的密钥管理，未进行用户暂缓的浏览器限时授权，未制作参赛材料。
 

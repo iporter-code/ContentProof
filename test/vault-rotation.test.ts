@@ -15,6 +15,27 @@ import {
   createDecipheriv,
 } from "node:crypto";
 import { DatabaseSync } from "node:sqlite";
+import { setTimeout as delay } from "node:timers/promises";
+const renameFailure = vi.hoisted(() => ({ remaining: 0, attempts: 0 }));
+vi.mock("node:fs", async (original) => {
+  const fs = await original<typeof import("node:fs")>();
+  return {
+    ...fs,
+    renameSync: (...args: Parameters<typeof fs.renameSync>) => {
+      if (
+        String(args[1]).includes(".rollback-vault-") &&
+        renameFailure.remaining > 0
+      ) {
+        renameFailure.remaining--;
+        renameFailure.attempts++;
+        throw Object.assign(Error("Synthetic Windows sharing violation"), {
+          code: "EPERM",
+        });
+      }
+      return fs.renameSync(...args);
+    },
+  };
+});
 import {
   prepareVaultRotation,
   recoverVaultRotation,
@@ -36,7 +57,11 @@ const open = (b: Buffer, k: Buffer) => {
   d.setAuthTag(b.subarray(12, 28));
   return Buffer.concat([d.update(b.subarray(28)), d.final()]);
 };
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  renameFailure.remaining = 0;
+  renameFailure.attempts = 0;
+});
 function fixture() {
   mkdirSync("data/test-vault-rotation", { recursive: true });
   const root = mkdtempSync(resolve("data/test-vault-rotation/run-")),
@@ -113,6 +138,28 @@ function fixture() {
   return { root, source, ref, old, next, name, plain, keys, env };
 }
 type Fixture = ReturnType<typeof fixture>;
+it("Vault recovery survives transient directory sharing violations", async () => {
+  const f = fixture();
+  await prepareVaultRotation(f.source, 2, f.env);
+  renameFailure.remaining = 2;
+  expect(
+    (await recoverVaultRotation(f.source, "commit", f.env)).activeVersion,
+  ).toBe(2);
+  expect(renameFailure.attempts).toBe(2);
+  readable(f, f.next);
+});
+it("persistent directory denial keeps the journal, reference and old readable data", async () => {
+  const f = fixture();
+  await prepareVaultRotation(f.source, 2, f.env);
+  renameFailure.remaining = 100;
+  await expect(
+    recoverVaultRotation(f.source, "commit", f.env),
+  ).rejects.toMatchObject({ code: "EPERM" });
+  expect(renameFailure.attempts).toBe(6);
+  expect(existsSync(`${f.source}.key-rotation.json`)).toBe(true);
+  expect(readVaultReference(f.ref).keyVersion).toBe(1);
+  readable(f, f.old);
+});
 function readable(f: Fixture, key: Buffer) {
   expect(readFileSync(resolve(f.source, "storage-key.id"), "utf8")).toBe(
     hash(key),
@@ -155,7 +202,7 @@ function readable(f: Fixture, key: Buffer) {
   ).toEqual(f.plain);
   expect(existsSync(resolve(f.source, "storage.key"))).toBe(false);
 }
-function phase(
+async function phase(
   f: Fixture,
   state: "prepared" | "data-gap" | "data-next" | "reference-next",
 ) {
@@ -166,10 +213,30 @@ function phase(
     stage = `${f.source}.rotate-vault-${j.tag}`;
   for (const path of [f.source, rollback, stage])
     expect(resolve(path).startsWith(f.root + sep)).toBe(true);
-  if (state !== "prepared") renameSync(f.source, rollback);
+  // Only the synthetic crash-boundary setup retries transient Windows handles.
+  // A real recovery assertion is never retried or converted into a pass.
+  const move = async (from: string, to: string) => {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        renameSync(from, to);
+        return;
+      } catch (error) {
+        if (
+          process.platform !== "win32" ||
+          !["EPERM", "EACCES", "EBUSY"].includes(
+            (error as NodeJS.ErrnoException).code ?? "",
+          ) ||
+          attempt >= 8
+        )
+          throw error;
+        await delay(50 * (attempt + 1));
+      }
+    }
+  };
+  if (state !== "prepared") await move(f.source, rollback);
   if (state === "data-next" || state === "reference-next")
-    renameSync(stage, f.source);
-  if (state === "reference-next") renameSync(`${f.ref}.rotate-${j.tag}`, f.ref);
+    await move(stage, f.source);
+  if (state === "reference-next") await move(`${f.ref}.rotate-${j.tag}`, f.ref);
   return j;
 }
 it.each(["prepared", "data-gap", "data-next", "reference-next"] as const)(
@@ -177,7 +244,7 @@ it.each(["prepared", "data-gap", "data-next", "reference-next"] as const)(
   async (state) => {
     const f = fixture();
     await prepareVaultRotation(f.source, 2, f.env);
-    const j = phase(f, state);
+    const j = await phase(f, state);
     const report = await recoverVaultRotation(f.source, "commit", f.env);
     expect(report.activeVersion).toBe(2);
     readable(f, f.next);
@@ -207,7 +274,7 @@ it.each(["prepared", "data-gap", "data-next", "reference-next"] as const)(
   async (state) => {
     const f = fixture();
     await prepareVaultRotation(f.source, 2, f.env);
-    phase(f, state);
+    await phase(f, state);
     f.keys.delete(2);
     expect(
       (await recoverVaultRotation(f.source, "rollback", f.env)).activeVersion,

@@ -1,5 +1,8 @@
 > 历史说明：本文件记录第一轮修复（当时46项测试）。后续状态以 [当前实施状态](../IMPLEMENTATION_STATUS.md) 和 [第二轮工程更新](ENGINEERING_UPDATE_2026-10-23.md) 为准；下文当时的未完成项不代表当前状态。
 
+<!-- archived-status-snapshot -->
+> 已归档：只记录标题日期的验收与处理范围，文中的测试数量、运行中或未推送描述均为历史事实。当前有效状态统一见[CURRENT_STATUS](CURRENT_STATUS.md)。
+
 # 本轮修复、验收与剩余工作
 
 日期：2026-10-23。对应PROJECT_ISSUES.md。下面区分“修复已实现”和“所有边界已验收”；没有把22组TODO全部关闭。

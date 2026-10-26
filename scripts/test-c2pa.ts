@@ -12,6 +12,7 @@ import {
   C2PA_MAX_BYTES,
 } from "../packages/c2pa/index.js";
 import { LocalHarness, saveReport } from "./local-harness.js";
+import { C2PA_VERSION, C2PA_VERIFIER } from "../packages/c2pa/version.js";
 
 const h = new LocalHarness("c2pa", 3094, 8594),
   checks: string[] = [];
@@ -20,7 +21,7 @@ const dir = mkdtempSync(resolve("data/c2pa-tests/run-"));
 assert(c2paAvailability().available, "RUN_SETUP_C2PA_FIRST");
 const install = resolve(
     process.env.CP_C2PA_INSTALL_DIR ??
-      `data/tools/c2patool-0.28.2/${process.platform}-${process.arch}`,
+      `data/tools/c2patool-${C2PA_VERSION}/${process.platform}-${process.arch}`,
   ),
   receipt = JSON.parse(readFileSync(join(install, "provenance.json"), "utf8"));
 const executable = resolve(install, receipt.binary),
@@ -308,7 +309,7 @@ try {
     {
       date: new Date().toISOString(),
       passed: true,
-      verifier: "c2patool/0.28.2",
+      verifier: C2PA_VERIFIER,
       platform: process.platform,
       checks,
       vectors,

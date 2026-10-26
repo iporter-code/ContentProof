@@ -1,4 +1,7 @@
-# 高优先级处理与验收
+# 归档：高优先级处理与验收
+
+<!-- archived-status-snapshot -->
+> 已归档：只记录标题日期的验收与处理范围，文中的测试数量、运行中或未推送描述均为历史事实。当前有效状态统一见[CURRENT_STATUS](CURRENT_STATUS.md)。
 
 后续状态：历史图片强隔离已部署，异机恢复及生产Vault准备工具已完成；本页c8f03e长测后来发生MEDIA_WORKER_TIMEOUT失败，新版本已通过短测并重新开始独立长测。本页保留原轮次快照，最新状态见[隔离与部署准备验收](ISOLATION_DEPLOYMENT_2026-10-25.md)。
 

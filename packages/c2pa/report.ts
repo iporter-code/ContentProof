@@ -1,8 +1,9 @@
 import { z } from "zod";
+import { C2PA_VERIFIER } from "./version.js";
 
 export const c2paReportSchema = z.strictObject({
   protocol: z.literal("c2pa"),
-  verifier: z.literal("c2patool/0.28.2"),
+  verifier: z.literal(C2PA_VERIFIER),
   scope: z.literal("embedded-offline"),
   outcome: z.enum(["pass", "fail", "incomplete"]),
   integrity: z.enum(["valid", "invalid", "unknown"]),
@@ -121,7 +122,7 @@ export function normalizeC2pa(
   return c2paReportSchema.parse({
     ...base,
     protocol: "c2pa",
-    verifier: "c2patool/0.28.2",
+    verifier: C2PA_VERIFIER,
     scope: "embedded-offline",
     outcome: invalid
       ? "fail"

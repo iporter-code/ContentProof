@@ -19,6 +19,32 @@ import { stageStorageRotation } from "./maintenance.js";
 import { noLinks, durable, marker } from "./external-rotation.js";
 
 const hash = (key: Buffer) => createHash("sha256").update(key).digest("hex");
+async function moveData(
+  from: string,
+  to: string,
+  expectedMarker: string | null,
+) {
+  for (let attempt = 0; ; attempt++) {
+    noLinks(from);
+    noLinks(to);
+    if (existsSync(to)) throw Error("ROTATION_DESTINATION_EXISTS");
+    if (marker(from) !== expectedMarker)
+      throw Error("ROTATION_DATA_STATE_UNKNOWN");
+    try {
+      renameSync(from, to);
+      return;
+    } catch (error) {
+      if (
+        !["EPERM", "EACCES", "EBUSY"].includes(
+          (error as NodeJS.ErrnoException).code ?? "",
+        ) ||
+        attempt >= 5
+      )
+        throw error;
+      await new Promise((done) => setTimeout(done, 50 * (attempt + 1)));
+    }
+  }
+}
 const journalSchema = z.strictObject({
   version: z.literal(2),
   provider: z.literal("vault-kv2"),
@@ -257,11 +283,11 @@ export async function recoverVaultRotation(
           throw Error("ROTATION_STAGE_MISSING");
         if (sourceExists) {
           if (existsSync(p.rollback)) throw Error("ROTATION_ROLLBACK_EXISTS");
-          renameSync(source, p.rollback);
+          await moveData(source, p.rollback, j.oldMarker);
         }
         if (!existsSync(p.rollback) || marker(p.rollback) !== j.oldMarker)
           throw Error("ROTATION_ROLLBACK_MISSING");
-        renameSync(p.stage, source);
+        await moveData(p.stage, source, j.next);
       }
       if (!existsSync(p.rollback) || marker(p.rollback) !== j.oldMarker)
         throw Error("ROTATION_ROLLBACK_MISSING");
@@ -277,12 +303,12 @@ export async function recoverVaultRotation(
           existsSync(p.abandoned)
         )
           throw Error("ROTATION_ROLLBACK_UNSAFE");
-        renameSync(source, p.abandoned);
-        renameSync(p.rollback, source);
+        await moveData(source, p.abandoned, j.next);
+        await moveData(p.rollback, source, j.oldMarker);
       } else if (!sourceExists) {
         if (!existsSync(p.rollback) || marker(p.rollback) !== j.oldMarker)
           throw Error("ROTATION_ROLLBACK_MISSING");
-        renameSync(p.rollback, source);
+        await moveData(p.rollback, source, j.oldMarker);
       }
       publishReference(p, "rollback", j.oldReference, [
         j.oldReference,

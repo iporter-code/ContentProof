@@ -1,4 +1,7 @@
-# 项目详细检查报告
+# 归档：项目详细检查报告
+
+<!-- archived-status-snapshot -->
+> 已归档：只记录标题日期的验收与处理范围，文中的测试数量、运行中或未推送描述均为历史事实。当前有效状态统一见[CURRENT_STATUS](CURRENT_STATUS.md)。
 
 检查日期：2026-10-24（北京时间）。对象：当前 ContentProof 工作区。
 

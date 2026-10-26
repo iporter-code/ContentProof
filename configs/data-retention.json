@@ -1,0 +1,10 @@
+{
+  "mode": "inventory-only",
+  "default": "Keep until explicitly reviewed; no automatic deletion or relocation",
+  "directories": {
+    "docker-recovery": "Manual archive: retain the verified cold backup and recovery installer until an independent copy has been restored and checked",
+    "tools": "Keep pinned active versions and one verified rollback version; review obsolete installers after 30 days",
+    "soak-artifacts": "Keep active runs and unresolved failures; review completed synthetic artifacts after 30 days, retaining at least 7 complete runs and their reports",
+    "cloud-delivery": "Review superseded bundles after 7 days; retain the current validated bundle and at least 2 rollback bundles"
+  }
+}

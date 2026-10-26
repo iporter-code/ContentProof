@@ -6,6 +6,7 @@ import { resolve, join, sep } from "node:path";
 import { tmpdir } from "node:os";
 import { ResourcePool } from "../media/resources.js";
 import { normalizeC2pa, type C2paReport } from "./report.js";
+import { c2paToolConfig, C2PA_VERSION, C2PA_VERIFIER } from "./version.js";
 
 const sha = (bytes: Uint8Array) =>
   createHash("sha256").update(bytes).digest("hex");
@@ -31,11 +32,9 @@ export function c2paMedia(bytes: Uint8Array) {
   throw Error("C2PA_MEDIA_UNSUPPORTED");
 }
 function binary() {
-  const config = JSON.parse(
-    readFileSync(resolve("configs/native-tools.json"), "utf8"),
-  ).c2patool;
+  const config = c2paToolConfig;
   const target = `${process.platform}-${process.arch}`,
-    pin = config[target];
+    pin = config[target as "win32-x64" | "linux-x64"];
   if (!pin) throw Error("C2PA_BINARY_PLATFORM_UNSUPPORTED");
   const dir = resolve(
     process.env.CP_C2PA_INSTALL_DIR ??
@@ -80,12 +79,12 @@ export function c2paAvailability() {
   try {
     binary();
     trustPolicy();
-    return { available: true, version: "0.28.2", reason: null };
+    return { available: true, version: C2PA_VERSION, reason: null };
   } catch (e) {
     const message = (e as Error).message;
     return {
       available: false,
-      version: "0.28.2",
+      version: C2PA_VERSION,
       reason: /^C2PA_[A-Z_]+$/.test(message)
         ? message
         : "C2PA_CONFIGURATION_INVALID",
@@ -240,7 +239,7 @@ export async function verifyC2pa(input: Uint8Array): Promise<C2paReport> {
           return {
             ...base,
             protocol: "c2pa",
-            verifier: "c2patool/0.28.2",
+            verifier: C2PA_VERIFIER,
             scope: "embedded-offline",
             outcome: "incomplete",
             integrity: "unknown",

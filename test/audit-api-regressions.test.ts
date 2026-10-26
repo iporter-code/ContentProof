@@ -68,6 +68,26 @@ const token = (
   })
 ).json().data.token;
 afterAll(() => app.close());
+it("browser security headers also cover static entry points, rejected requests and errors", async () => {
+  const { browserSecurityHeaders } =
+    await import("../packages/config/browser-security.js");
+  const responses = [
+    await app.inject({ url: "/login" }),
+    await app.inject({ url: "/health/live" }),
+    await app.inject({ url: "/v1/profile" }),
+    await app.inject({ url: "/v1/not-a-route" }),
+    await app.inject({
+      url: "/v1/profile",
+      headers: { origin: "https://untrusted.invalid" },
+    }),
+  ];
+  expect(responses.map((r) => r.statusCode).slice(1)).toEqual([
+    200, 401, 404, 403,
+  ]);
+  for (const response of responses)
+    for (const [name, value] of Object.entries(browserSecurityHeaders))
+      expect(response.headers[name.toLowerCase()]).toBe(value);
+});
 it("reverted enrollment and key authorization never publish profiles or epochs", async () => {
   const failed = await call("/v1/profile", { name: "test profile" }, token);
   expect(failed.json().error.code).toBe("TRANSACTION_REVERTED");
