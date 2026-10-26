@@ -1,3 +1,5 @@
+* text=auto eol=lf
+
 # Collected upstream originals are checked by byte hash, including line endings.
 /docs/licenses/** -text -whitespace
 /docs/image-licenses/** -text -whitespace

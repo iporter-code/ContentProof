@@ -27,6 +27,8 @@
 - 发布前完成停机加密备份 `/var/backups/contentproof/20261026T134327Z`。备份恢复服务后等待就绪，再切换版本。发布后数据库/链就绪，原 40 个历史区块哈希、合约地址/代码、公开费用账户和链 ID 均核对一致。回滚记录 `/var/backups/contentproof/completion-20261026T134445Z`。新 24 小时隔离服务未被此次发布重启。
 - 源码包 SHA-256：`4cad700bc4a20abe66bb4a1c3a5e5b4817b19f0c754d77966358b8f904e14172`；网页包 SHA-256：`8159a93493ad3caa8ee71095a5e284f7a941d813f60dacf322fa382113431b3a`。
 - 远端仓库为 [iporter-code/ContentProof](https://github.com/iporter-code/ContentProof)。推送后实际 Windows/Ubuntu 结果见 [Project checks](https://github.com/iporter-code/ContentProof/actions/workflows/checks.yml)，不得把本地通过当作远端通过。
+- 本轮公网静态产物、安全头、深链接及未认证拒绝 8 项通过；使用临时合成身份完成 HTTPS 登录、上传、签署、图片派生、列表、导出、独立复算、原生核验器可用及注销等 11 项检查，通过后未保存私钥或令牌。
+- 首次远端运行的 Ubuntu 全部步骤通过；Windows checkout 将源码变为 CRLF，导致格式检查报 166 个文件。已在 `.gitattributes` 为文本约束 LF，许可原文仍保留 `-text`，不改动已核实字节。此修复仅影响仓库检出，无需重启线上业务或长测；最终状态以 Actions 对应提交为准。
 
 ## 仍开放的范围
 
