@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { c2paReportSchema } from "../../packages/c2pa/report.js";
+import { C2PA_VERSION } from "../../packages/c2pa/version.js";
 import type { FastifyInstance } from "fastify";
 import {
   coreSchema,
@@ -336,7 +337,7 @@ export const responseContracts: Record<string, z.ZodType> = {
   "POST /v1/verify/c2pa": c2paReportSchema,
   "GET /v1/verify/c2pa/status": object({
     available: z.boolean(),
-    version: z.literal("0.28.2"),
+    version: z.literal(C2PA_VERSION),
     reason: text.nullable(),
   }),
   "GET /v1/chain/status": z.union([
