@@ -12,6 +12,8 @@ export interface Vault {
   iv: string;
   ciphertext: string;
 }
+// Individual keys make additions atomic across tabs without rewriting the legacy list.
+const vaultPrefix = "contentproof-vault:";
 const bytes = (s: string) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
 const base64 = (b: Uint8Array) => btoa(String.fromCharCode(...b));
 let unlocked: PrivateKeyAccount | null = null;
@@ -63,15 +65,34 @@ export function readVaultState(): {
   issue: "unavailable" | "invalid" | null;
 } {
   let raw: string | null;
+  const records: Array<[string, string]> = [];
   try {
     raw = localStorage.getItem("contentproof-vaults");
+    for (let i = 0; i < localStorage.length; i++) {
+      const name = localStorage.key(i);
+      if (!name?.startsWith(vaultPrefix)) continue;
+      const record = localStorage.getItem(name);
+      if (record !== null) records.push([name, record]);
+    }
   } catch {
     return { vaults: [], issue: "unavailable" };
   }
   try {
     const value = JSON.parse(raw ?? "[]");
     if (!Array.isArray(value)) throw Error("INVALID_VAULT_LIST");
-    return { vaults: value.map(parsedVault), issue: null };
+    const merged = new Map<string, Vault>(
+      value.map((input: unknown) => {
+        const vault = parsedVault(input);
+        return [vault.address.toLowerCase(), vault];
+      }),
+    );
+    for (const [name, record] of records) {
+      const vault = parsedVault(JSON.parse(record));
+      if (name !== vaultPrefix + vault.address.toLowerCase())
+        throw Error("INVALID_VAULT_STORAGE_KEY");
+      merged.set(vault.address.toLowerCase(), vault);
+    }
+    return { vaults: [...merged.values()], issue: null };
   } catch {
     return { vaults: [], issue: "invalid" };
   }
@@ -87,11 +108,13 @@ function storedVaults() {
     );
   return state.vaults;
 }
-function saveVaults(list: Vault[]) {
+function saveVault(vault: Vault) {
+  storedVaults();
   try {
-    const text = JSON.stringify(list);
-    localStorage.setItem("contentproof-vaults", text);
-    if (localStorage.getItem("contentproof-vaults") !== text) throw Error();
+    const name = vaultPrefix + vault.address.toLowerCase();
+    const text = JSON.stringify(vault);
+    localStorage.setItem(name, text);
+    if (localStorage.getItem(name) !== text) throw Error();
   } catch {
     throw Error("浏览器未能保存身份，请检查网站存储权限或可用空间后重试");
   }
@@ -123,7 +146,7 @@ export async function createVault(
   activate = true,
 ) {
   if (password.length < 12) throw Error("解锁口令至少12位");
-  const existing = storedVaults();
+  storedVaults();
   const secret = generatePrivateKey(),
     account = privateKeyToAccount(secret),
     salt = crypto.getRandomValues(new Uint8Array(16)),
@@ -141,7 +164,7 @@ export async function createVault(
     iv: base64(iv),
     ciphertext: base64(new Uint8Array(ciphertext)),
   };
-  saveVaults([...existing, v]);
+  saveVault(v);
   if (activate) {
     detachExternal();
     unlocked = account;
@@ -151,7 +174,7 @@ export async function createVault(
   } else claimSigner = account;
   return v;
 }
-export async function unlockVault(v: Vault, password: string, activate = true) {
+async function decryptVault(v: Vault, password: string) {
   try {
     const secret = await crypto.subtle.decrypt(
       { name: "AES-GCM", iv: bytes(v.iv) as BufferSource },
@@ -163,18 +186,22 @@ export async function unlockVault(v: Vault, password: string, activate = true) {
     );
     if (account.address.toLowerCase() !== v.address.toLowerCase())
       throw Error();
-    if (activate) {
-      detachExternal();
-      unlocked = account;
-      claimSigner = null;
-      external = null;
-      externalAddress = null;
-    } else claimSigner = account;
+    return account;
   } catch {
     throw Error("口令错误或备份已损坏");
   }
 }
-export function importVault(text: string) {
+export async function unlockVault(v: Vault, password: string, activate = true) {
+  const account = await decryptVault(v, password);
+  if (activate) {
+    detachExternal();
+    unlocked = account;
+    claimSigner = null;
+    external = null;
+    externalAddress = null;
+  } else claimSigner = account;
+}
+export function parseVaultBackup(text: string) {
   let v: Vault;
   try {
     const input = JSON.parse(text);
@@ -187,10 +214,13 @@ export function importVault(text: string) {
     if ((e as Error).message.startsWith("这是核验结果报告")) throw e;
     throw Error("无效的加密身份备份，请选择创建身份时保存的加密备份文件");
   }
-  const list = storedVaults().filter(
-    (x) => x.address.toLowerCase() !== v.address.toLowerCase(),
-  );
-  saveVaults([...list, v]);
+  return v;
+}
+export async function importVault(text: string, password: string) {
+  const v = parseVaultBackup(text);
+  storedVaults();
+  await decryptVault(v, password);
+  saveVault(v);
   return v;
 }
 export const signingAddress = () => unlocked?.address ?? externalAddress;

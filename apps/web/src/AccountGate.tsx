@@ -6,6 +6,7 @@ import {
   createVault,
   unlockVault,
   importVault,
+  parseVaultBackup,
   connectExternal,
   signText,
   signingAddress,
@@ -19,7 +20,11 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
     [create, setCreate] = useState(!stored.vaults.length),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
-    [notice, setNotice] = useState("");
+    [notice, setNotice] = useState(""),
+    [pendingBackup, setPendingBackup] = useState<{
+      text: string;
+      vault: ReturnType<typeof parseVaultBackup>;
+    } | null>(null);
   const list = stored.vaults;
   function refreshIdentities() {
     const next = readVaultState();
@@ -36,7 +41,12 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
       if (!busy) refreshIdentities();
     };
     const changed = (event: StorageEvent) => {
-      if (event.key === "contentproof-vaults" || event.key === null) refresh();
+      if (
+        event.key === "contentproof-vaults" ||
+        event.key?.startsWith("contentproof-vault:") ||
+        event.key === null
+      )
+        refresh();
     };
     window.addEventListener("focus", refresh);
     window.addEventListener("storage", changed);
@@ -52,7 +62,15 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
     try {
       let label = name;
       if (mode === "external") await connectExternal();
-      else if (create) {
+      else if (pendingBackup) {
+        const v = await importVault(pendingBackup.text, password);
+        setStored(readVaultState());
+        setSelected(v.address);
+        setPendingBackup(null);
+        setNotice("加密备份已验证并保存，原身份地址不变。");
+        await unlockVault(v, password);
+        label = v.name;
+      } else if (create) {
         const v = await createVault(name, password);
         setStored(readVaultState());
         setSelected(v.address);
@@ -119,6 +137,9 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             className={create ? "" : "secondary"}
             onClick={() => {
               setShowPassword(false);
+              setPendingBackup(null);
+              setNotice("");
+              setPassword("");
               setCreate(true);
             }}
           >
@@ -130,6 +151,9 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             className={!create ? "" : "secondary"}
             onClick={() => {
               setShowPassword(false);
+              setPendingBackup(null);
+              setNotice("");
+              setPassword("");
               setCreate(false);
             }}
           >
@@ -174,16 +198,16 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           </label>
         ) : (
           <label>
-            本机身份
+            {pendingBackup ? "备份中的身份（尚未保存）" : "本机身份"}
             <select
-              disabled={busy || !list.length}
-              value={selected}
+              disabled={busy || !!pendingBackup || !list.length}
+              value={pendingBackup?.vault.address ?? selected}
               onChange={(e) => setSelected(e.target.value)}
             >
-              {!list.length && (
+              {!pendingBackup && !list.length && (
                 <option value="">未找到身份，请恢复加密备份</option>
               )}
-              {list.map((v) => (
+              {(pendingBackup ? [pendingBackup.vault] : list).map((v) => (
                 <option key={v.address} value={v.address}>
                   {v.name} · {v.address.slice(0, 10)}
                 </option>
@@ -234,14 +258,16 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
           disabled={
             busy ||
             !!stored.issue ||
-            (create ? name.trim().length < 2 : !selected)
+            (!pendingBackup && (create ? name.trim().length < 2 : !selected))
           }
         >
           {busy
             ? "正在验证身份与登记…"
-            : create
-              ? "创建并登录 →"
-              : "解锁并登录 →"}
+            : pendingBackup
+              ? "验证备份并登录 →"
+              : create
+                ? "创建并登录 →"
+                : "解锁并登录 →"}
         </button>
         <label>
           恢复加密备份
@@ -258,13 +284,14 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
               try {
                 if (f.size > 8192)
                   throw Error("身份备份文件过大，请选择原加密身份备份JSON");
-                const v = importVault(await f.text());
-                setStored(readVaultState());
-                setSelected(v.address);
+                const text = await f.text();
+                const v = parseVaultBackup(text);
+                setPendingBackup({ text, vault: v });
                 setCreate(false);
+                setPassword("");
                 setShowPassword(false);
                 setNotice(
-                  "已导入原身份，请输入创建时的原口令解锁。恢复身份不会改变原地址。",
+                  "已选择加密备份，请输入该备份的原口令。验证通过前不会保存或覆盖本机身份。",
                 );
               } catch (e) {
                 setError((e as Error).message);
@@ -275,6 +302,22 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
             }}
           />
         </label>
+        {pendingBackup && (
+          <button
+            type="button"
+            className="secondary"
+            disabled={busy}
+            onClick={() => {
+              setPendingBackup(null);
+              setPassword("");
+              setNotice("");
+              setError("");
+              setCreate(!list.length);
+            }}
+          >
+            取消恢复
+          </button>
+        )}
         <small>
           恢复文件名通常为
           contentproof-identity.encrypted.json；核验报告JSON不能用来恢复身份。

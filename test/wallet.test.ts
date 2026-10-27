@@ -1,4 +1,4 @@
-import { it, expect, beforeEach } from "vitest";
+import { it, expect, beforeEach, vi } from "vitest";
 import { EventEmitter } from "node:events";
 import { recoverMessageAddress, recoverTypedDataAddress } from "viem";
 import {
@@ -12,6 +12,7 @@ import {
   connectExternal,
   readVaultState,
   importVault,
+  parseVaultBackup,
 } from "../apps/web/src/wallet.js";
 const memory = new Map<string, string>();
 Object.defineProperty(globalThis, "localStorage", {
@@ -19,6 +20,10 @@ Object.defineProperty(globalThis, "localStorage", {
     getItem: (k: string) => memory.get(k) ?? null,
     setItem: (k: string, v: string) => memory.set(k, v),
     removeItem: (k: string) => memory.delete(k),
+    get length() {
+      return memory.size;
+    },
+    key: (i: number) => [...memory.keys()][i] ?? null,
   },
   configurable: true,
 });
@@ -40,7 +45,12 @@ it("restores an encrypted backup after local records are absent without changing
   lockWallet();
   memory.clear();
   expect(readVaultState()).toEqual({ vaults: [], issue: null });
-  const restored = importVault(JSON.stringify(v));
+  await expect(importVault(JSON.stringify(v), "wrong")).rejects.toThrow();
+  expect(vaults()).toEqual([]);
+  const restored = await importVault(
+    JSON.stringify(v),
+    "synthetic-backup-password",
+  );
   await expect(unlockVault(restored, "wrong")).rejects.toThrow();
   await unlockVault(restored, "synthetic-backup-password");
   expect(signingAddress()).toBe(v.address);
@@ -56,7 +66,9 @@ it("keeps malformed local data instead of overwriting it while creating or impor
   await expect(
     createVault("other", "synthetic-other-password"),
   ).rejects.toThrow("原数据");
-  expect(() => importVault(JSON.stringify(backup))).toThrow("原数据");
+  await expect(
+    importVault(JSON.stringify(backup), "synthetic-backup-password"),
+  ).rejects.toThrow("原数据");
   expect(memory.get("contentproof-vaults")).toBe(damaged);
 });
 it("distinguishes unavailable browser storage from an empty identity list", () => {
@@ -80,7 +92,7 @@ it("distinguishes unavailable browser storage from an empty identity list", () =
 });
 it("rejects a verification report as an identity backup", () => {
   expect(() =>
-    importVault(
+    parseVaultBackup(
       JSON.stringify({
         schemaVersion: "contentproof-report/1",
         outcome: "fail",
@@ -88,6 +100,71 @@ it("rejects a verification report as an identity backup", () => {
     ),
   ).toThrow("这是核验结果报告");
   expect(vaults()).toEqual([]);
+});
+it("a corrupt same-address backup leaves the stored identity and active signer unchanged", async () => {
+  const original = await createVault("original", "synthetic-original-password");
+  const snapshot = [...memory.entries()];
+  const damaged = { ...original };
+  const cipher = Buffer.from(damaged.ciphertext, "base64");
+  cipher[0] ^= 1;
+  damaged.ciphertext = cipher.toString("base64");
+  await expect(
+    importVault(JSON.stringify(damaged), "synthetic-original-password"),
+  ).rejects.toThrow("口令错误或备份已损坏");
+  expect([...memory.entries()]).toEqual(snapshot);
+  expect(signingAddress()).toBe(original.address);
+  await unlockVault(vaults()[0], "synthetic-original-password");
+});
+it("a backup address must match its decrypted signing key before any write", async () => {
+  const original = await createVault("original", "synthetic-original-password");
+  const snapshot = [...memory.entries()];
+  await expect(
+    importVault(
+      JSON.stringify({
+        ...original,
+        address: "0x1111111111111111111111111111111111111111",
+      }),
+      "synthetic-original-password",
+    ),
+  ).rejects.toThrow();
+  expect([...memory.entries()]).toEqual(snapshot);
+});
+it("a failed storage write preserves existing records and the active identity", async () => {
+  const original = await createVault("original", "synthetic-original-password");
+  const snapshot = [...memory.entries()];
+  const setter = vi.spyOn(localStorage, "setItem").mockImplementation(() => {
+    throw Error("quota");
+  });
+  try {
+    await expect(createVault("new", "synthetic-new-password")).rejects.toThrow(
+      "未能保存身份",
+    );
+    await expect(
+      importVault(JSON.stringify(original), "synthetic-original-password"),
+    ).rejects.toThrow("未能保存身份");
+    expect([...memory.entries()]).toEqual(snapshot);
+    expect(signingAddress()).toBe(original.address);
+  } finally {
+    setter.mockRestore();
+  }
+});
+it("concurrent additions from independent wallet module contexts preserve both identities and legacy records", async () => {
+  const legacy = await createVault("legacy", "synthetic-legacy-password");
+  memory.clear();
+  memory.set("contentproof-vaults", JSON.stringify([legacy]));
+  const legacyBytes = memory.get("contentproof-vaults");
+  vi.resetModules();
+  const other = await import("../apps/web/src/wallet.js");
+  const created = await Promise.all([
+    createVault("context-one", "synthetic-first-password"),
+    other.createVault("context-two", "synthetic-second-password"),
+  ]);
+  expect(vaults()).toHaveLength(3);
+  expect(other.vaults()).toHaveLength(3);
+  for (const v of created)
+    expect(vaults().some((row) => row.address === v.address)).toBe(true);
+  expect(memory.get("contentproof-vaults")).toBe(legacyBytes);
+  other.lockWallet();
 });
 it("switching to an external wallet drops the previous delegated signer", async () => {
   await createVault("master", "only-local-test-password");

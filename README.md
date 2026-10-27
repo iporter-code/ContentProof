@@ -15,6 +15,8 @@ npm.cmd run dev
 
 打开 http://127.0.0.1:5173 ，创建身份并设置至少12位口令，下载 `contentproof-identity.encrypted.json` 加密备份。口令和用户私钥不发送服务端。清理浏览器数据、切换浏览器或网页来源前先备份；服务端不能恢复遗失的用户私钥。
 
+恢复时先选择备份，再输入该备份的原口令；通过密文完整性和签名地址校验后才保存。校验失败或取消恢复会保留原身份。新身份按地址分别保存，旧格式身份列表继续读取，不重写旧记录。
+
 编译运行：
 
 ```powershell
@@ -44,6 +46,8 @@ npm.cmd run data:inventory
 ```
 
 发布脚本先重新验证与构建，再生成 `release/ContentProof.zip`、`SHA256SUMS` 和 `verification.json`。包内 `RELEASE.json` 记录源码提交及工作区状态；校验覆盖内外摘要、源码/编译产物字节和运行数据排除。历史证据保留其原日期与范围，不代表本次重新运行。
+
+默认工作区核验还会比对 Git HEAD/tree、工作区状态及全部 tracked 源码覆盖，遗漏文件或错误提交标识会失败。无Git副本须显式运行 `npm run release:verify -- --snapshot`；此模式只核验快照字节，报告明确标记源码来源和tracked覆盖未核实。无Git环境重新打包同样需要 `npm run release -- --snapshot`。核验失败会更新报告为失败状态。
 
 `data/`、`release/`、运行时及密钥不进入 Git。`data:inventory` 只盘点元数据，不删除或移动文件；保留和异地归档规则见 [数据保留](docs/DATA_RETENTION.md)。
 

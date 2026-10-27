@@ -13,8 +13,7 @@ import { zipSync } from "fflate";
 import { hashBytes } from "../packages/protocol/index.js";
 import { spawnSync } from "node:child_process";
 import { dataDir } from "../packages/chain/index.js";
-// @ts-expect-error JavaScript verifier is shared with the standalone CLI.
-import { verifyRelease } from "./verify-release.mjs";
+import { verifyRelease, readReleaseSource } from "./verify-release.mjs";
 import {
   assertPublicReleaseFile,
   assertNoConfiguredSecret,
@@ -226,18 +225,7 @@ for (const [path, bytes] of Object.entries(entries)) {
         );
   }
 }
-const gitRead = (args: string[]) => {
-  const result = spawnSync("git", args, {
-    encoding: "utf8",
-    windowsHide: true,
-  });
-  return result.status === 0 ? result.stdout.trim() : null;
-};
-const source = {
-  revision: gitRead(["rev-parse", "HEAD"]),
-  tree: gitRead(["rev-parse", "HEAD^{tree}"]),
-  dirty: gitRead(["status", "--porcelain", "--untracked-files=normal"]) !== "",
-};
+const source = readReleaseSource();
 entries["RELEASE.json"] = Buffer.from(
   JSON.stringify(
     {
@@ -257,7 +245,9 @@ entries["SHA256SUMS"] = Buffer.from(
 );
 mkdirSync("release", { recursive: true });
 const zip = zipSync(entries, { level: 6 });
-const verification = verifyRelease(zip);
+const verification = verifyRelease(zip, process.cwd(), {
+  mode: process.argv.includes("--snapshot") ? "snapshot" : "workspace",
+});
 writeFileSync("release/ContentProof.zip.tmp", zip);
 renameSync("release/ContentProof.zip.tmp", "release/ContentProof.zip");
 writeFileSync(
