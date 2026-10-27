@@ -1,5 +1,11 @@
 import { it, expect, vi, afterEach } from "vitest";
-import { createVault, lockWallet } from "../apps/web/src/wallet.js";
+import {
+  createVault,
+  lockWallet,
+  vaults,
+  unlockVault,
+  signingAddress,
+} from "../apps/web/src/wallet.js";
 import {
   createSigningDraft,
   signAndAnchor,
@@ -17,6 +23,10 @@ const storage = () => {
     getItem: (k: string) => map.get(k) ?? null,
     setItem: (k: string, v: string) => map.set(k, v),
     removeItem: (k: string) => map.delete(k),
+    get length() {
+      return map.size;
+    },
+    key: (i: number) => [...map.keys()][i] ?? null,
   };
 };
 afterEach(() => {
@@ -132,9 +142,10 @@ it("pinned networks cannot change silently and explicit replacement preserves lo
     confirmSigningNetwork({ ...network, chainId: 1 }),
   ).rejects.toThrow("网络已改变");
   await confirmSigningNetwork({ ...network, chainId: 1 }, true);
-  expect(localStorage.getItem("contentproof-vaults")).toContain(
-    s.vault.address,
-  );
+  const preserved = vaults().find((v) => v.address === s.vault.address);
+  expect(preserved).toBeDefined();
+  await unlockVault(preserved!, "synthetic-only-passphrase");
+  expect(signingAddress()).toBe(s.vault.address);
 });
 it("explicit cancellation retains the draft and sends no signature; retry needs new consent", async () => {
   const s = await setup();
