@@ -31,7 +31,16 @@ import { loginDestination } from "./auth-navigation";
 import {
   verificationFileError,
   verificationExplanation,
+  verificationReasonText,
+  isUpstreamReason,
+  userErrorMessage,
 } from "./verification-help";
+import { consumeFileSelection } from "./file-selection";
+import {
+  reviewKeyAction,
+  type KeyAction,
+  type RegisteredKey,
+} from "./key-action-review";
 import { Organizations } from "./Organizations";
 import { Operations } from "./Operations";
 const GraphCanvas = React.lazy(() => import("./GraphCanvas"));
@@ -178,7 +187,7 @@ function usePaged<T>(path: string) {
 function Notice({ error }: { error?: string }) {
   return error ? (
     <div className="notice" role="alert">
-      {error}
+      {userErrorMessage(error)}
     </div>
   ) : null;
 }
@@ -915,6 +924,8 @@ function ClaimDetail() {
       </>
     );
   const m = data.manifest;
+  const isIssuer =
+    m.core.issuer.toLowerCase() === signingAddress()?.toLowerCase();
   return (
     <>
       <Head eyebrow="CLAIM / 声明详情" title={operations[m.core.operation]}>
@@ -962,7 +973,7 @@ function ClaimDetail() {
             <Link className="button secondary" to={`/claims/${id}/graph`}>
               查看来源图 →
             </Link>
-            {data.chain.anchor === "absent" && (
+            {isIssuer && data.chain.anchor === "absent" && (
               <button
                 disabled={busy}
                 onClick={() =>
@@ -1001,118 +1012,128 @@ function ClaimDetail() {
           导入声明只能证明签名者作出该声明；不能证明画面事实或版权。
         </p>
       </section>
-      <section className="panel">
-        <h2>协作授权</h2>
-        <p>
-          授权另一身份读取声明。拥有输出素材时可同时授予素材阅读或编辑权限；上游声明需由各自签名者另行授权。
-        </p>
-        {data.grants?.length > 0 && (
-          <table>
-            <thead>
-              <tr>
-                <th>接收身份</th>
-                <th>到期时间</th>
-                <th>状态</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.grants.map((g: any) => (
-                <tr key={g.address}>
-                  <td>{short(g.address)}</td>
-                  <td>
-                    {g.expiresAt === null
-                      ? "长期"
-                      : new Date(g.expiresAt).toLocaleString()}
-                  </td>
-                  <td>{g.active ? "有效" : "已到期"}</td>
+      {isIssuer ? (
+        <section className="panel">
+          <h2>协作授权</h2>
+          <p>
+            授权另一身份读取声明。拥有输出素材时可同时授予素材阅读或编辑权限；上游声明需由各自签名者另行授权。
+          </p>
+          {data.grants?.length > 0 && (
+            <table>
+              <thead>
+                <tr>
+                  <th>接收身份</th>
+                  <th>到期时间</th>
+                  <th>状态</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-        <div className="actions">
-          <input
-            aria-label="接收身份地址"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="0x… 接收身份地址"
-          />
-          <select
-            aria-label="素材授权权限"
-            value={sharePermission}
-            onChange={(e) => setSharePermission(e.target.value)}
-          >
-            <option value="read">只读素材</option>
-            <option value="edit">允许编辑素材</option>
-          </select>
-          <label>
-            授权到期（留空为长期）
+              </thead>
+              <tbody>
+                {data.grants.map((g: any) => (
+                  <tr key={g.address}>
+                    <td>{short(g.address)}</td>
+                    <td>
+                      {g.expiresAt === null
+                        ? "长期"
+                        : new Date(g.expiresAt).toLocaleString()}
+                    </td>
+                    <td>{g.active ? "有效" : "已到期"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+          <div className="actions">
             <input
-              type="datetime-local"
-              aria-label="授权到期时间"
-              ref={expiryInput}
+              aria-label="接收身份地址"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="0x… 接收身份地址"
             />
-          </label>
-          <button
-            disabled={busy}
-            onClick={() =>
-              void act(async () => {
-                const expiresAt = grantExpiry(expiryInput.current?.value ?? "");
-                const result = await api(`/v1/claims/${id}/grant`, {
-                  address,
-                  permission: sharePermission,
-                  expiresAt,
-                });
-                setNotice(
-                  result.assetGranted
-                    ? `声明和输出素材权限已更新${expiresAt ? "，到期后自动失效" : "（长期）"}`
-                    : "声明权限已更新；输出素材须由其所有者另行授权",
-                );
-              })
-            }
-          >
-            授权访问
-          </button>
-          <button
-            className="secondary"
-            disabled={busy}
-            onClick={() =>
-              void act(async () => {
-                await api(`/v1/claims/${id}/revoke`, { address });
-                setNotice("声明访问已撤销；素材权限独立管理");
-              })
-            }
-          >
-            撤销声明访问
-          </button>
-          <button
-            className="secondary"
-            disabled={busy}
-            onClick={() =>
-              void act(async () => {
-                await api(`/v1/assets/${m.core.assetDigest}/revoke`, {
-                  address,
-                });
-                setNotice("输出素材的阅读和编辑权限已撤销；已下载内容无法收回");
-              })
-            }
-          >
-            撤销素材访问
-          </button>
-          <button
-            className="danger"
-            disabled={busy}
-            onClick={async () => {
-              if (
-                await requestConsent("撤回后在线验证将拒绝此声明，确认撤回？")
-              )
-                void act(() => withdrawClaim(id));
-            }}
-          >
-            撤回声明
-          </button>
-        </div>
-      </section>
+            <select
+              aria-label="素材授权权限"
+              value={sharePermission}
+              onChange={(e) => setSharePermission(e.target.value)}
+            >
+              <option value="read">只读素材</option>
+              <option value="edit">允许编辑素材</option>
+            </select>
+            <label>
+              授权到期（留空为长期）
+              <input
+                type="datetime-local"
+                aria-label="授权到期时间"
+                ref={expiryInput}
+              />
+            </label>
+            <button
+              disabled={busy}
+              onClick={() =>
+                void act(async () => {
+                  const expiresAt = grantExpiry(
+                    expiryInput.current?.value ?? "",
+                  );
+                  const result = await api(`/v1/claims/${id}/grant`, {
+                    address,
+                    permission: sharePermission,
+                    expiresAt,
+                  });
+                  setNotice(
+                    result.assetGranted
+                      ? `声明和输出素材权限已更新${expiresAt ? "，到期后自动失效" : "（长期）"}`
+                      : "声明权限已更新；输出素材须由其所有者另行授权",
+                  );
+                })
+              }
+            >
+              授权访问
+            </button>
+            <button
+              className="secondary"
+              disabled={busy}
+              onClick={() =>
+                void act(async () => {
+                  await api(`/v1/claims/${id}/revoke`, { address });
+                  setNotice("声明访问已撤销；素材权限独立管理");
+                })
+              }
+            >
+              撤销声明访问
+            </button>
+            <button
+              className="secondary"
+              disabled={busy}
+              onClick={() =>
+                void act(async () => {
+                  await api(`/v1/assets/${m.core.assetDigest}/revoke`, {
+                    address,
+                  });
+                  setNotice(
+                    "输出素材的阅读和编辑权限已撤销；已下载内容无法收回",
+                  );
+                })
+              }
+            >
+              撤销素材访问
+            </button>
+            <button
+              className="danger"
+              disabled={busy}
+              onClick={async () => {
+                if (
+                  await requestConsent("撤回后在线验证将拒绝此声明，确认撤回？")
+                )
+                  void act(() => withdrawClaim(id));
+              }}
+            >
+              撤回声明
+            </button>
+          </div>
+        </section>
+      ) : (
+        <p className="notice neutral">
+          当前身份可查看此声明；授权和撤回操作由声明签名者管理。
+        </p>
+      )}
     </>
   );
 }
@@ -1350,10 +1371,10 @@ function ReportView({ report: r }: { report: any }) {
   const labels: Record<string, string> = {
     file: "文件字节",
     signature: "声明签名",
-    anchor: "链上登记",
-    identity: "密钥状态",
+    anchor: "当前声明登记",
+    identity: "当前签署密钥",
     disclosure: "披露完整性",
-    ancestry: "来源覆盖",
+    ancestry: "来源材料覆盖",
     transformation: "操作复算",
   };
   return (
@@ -1363,7 +1384,20 @@ function ReportView({ report: r }: { report: any }) {
         <Badge value={r.outcome} />
       </div>
       <p className="mono">{r.claimId}</p>
+      <p>
+        本次核验时间：
+        <time dateTime={r.checkedAt}>
+          {new Date(r.checkedAt).toLocaleString()}
+        </time>
+      </p>
       <p className="notice neutral">{verificationExplanation(r)}</p>
+      {r.outcome === "fail" &&
+        r.reasons.some((x: any) => isUpstreamReason(x, r.claimId)) && (
+          <p className="notice" role="alert">
+            上游来源核验未通过，不能仅凭当前声明自身分项判断整体有效。
+          </p>
+        )}
+      <h3>核验分项</h3>
       <div className="check-grid">
         {Object.entries(r.checks).map(([k, v]) => (
           <div key={k}>
@@ -1383,7 +1417,21 @@ function ReportView({ report: r }: { report: any }) {
           <ul>
             {r.reasons.map((x: any, i: number) => (
               <li key={i}>
-                <code>{x.code}</code> · {x.message}
+                <p>{verificationReasonText(x)}</p>
+                {x.claimId && (
+                  <p>
+                    {isUpstreamReason(x, r.claimId) ? "上游声明" : "当前声明"}：
+                    <Link
+                      className="mono"
+                      to={`/claims/${encodeURIComponent(x.claimId)}`}
+                    >
+                      {x.claimId}
+                    </Link>
+                  </p>
+                )}
+                <small>
+                  检查代码：<code>{x.code}</code>
+                </small>
               </li>
             ))}
           </ul>
@@ -1445,7 +1493,7 @@ function Verify() {
           type="file"
           accept=".zip"
           disabled={busy}
-          onChange={(e) => void check(e.target.files?.[0])}
+          onChange={(e) => void check(consumeFileSelection(e.currentTarget))}
         />
         <strong>
           {busy ? "正在执行实际校验…" : "◎ 选择 ZIP 证据包，开始验证"}
@@ -1467,7 +1515,8 @@ function NativeC2paVerify() {
   const [report, setReport] =
       useState<import("../../../packages/c2pa/report.js").C2paReport>(),
     [busy, setBusy] = useState(false),
-    [error, setError] = useState("");
+    [error, setError] = useState(""),
+    [checkedAt, setCheckedAt] = useState("");
   async function check(file?: File) {
     if (!file) return;
     setReport(undefined);
@@ -1481,6 +1530,7 @@ function NativeC2paVerify() {
       const form = new FormData();
       form.append("file", file);
       setReport(await api("/v1/verify/c2pa", form));
+      setCheckedAt(new Date().toISOString());
     } catch (e) {
       const code = (e as Error).message;
       setError(
@@ -1514,7 +1564,7 @@ function NativeC2paVerify() {
             type="file"
             accept=".png,.jpg,.jpeg,.wav,.mp4"
             disabled={busy}
-            onChange={(e) => void check(e.target.files?.[0])}
+            onChange={(e) => void check(consumeFileSelection(e.currentTarget))}
           />
           <strong>
             {busy ? "正在检查内容凭证…" : "选择文件，验证内嵌凭证"}
@@ -1533,6 +1583,12 @@ function NativeC2paVerify() {
       <Notice error={error} />
       {report && (
         <div aria-live="polite">
+          <p>
+            本次检查完成时间：
+            <time dateTime={checkedAt}>
+              {new Date(checkedAt).toLocaleString()}
+            </time>
+          </p>
           <h3>
             {report.outcome === "pass"
               ? "本地信任策略通过（离线）"
@@ -1603,7 +1659,7 @@ function NativeC2paVerify() {
 }
 function Identities() {
   const profile = useLoad(() => api("/v1/profile")),
-    keys = useLoad<any[]>(() => api("/v1/keys")),
+    keys = useLoad<RegisteredKey[]>(() => api("/v1/keys")),
     audit = useLoad<any[]>(() => api("/v1/audit"));
   const [error, setError] = useState(""),
     [epoch, setEpoch] = useState("2"),
@@ -1611,21 +1667,21 @@ function Identities() {
     [keyPassword, setKeyPassword] = useState(""),
     [keyVault, setKeyVault] = useState(""),
     [busy, setBusy] = useState(false);
-  async function action(action: string) {
+  async function action(action: KeyAction) {
     setBusy(true);
     setError("");
+    const requestedEpoch = epoch,
+      requestedSigner = signerAddress;
     try {
-      if (
-        !(await requestConsent(
-          `确认${action}密钥世代 ${epoch}？签名地址 ${signerAddress}。撤销不可恢复。`,
-        ))
-      )
-        return;
-      const c = await api("/v1/keys/challenge", {
+      const currentKeys: RegisteredKey[] = await api("/v1/keys");
+      const reviewed = reviewKeyAction(
         action,
-        epoch,
-        signer: signerAddress,
-      });
+        requestedEpoch,
+        requestedSigner,
+        currentKeys,
+      );
+      if (!(await requestConsent(reviewed.message))) return;
+      const c = await api("/v1/keys/challenge", reviewed.request);
       await api("/v1/keys/action", {
         id: c.id,
         signature: await signText(c.message),
