@@ -27,6 +27,14 @@ web_routes="$(python3 - "$web_routes" <<'PY'
 import sys
 proxy=sys.argv[1]
 print(proxy.replace('location / {','location ^~ /v1/ {',1)+'\n'+proxy.replace('location / {','location ^~ /health/ {',1)+'''
+    location = /assets {
+        root /opt/contentproof-web/current;
+        try_files /index.html =404;
+        expires -1;
+    }
+    location = /assets/ {
+        return 308 /assets;
+    }
     location ^~ /assets/ {
         root /opt/contentproof-web/current;
         try_files $uri =404;

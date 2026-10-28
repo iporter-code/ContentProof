@@ -92,7 +92,12 @@ try {
   // Its output contains generated credentials and is discarded rather than logged.
   vault = spawn(
     binary,
-    ["server", "-dev", "-dev-listen-address=127.0.0.1:8310"],
+    [
+      "server",
+      "-dev",
+      "-dev-no-store-token",
+      "-dev-listen-address=127.0.0.1:8310",
+    ],
     {
       env: { ...process.env, VAULT_DEV_ROOT_TOKEN_ID: rootToken },
       windowsHide: true,

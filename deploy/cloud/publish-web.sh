@@ -61,7 +61,7 @@ python3 - <<'PY'
 import pathlib
 p=pathlib.Path('/etc/nginx/sites-available/contentproof');s=p.read_text();root='root /opt/contentproof-web/current;'
 if root in s:
- assert s.count(root)==2 and 'location ^~ /v1/' in s and 'location ^~ /health/' in s
+ assert s.count(root) in (2,3) and 'location ^~ /v1/' in s and 'location ^~ /health/' in s
 else:
  marker='    location / {\n        proxy_pass http://127.0.0.1:3001;'
  assert s.count(marker)==1,'Unknown existing proxy configuration'
@@ -78,7 +78,23 @@ else:
         try_files $uri $uri/ /index.html;
         expires -1;
     }'''
- p.write_text(s[:start]+replacement+s[end:])
+ s=s[:start]+replacement+s[end:]
+# The SPA's material-library route shares the build's assets directory name.
+# Exact locations keep page navigation out of the immutable static-file branch.
+if 'location = /assets {' not in s:
+ marker='    location ^~ /assets/ {'
+ assert s.count(marker)==1,'Unknown static assets configuration'
+ s=s.replace(marker,'''    location = /assets {
+        root /opt/contentproof-web/current;
+        try_files /index.html =404;
+        expires -1;
+    }
+    location = /assets/ {
+        return 308 /assets;
+    }
+'''+marker,1)
+assert s.count(root)==3 and s.count('location = /assets {')==1 and s.count('location = /assets/ {')==1
+p.write_text(s)
 PY
 ln -sfn "$target" "$base/current"
 nginx -t

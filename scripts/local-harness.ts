@@ -96,6 +96,18 @@ export class LocalHarness {
         stdio: ["ignore", "pipe", "pipe", "ipc"],
       },
     );
+    let ownerReady = false;
+    this.child.on("message", (message: unknown) => {
+      if (
+        message &&
+        typeof message === "object" &&
+        "type" in message &&
+        message.type === "contentproof-ready" &&
+        "port" in message &&
+        message.port === Number(this.env.PORT)
+      )
+        ownerReady = true;
+    });
     for (const stream of [this.child.stdout!, this.child.stderr!])
       stream.on("data", (b) => {
         this.log = (this.log + b).slice(-16000);
@@ -105,6 +117,7 @@ export class LocalHarness {
         throw Error(this.log || "TEST_SERVICE_EXITED");
       try {
         if (
+          ownerReady &&
           (
             await fetch(this.base + "/health/ready", {
               signal: AbortSignal.timeout(500),

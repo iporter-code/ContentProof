@@ -4,6 +4,39 @@ import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { spawn } from "node:child_process";
 import type { AddressInfo } from "node:net";
+import { LocalHarness } from "../scripts/local-harness.js";
+
+it("harness waits for its owner to finish startup before stopping a listening API", async () => {
+  mkdirSync("data/test-supervisor", { recursive: true });
+  const root = mkdtempSync(resolve("data/test-supervisor/ready-"));
+  mkdirSync(resolve(root, "scripts"));
+  writeFileSync(resolve(root, "package.json"), '{"type":"module"}');
+  writeFileSync(
+    resolve(root, "scripts/start-app.mjs"),
+    `import {createServer} from 'node:http';
+const server=createServer((_req,res)=>res.end('{}'));
+server.listen(Number(process.env.PORT),'127.0.0.1');
+setTimeout(()=>{
+ process.on('message',m=>{if(m==='shutdown')server.close(()=>process.exit(0));});
+ process.send({type:'contentproof-ready',port:Number(process.env.PORT)});
+},800);`,
+  );
+  const probe = createServer();
+  await new Promise<void>((r) => probe.listen(0, "127.0.0.1", r));
+  const port = (probe.address() as AddressInfo).port;
+  await new Promise<void>((r) => probe.close(() => r()));
+  const h = new LocalHarness("owner-ready", port, port, root);
+  try {
+    const started = Date.now();
+    await h.start();
+    expect(Date.now() - started).toBeGreaterThanOrEqual(800);
+    await h.stop();
+    expect(h.diagnostics().exitCode).toBe(0);
+    expect(h.diagnostics().signal).toBe(null);
+  } finally {
+    if (h.child?.exitCode === null) h.child.kill();
+  }
+}, 8000);
 
 it.each([0, 7])(
   "supervisor fails when a required API process exits with code %s",

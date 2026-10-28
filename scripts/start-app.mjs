@@ -181,6 +181,11 @@ try {
   console.log(
     `ContentProof ready http://127.0.0.1:${built ? apiPort : webPort}\n${demoMode ? "Explicit demonstration mode" : "User-signed mode; node data persisted on disk"}\nCtrl+C stops owned services.`,
   );
+  if (process.connected)
+    process.send({
+      type: "contentproof-ready",
+      port: built ? apiPort : webPort,
+    });
 } catch (e) {
   console.error(e.message);
   await stop();

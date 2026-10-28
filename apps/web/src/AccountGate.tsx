@@ -167,14 +167,6 @@ export function AccountGate({ onReady }: { onReady: () => void }) {
               : stored.issue === "invalid"
                 ? "本机身份记录异常，原数据未清除。请保留浏览器数据，并在可正常保存数据的浏览器中恢复加密备份。"
                 : "当前浏览器未找到身份。若以前创建过，请使用原浏览器和原网站地址，或在下方恢复加密备份。创建身份会生成新的地址。"}
-            <button
-              type="button"
-              className="secondary"
-              disabled={busy}
-              onClick={refreshIdentities}
-            >
-              重新检查本机身份
-            </button>
           </div>
         )}
         {notice && (
